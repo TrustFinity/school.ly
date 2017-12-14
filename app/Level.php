@@ -6,8 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Level extends Model
 {
-    //
-
     protected $guarded = [];
 
 
@@ -20,6 +18,4 @@ class Level extends Model
     {
         return $this->hasMany(Subject::class);
     }
-
-
 }

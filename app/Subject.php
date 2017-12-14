@@ -6,10 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
-    //
-	protected $guarded = [];
+    protected $guarded = [];
 
-    
     public function level()
     {
         return $this->belongsTo(Level::class, 'level_id');
@@ -20,15 +18,8 @@ class Subject extends Model
         return $this->belongsTo(Teacher::class, 'teacher_id');
     }
 
-
     public function students()
     {
         return $this->belongsToMany(Student::class);
     }
-
-
-
-
-
-
 }

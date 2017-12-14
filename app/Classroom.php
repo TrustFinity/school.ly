@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Classroom extends Model
 {
-    //
     protected $guarded = [];
 
     public function classgroup()
@@ -23,7 +22,4 @@ class Classroom extends Model
     {
         return $this->hasOne(Teacher::class);
     }
-
-
-
 }

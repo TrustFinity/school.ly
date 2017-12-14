@@ -31,8 +31,8 @@ class User extends Authenticatable
         return $this->morphTo();
     }
 
-    public function hasRole($userable_type = null) {
-
+    public function hasRole($userable_type = null)
+    {
         if ($userable_type) {
             return $this->userable_type == $userable_type;
         }
