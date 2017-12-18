@@ -111,8 +111,3 @@ Route::get('/subjects/{subject}', 'SubjectController@show');
 Route::get('/subjects/edit/{subject}', 'SubjectController@edit');
 Route::post('/subjects/{subject}', 'SubjectController@update');
 Route::get('/subjects/delete/{subject}', 'SubjectController@destroy');
-
-
-
-
-
