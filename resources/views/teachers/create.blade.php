@@ -7,7 +7,7 @@
             <form action="/teachers" method="POST" role="form">
             {{ csrf_field() }}
             	<legend>Add a new Teacher</legend>
-            
+
             	<div class="form-group">
             		<label for="">Name</label>
             		<input name="name" type="text" class="form-control" id="" placeholder="Enter Name">
@@ -29,7 +29,7 @@
             	</div>
 				<div class="form-group">
 				<label for="">Level</label>
-            	<select name="level_id" id="inputLevel_id" class="form-control" required="required">
+            	<select name="level_id" id="inputLevel_id" class="form-control">
             		@foreach ($levels as $level)
             		<option value="{{ $level->id }}">{{ $level->name }}</option>
             		@endforeach
@@ -60,8 +60,8 @@
                     <input type="password" name="password_confirmation" id="inputPassword" class="form-control" required="required" title="">
                 </div>
 
-            	
-            
+
+
             	<button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

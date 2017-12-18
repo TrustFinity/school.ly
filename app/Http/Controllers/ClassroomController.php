@@ -15,16 +15,8 @@ class ClassroomController extends Controller
      */
     public function index()
     {
-        //
-
         $classrooms = Classroom::all();
-
-        //return $classrooms;
-
         return view('classrooms.index', compact('classrooms'));
-
-
-
     }
 
     /**
@@ -34,11 +26,7 @@ class ClassroomController extends Controller
      */
     public function create()
     {
-        //
-
-
         $classgroups = Classgroup::all();
-
         return view('classrooms.create', compact('classgroups'));
     }
 
@@ -50,17 +38,14 @@ class ClassroomController extends Controller
      */
     public function store()
     {
-        //
-
         Classroom::create(request(['name', 'classgroup_id']));
-
         return redirect('/classrooms');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Classroom  $classroom
+     * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
     public function show(Classroom $classroom)
@@ -71,16 +56,12 @@ class ClassroomController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Classroom  $classroom
+     * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
     public function edit(Classroom $classroom)
     {
-        //
-
         $classgroups = Classgroup::all();
-
-
         return view('classrooms.edit', compact('classgroups', 'classroom'));
     }
 
@@ -88,13 +69,11 @@ class ClassroomController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Classroom  $classroom
+     * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
     public function update(Classroom $classroom)
     {
-        //
-
         $input = request(['name', 'classgroup_id']);
 
         $classroom->fill($input)->save();
@@ -105,17 +84,13 @@ class ClassroomController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Classroom  $classroom
+     * @param  \App\Models\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
     public function destroy(Classroom $classroom)
     {
-        //
-
         $classroom->delete();
 
         return redirect('/classrooms');
-
-
     }
 }

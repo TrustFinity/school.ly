@@ -29,7 +29,7 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        $levels = Level::all(); 
+        $levels = Level::all();
         $teachers = Teacher::all();
         return view('subjects.create', compact('levels', 'teachers'));
     }

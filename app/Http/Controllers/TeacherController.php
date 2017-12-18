@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use Validator;
 use App\Models\User;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
@@ -13,14 +12,9 @@ use App\Models\Classes\Classgroup;
 
 class TeacherController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     */
-    
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('role:Admin')->except('create', 'store');
     }
 
     public function index()
@@ -46,9 +40,9 @@ class TeacherController extends Controller
      * @return \Illuminate\Http\Response
      * @internal param Request $request
      */
-    public function store()
+    public function store(Request $request)
     {
-        $teacher = new Teacher(request(['name','gender', 'classgroup_id', 'level_id', 'experience', 'phone']));
+        $teacher = Teacher::create($request->all());
         $teacher->school_id = Auth::user()->school_id;
         $saved = $teacher->save();
 
@@ -60,15 +54,14 @@ class TeacherController extends Controller
             'userable_type' => 'Teacher'
         ]);
 
-        if (!$saved){
+        if (!$saved) {
             // Return back with errors.
             return back()->withErrors();
         }
-        if (Auth::user() !== null){
+        if (Auth::user() !== null) {
             Auth::login($user);
         }
         return redirect('/teachers');
-
     }
 
     /**

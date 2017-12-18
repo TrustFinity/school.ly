@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use Validator;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Classes\Level;
@@ -11,17 +10,11 @@ use App\Models\Classes\Classroom;
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     */
-    
     public function __construct()
     {
-        $this->middleware('auth')->except('create', 'store');
+        $this->middleware('role:Admin')->except('create', 'store');
     }
 
-    
     public function index()
     {
         $students = Student::paginate(20);
@@ -45,10 +38,24 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      * @internal param Request $request
      */
-    public function store()
+    public function store(Request $request)
     {
-        Student::create(request(['name','gender', 'age', 'address', 'classroom_id', 'level_id']));
-        return redirect('/students');
+        $student = Student::create($request->all());
+
+        //todo decide weather students need to use the same login or a unique one
+        User::create([
+            'name' => $student->name,
+            'email' => request('email'),
+            'password' => bcrypt(request('password')),
+            'userable_id' => $student->id,
+            'userable_type' => 'Student'
+        ]);
+
+        if (Auth::check() && Auth::user()->hasRole('Admin')) {
+            return redirect('/students');
+        }
+
+        return redirect('login');
     }
 
     /**

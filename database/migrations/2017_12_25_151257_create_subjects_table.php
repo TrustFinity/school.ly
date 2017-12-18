@@ -25,11 +25,7 @@ class CreateSubjectsTable extends Migration
             $table->foreign('level_id')->references('id')->on('levels');
             $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->timestamps();
-
-
         });
-
-        
     }
 
     /**

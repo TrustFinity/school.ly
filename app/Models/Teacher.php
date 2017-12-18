@@ -10,17 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Teacher extends Model
 {
-    protected $fillable = ['name', 'gender','classgroup_id', 'level_id', 'experience', 'phone'];
-
-    public static $validationRules = [
-        'name' => 'required|string',
-        'gender' => 'required',
-        'classgroup_id' => 'required|integer',
-        'level_id' => 'required|integer',
-        'experience' => 'required|string',
-        'phone' => 'required|digits_between:7,10',
-    ];
-
     /**
      * The "booting" method of the model.
      *
@@ -32,6 +21,26 @@ class Teacher extends Model
         static::addGlobalScope(new SchoolScope());
     }
 
+    protected $fillable = [
+        'name',
+        'gender',
+        // 'classroom_id',
+        'classgroup_id',
+        'level_id',
+        'experience',
+        'phone'
+    ];
+
+    public static $validationRules = [
+        'name'          => 'required|string',
+        'gender'        => 'required',
+        // 'classroom_id'  => 'required|integer',
+        'classgroup_id' => 'required|integer',
+        'level_id'      => 'required|integer',
+        'experience'    => 'required|string',
+        'phone'         => 'required|digits_between:7,10',
+    ];
+
     public function user()
     {
         return $this->morphOne(User::class, 'userable');
@@ -40,6 +49,11 @@ class Teacher extends Model
     public function classgroup()
     {
         return $this->belongsTo(Classgroup::class, 'classgroup_id');
+    }
+
+    public function classroom()
+    {
+        return $this->belongsTo(Classroom::class, 'classroom_id');
     }
 
     public function level()
