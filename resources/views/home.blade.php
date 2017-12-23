@@ -4,9 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-           
-         
-        
+
         @if (Auth::check() && Auth::user()->hasRole('Student'))
         <div class="jumbotron">
             <div class="container">
@@ -80,8 +78,8 @@
                         </div>
                     </div>
                 </div>
-                
-            </div>    
+
+            </div>
          @endif
 
 
