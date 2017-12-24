@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Subject;
-use App\Level;
-use App\Teacher;
+use App\Models\Level;
+use App\Models\Teacher;
+use App\Models\Subject;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller
@@ -16,16 +16,8 @@ class SubjectController extends Controller
      */
     public function index()
     {
-        //
-
         $subjects = Subject::all();
-
-        //return $subjects;
-
         return view('subjects.index', compact('subjects'));
-
-
-
     }
 
     /**
@@ -35,11 +27,8 @@ class SubjectController extends Controller
      */
     public function create()
     {
-        //
-
-        $levels = Level::all(); 
-        $teachers = Teacher::all(); 
-
+        $levels = Level::all();
+        $teachers = Teacher::all();
 
         return view('subjects.create', compact('levels', 'teachers'));
     }
@@ -52,17 +41,14 @@ class SubjectController extends Controller
      */
     public function store()
     {
-        //
-
         Subject::create(request(['name','level_id','teacher_id']));
-
         return redirect('/subjects');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Subject  $subject
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
     public function show(Subject $subject)
@@ -73,12 +59,11 @@ class SubjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Subject  $subject
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
     public function edit(Subject $subject)
     {
-        //
         return view('subjects.edit');
     }
 
@@ -86,15 +71,12 @@ class SubjectController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Subject  $subject
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
     public function update(Subject $subject)
     {
-        //
-
         $input = request(['name','level_id','teacher_id']);
-
         $subject->fill($input)->save();
 
         return redirect('/subjects');
@@ -103,17 +85,12 @@ class SubjectController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Subject  $subject
+     * @param  \App\Models\Subject  $subject
      * @return \Illuminate\Http\Response
      */
     public function destroy(Subject $subject)
     {
-        //
-
         $subject->delete();
-
         return redirect('/subjects');
-
-
     }
 }

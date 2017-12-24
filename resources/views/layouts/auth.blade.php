@@ -27,11 +27,23 @@
         ]) !!};
     </script>
 </head>
-<body>
+<body style="background:url(../img/education.jpg) center; background-size: cover; position: relative; background-repeat: no-repeat;background-attachment: fixed;">
 
-    {{-- <div id="app" style="background-image: url('{{ asset('/img/education.jpg') }}')"> --}}
-    <div id="app" class="school" style="background:url('img/education.jpg')">
-        {{-- @yield('content') --}}
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 sidebar pull-right">
+                    <section>
+                        <div class="col-xs-12 text-center">
+                            <img src="{{ asset('img/icon.png') }}" alt="schoolly logo" style="margin-bottom:30px; width:100px;">
+                        </div>
+
+                        @yield('content')
+
+                    </section>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->

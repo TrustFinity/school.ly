@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Classgroup;
+use App\Models\Classgroup;
 use Illuminate\Http\Request;
 
 class ClassgroupController extends Controller
@@ -14,16 +14,8 @@ class ClassgroupController extends Controller
      */
     public function index()
     {
-        //
-
         $classgroups = Classgroup::all();
-
-        //return $classgroups;
-
         return view('classgroups.index', compact('classgroups'));
-
-
-
     }
 
     /**
@@ -33,9 +25,6 @@ class ClassgroupController extends Controller
      */
     public function create()
     {
-        //
-
-
         return view('classgroups.create');
     }
 
@@ -47,17 +36,14 @@ class ClassgroupController extends Controller
      */
     public function store()
     {
-        //
-
         Classgroup::create(request(['name']));
-
         return redirect('/classgroups');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Classgroup  $classgroup
+     * @param  \App\Models\Classgroup  $classgroup
      * @return \Illuminate\Http\Response
      */
     public function show(Classgroup $classgroup)
@@ -68,12 +54,11 @@ class ClassgroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Classgroup  $classgroup
+     * @param  \App\Models\Classgroup  $classgroup
      * @return \Illuminate\Http\Response
      */
     public function edit(Classgroup $classgroup)
     {
-        //
         return view('classgroups.edit', compact('classgroup'));
     }
 
@@ -81,15 +66,12 @@ class ClassgroupController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Classgroup  $classgroup
+     * @param  \App\Models\Classgroup  $classgroup
      * @return \Illuminate\Http\Response
      */
     public function update(Classgroup $classgroup)
     {
-        //
-
         $input = request(['name']);
-
         $classgroup->fill($input)->save();
 
         return redirect('/classgroups');
@@ -98,17 +80,12 @@ class ClassgroupController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Classgroup  $classgroup
+     * @param  \App\Models\Classgroup  $classgroup
      * @return \Illuminate\Http\Response
      */
     public function destroy(Classgroup $classgroup)
     {
-        //
-
         $classgroup->delete();
-
         return redirect('/classgroups');
-
-
     }
 }
