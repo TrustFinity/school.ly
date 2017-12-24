@@ -24,7 +24,6 @@ class CreateStudentsTable extends Migration
             // FK: classroom_id;level_id
             $table->integer('classroom_id');
             $table->integer('level_id');
-
         });
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -14,7 +14,15 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'username', 'password', 'userable_id', 'userable_type', 'remember_token'];
+    protected $fillable = [
+        'name',
+        'email',
+        'username',
+        'password',
+        'userable_id',
+        'userable_type',
+        'remember_token'
+    ];
 
 
     /**
