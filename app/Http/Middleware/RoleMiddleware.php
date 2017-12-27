@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use Auth;
+use Closure;
 
 class RoleMiddleware
 {
@@ -14,17 +14,12 @@ class RoleMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $role = null )
-    
+    public function handle($request, Closure $next, $role = null)
     {
-         if(Auth::check() && Auth::user()->hasRole($role)){
+        if (Auth::check() && Auth::user()->hasRole($role)) {
             return $next($request);
         }
 
-
-        //Auth::logout();
         return redirect('home');
     }
 }
-
-

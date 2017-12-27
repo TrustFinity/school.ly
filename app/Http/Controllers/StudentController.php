@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Student;
-use App\Classroom;
-use App\Level;
-use App\User;
-use Illuminate\Http\Request;
 use Auth;
-use Validator;
+use App\Models\User;
+use App\Models\Level;
+use App\Models\Student;
+use App\Models\Classroom;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -17,29 +16,17 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
-     public function __construct()
-    {
 
-           $this->middleware('role:Admin')->except('create', 'store');              
-        
+    public function __construct()
+    {
+        $this->middleware('role:Admin')->except('create', 'store');
     }
 
-    
+
     public function index()
     {
-        //
-
         $students = Student::all();
-
-        //$student = Student::find(1);
-
-        //return $student->subjects;
-
         return view('students.index', compact('students'));
-
-
-
     }
 
     /**
@@ -49,8 +36,6 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
-
         $classrooms = Classroom::all();
         $levels = Level::all();
 
@@ -65,15 +50,6 @@ class StudentController extends Controller
      */
     public function store()
     {
-        //
-
-        //dd(request()->all());
-
-        //$validator = Validator::make(request()->all(), Student::$validationRules);
-
-        //if ($validator->fails())
-            //return redirect('/students/create')->withInput($request->all())->withErrors($validator);
-
         $student = Student::create(request(['name','gender', 'age', 'address', 'classroom_id', 'level_id']));
 
         User::create([
@@ -87,14 +63,14 @@ class StudentController extends Controller
         if (Auth::check() && Auth::user()->hasRole('Admin')) {
             return redirect('/students');
         }
-        
+
         return redirect('login');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Student  $student
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
     public function show(Student $student)
@@ -105,12 +81,11 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Student  $student
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
     public function edit(Student $student)
     {
-        //
         $classrooms = Classroom::all();
         $levels = Level::all();
 
@@ -121,13 +96,11 @@ class StudentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Student  $student
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
     public function update(Student $student)
     {
-        //
-
         $input = request(['name','gender', 'age', 'address', 'classroom_id', 'level_id']);
 
         $student->fill($input)->save();
@@ -138,17 +111,12 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Student  $student
+     * @param  \App\Models\Student  $student
      * @return \Illuminate\Http\Response
      */
     public function destroy(Student $student)
     {
-        //
-
         $student->delete();
-
         return redirect('/students');
-
-
     }
 }
