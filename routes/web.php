@@ -11,7 +11,20 @@
 |
 */
 
+Auth::routes();
 
+Route::group([
+    'middleware' => ['auth', 'web']
+], function () {
+    Route::get('/', function () {
+        return view('home');
+    });
+
+    Route::resource('/admin', 'AdminController');
+
+    /**
+     * The Teacher routes
+     */
     Route::get('/teachers/create', 'TeacherController@create');
     Route::get('/teachers', 'TeacherController@index');
     Route::post('/teachers', 'TeacherController@store');
@@ -23,31 +36,6 @@
     Route::get('/teacherpage', 'TeacherPageController@index');
     Route::get('/teacherpage/edit/{teacher}', 'TeacherPageController@edit');
     Route::post('/teacherpage/{teacher}', 'TeacherPageController@update');
-
-
-Auth::routes();
-
-Route::group([
-    'middleware' => ['auth', 'web']
-], function () {
-    Route::get('/', function () {
-        return view('home');
-    });
-
-    // /**
-    //  * The Teacher routes
-    //  */
-    // Route::get('/teachers/create', 'TeacherController@create');
-    // Route::get('/teachers', 'TeacherController@index');
-    // Route::post('/teachers', 'TeacherController@store');
-    // Route::get('/teachers/{teacher}', 'TeacherController@show');
-    // Route::get('/teachers/edit/{teacher}', 'TeacherController@edit');
-    // Route::post('/teachers/{teacher}', 'TeacherController@update');
-    // Route::get('/teachers/delete/{teacher}', 'TeacherController@destroy');
-
-    // Route::get('/teacherpage', 'TeacherPageController@index');
-    // Route::get('/teacherpage/edit/{teacher}', 'TeacherPageController@edit');
-    // Route::post('/teacherpage/{teacher}', 'TeacherPageController@update');
 
     /**
      * The Student routes

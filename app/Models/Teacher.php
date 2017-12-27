@@ -6,15 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Teacher extends Model
 {
-    protected $fillable = ['name', 'gender','classroom_id', 'level_id', 'experience', 'phone'];
+    protected $fillable = [
+        'name',
+        'gender',
+        // 'classroom_id',
+        'level_id',
+        'experience',
+        'phone'
+    ];
 
     public static $validationRules = [
-        'name' => 'required|string',
-        'gender' => 'required',
-        'classroom_id' => 'required|integer',
-        'level_id' => 'required|integer',
-        'experience' => 'required|string',
-        'phone' => 'required|digits_between:7,10',
+        'name'          => 'required|string',
+        'gender'        => 'required',
+        // 'classroom_id'  => 'required|integer',
+        'level_id'      => 'required|integer',
+        'experience'    => 'required|string',
+        'phone'         => 'required|digits_between:7,10',
     ];
 
     public function user()

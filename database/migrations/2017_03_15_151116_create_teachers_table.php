@@ -23,7 +23,7 @@ class CreateTeachersTable extends Migration
 
             //FK:level_id, classroom_id
 
-            $table->string('classroom_id');
+            // $table->string('classroom_id')->nullable();
             $table->string('level_id');
         });
     }
