@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            //FK : userable_id; userable_type
             $table->integer('userable_id');
             $table->string('userable_type');
             $table->unique(['userable_id', 'userable_type']);

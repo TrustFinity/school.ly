@@ -20,6 +20,6 @@ class RoleMiddleware
             return $next($request);
         }
 
-        return redirect('home');
+        return redirect('dashboard');
     }
 }
