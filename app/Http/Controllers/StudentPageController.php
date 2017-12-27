@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Student;
 use Auth;
+use App\Models\Student;
+use Illuminate\Http\Request;
 
 class StudentPageController extends Controller
 {

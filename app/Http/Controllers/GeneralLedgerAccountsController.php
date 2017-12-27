@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\GeneralLedgerAccounts;
 use Illuminate\Http\Request;
-use App\Models\Classes\Level;
 
-class LevelController extends Controller
+class GeneralLedgerAccountsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +15,6 @@ class LevelController extends Controller
     public function index()
     {
         //
-
-        $levels = Level::all();
-
-        //return $levels;
-
-        return view('levels.index', compact('levels'));
-
-
-
     }
 
     /**
@@ -34,9 +25,6 @@ class LevelController extends Controller
     public function create()
     {
         //
-
-
-        return view('levels.create');
     }
 
     /**
@@ -45,22 +33,18 @@ class LevelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
         //
-
-        Level::create(request(['name']));
-
-        return redirect('/levels');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Level  $level
+     * @param  \App\GeneralLedgerAccounts  $generalLedgerAccounts
      * @return \Illuminate\Http\Response
      */
-    public function show(Level $level)
+    public function show(GeneralLedgerAccounts $generalLedgerAccounts)
     {
         //
     }
@@ -68,47 +52,34 @@ class LevelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Level  $level
+     * @param  \App\GeneralLedgerAccounts  $generalLedgerAccounts
      * @return \Illuminate\Http\Response
      */
-    public function edit(Level $level)
+    public function edit(GeneralLedgerAccounts $generalLedgerAccounts)
     {
         //
-        return view('levels.edit', compact('level'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Level  $level
+     * @param  \App\GeneralLedgerAccounts  $generalLedgerAccounts
      * @return \Illuminate\Http\Response
      */
-    public function update(Level $level)
+    public function update(Request $request, GeneralLedgerAccounts $generalLedgerAccounts)
     {
         //
-
-        $input = request(['name']);
-
-        $level->fill($input)->save();
-
-        return redirect('/levels');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Level  $level
+     * @param  \App\GeneralLedgerAccounts  $generalLedgerAccounts
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Level $level)
+    public function destroy(GeneralLedgerAccounts $generalLedgerAccounts)
     {
         //
-
-        $level->delete();
-
-        return redirect('/levels');
-
-
     }
 }

@@ -2,41 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Teacher;
-use App\Classroom;
-use App\Level;
-use App\User;
-use Illuminate\Http\Request;
 use Auth;
 use Validator;
+use App\Models\User;
+use App\Models\Teacher;
+use Illuminate\Http\Request;
+use App\Models\Classes\Level;
+use App\Models\Classes\Classroom;
+use App\Models\Classes\Classgroup;
 
 class TeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
      */
     
     public function __construct()
     {
-
-           $this->middleware('role:Admin')->except('create', 'store');              
-        
+        $this->middleware('auth');
     }
 
     public function index()
     {
-        //
-
-        $teachers = Teacher::all();
-
-        //return $teachers;
-
+        $teachers = Teacher::where('school_id', Auth::user()->school_id)->paginate(20);
         return view('teachers.index', compact('teachers'));
-
-
-
     }
 
     /**
@@ -46,35 +36,23 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
-
-        $classrooms = Classroom::all();
-
-        $levels = Level::all();
-
-        return view('teachers.create', compact(['classrooms', 'levels']));
+        $classgroups = Classgroup::where('school_id', Auth::user()->school_id)->get();
+        $levels = Level::where('school_id', Auth::user()->school_id)->get();
+        return view('teachers.create', compact(['classgroups', 'levels']));
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
+     * @internal param Request $request
      */
     public function store()
     {
-        //
+        $teacher = new Teacher(request(['name','gender', 'classgroup_id', 'level_id', 'experience', 'phone']));
+        $teacher->school_id = Auth::user()->school_id;
+        $saved = $teacher->save();
 
-        //dd(request()->all());
-
-        //$validator = Validator::make(request()->all(), Student::$validationRules);
-
-        //if ($validator->fails())
-            //return redirect('/students/create')->withInput($request->all())->withErrors($validator);
-
-        $teacher = Teacher::create(request(['name','gender', 'classroom_id', 'level_id', 'experience', 'phone']));
-
-        User::create([
+        $user  = User::create([
             'name' => $teacher->name,
             'email' => request('email'),
             'password' => bcrypt(request('password')),
@@ -82,19 +60,21 @@ class TeacherController extends Controller
             'userable_type' => 'Teacher'
         ]);
 
-
-        if (Auth::check() && Auth::user()->hasRole('Admin')) {
-            return redirect('/teachers');
+        if (!$saved){
+            // Return back with errors.
+            return back()->withErrors();
         }
-        
-        return redirect('login');
-        
+        if (Auth::user() !== null){
+            Auth::login($user);
+        }
+        return redirect('/teachers');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Teacher  $teacher
+     * @param Teacher|\App\Teacher $teacher
      * @return \Illuminate\Http\Response
      */
     public function show(Teacher $teacher)
@@ -105,50 +85,38 @@ class TeacherController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Teacher  $teacher
+     * @param Teacher|\App\Teacher $teacher
      * @return \Illuminate\Http\Response
      */
     public function edit(Teacher $teacher)
     {
-        //
-
         $classrooms = Classroom::all();
-
         return view('teachers.edit', compact('teacher', 'classrooms'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Teacher  $teacher
+     * @param Teacher|\App\Teacher $teacher
      * @return \Illuminate\Http\Response
+     * @internal param Request $request
      */
     public function update(Teacher $teacher)
     {
-        //
-
         $input = request(['name','experience', 'classroom_id']);
-
         $teacher->fill($input)->save();
-
         return redirect('/teachers');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Teacher  $teacher
+     * @param Teacher|\App\Teacher $teacher
      * @return \Illuminate\Http\Response
      */
     public function destroy(Teacher $teacher)
     {
-        //
-
         $teacher->delete();
-
         return redirect('/teachers');
-
-
     }
 }

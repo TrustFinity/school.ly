@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('welcome');
 });
 
 Auth::routes();
@@ -20,6 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 
+Route::get('/settings', 'SettingController@create');
+Route::put('/settings', 'SettingController@update');
 
 /**
  * The Teacher routes

@@ -35,21 +35,31 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'School Management System') }}
+                    <a class="navbar-brand" href="{{ url('/home') }}">
+                        {{ config('app.name', 'Darasani') }}
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                    @if (Auth::check() && Auth::user()->hasRole('Admin'))
+                    {{--@if (Auth::check() && Auth::user()->hasRole('Admin'))--}}
+                    @if (Auth::check())
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings</a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/settings">Preferences</a></li>
+                                <li><a href="/levels">Levels</a></li>
+                                <li><a href="/subjects">Subjects</a></li>
+                                <li><a href="/classgroups">Class Groups</a></li>
+                                <li><a href="/classrooms">Class Rooms</a></li>
+                            </ul>
+                        </li>
                         <li><a href="/students">Students</a></li>
+                        {{--replace with prefference--}}
                         <li><a href="/teachers">Teachers</a></li>
-                        <li><a href="/classgroups">Classgroups</a></li>
-                        <li><a href="/classrooms">Classrooms</a></li>
-                        <li><a href="/levels">Levels</a></li>
-                        <li><a href="/subjects">Subjects</a></li>
+                        <li><a href="/examinations">Examinations</a></li>
+                        <li><a href="/reports">Reports</a></li>
                     @endif
                     </ul>
 
@@ -57,16 +67,22 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
+                            {{--<li><a href="{{ route('login') }}">Login</a></li>--}}
+                            {{--<li><a href="{{ route('register') }}">Register</a></li>--}}
+                            <li><a href="/">Home</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->first_name }}
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        {{--<i class="glyphicon glyphicon-picture"></i>--}}
+                                        <a href="/profile">Profile</a>
+                                    </li>
+                                    <li>
+                                        {{--<i class="glyphicon glyphicon-log-out"></i>--}}
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -84,7 +100,8 @@
                 </div>
             </div>
         </nav>
-
+    </div>
+    <div class="container">
         @yield('content')
     </div>
 

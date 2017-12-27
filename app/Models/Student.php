@@ -1,7 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Models\Classes\Level;
+use App\Models\Classes\Subject;
+use App\Models\Classes\Classroom;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -35,5 +38,10 @@ class Student extends Model
     public function subjects()
     {
         return $this->belongsToMany(Subject::class);
+    }
+
+    public function getNameAttribute()
+    {
+        return $this->first_name. ' '.$this->middle_name.' '.$this->last_name;
     }
 }

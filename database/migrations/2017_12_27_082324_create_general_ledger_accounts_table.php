@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClassroomsTable extends Migration
+class CreateGeneralLedgerAccountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateClassroomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('classrooms', function (Blueprint $table) {
+        Schema::create('general_ledger_accounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->integer('school_id')->unsigned()->indexed();
+
+            $table->foreign('school_id')->references('id')->on('schools');
             $table->timestamps();
-
-            //FK:classgroup_id
-
-            $table->integer('classgroup_id');
-
-
         });
     }
 
@@ -33,6 +29,6 @@ class CreateClassroomsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classrooms');
+        Schema::dropIfExists('general_ledger_accounts');
     }
 }

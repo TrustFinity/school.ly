@@ -36,10 +36,10 @@
             	</select>
             	</div>
                 <div class="form-group">
-                <label for="">Classroom</label>
-                <select name="classroom_id" id="inputclassroom_id" class="form-control" required="required">
-                    @foreach ($classrooms as $classroom)
-                    <option value="{{ $classroom->id }}">{{ $classroom->name }}</option>
+                <label for="">Class</label>
+                <select name="classgroup_id" id="inputclassroom_id" class="form-control" required="required">
+                    @foreach ($classgroups as $classgroup)
+                    <option value="{{ $classgroup->id }}">{{ $classgroup->name }}</option>
                     @endforeach
                 </select>
                 </div>

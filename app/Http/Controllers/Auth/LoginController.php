@@ -27,10 +27,11 @@ class LoginController extends Controller
      */
     protected $redirectTo = '/home';
 
+    protected $username = 'username';
+
     /**
      * Create a new controller instance.
      *
-     * @return void
      */
     public function __construct()
     {

@@ -15,16 +15,23 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('gender');
-            $table->integer('age');
-            $table->string('address');
+            $table->integer('school_id')->unsigned()->indexed();
+            $table->integer('classroom_id')->unsigned();
+            $table->integer('level_id')->unsigned()->nullable();
+            $table->string('first_name');
+            $table->string('middle_name')->nullable();
+            $table->string('last_name');
+            $table->enum('gender', ['Male', 'Female']);
+            $table->integer('age')->nullable();
+            $table->string('address')->nullable();
+            $table->string('photo_url')->nullable();
+            $table->string('parents_names')->nullable();
+            $table->string('parents_phone_number')->nullable();
             $table->timestamps();
 
-            // FK: classroom_id;level_id
-            $table->integer('classroom_id');
-            $table->integer('level_id');
-
+            $table->foreign('school_id')->references('id')->on('schools');
+            $table->foreign('level_id')->references('id')->on('levels');
+            $table->foreign('classroom_id')->references('id')->on('classrooms');
         });
     }
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-use App\Teacher;
+use App\Models\Teacher;
 
 class TeacherPageController extends Controller
 {

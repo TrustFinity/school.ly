@@ -46,6 +46,9 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+#Laravel
+.env
+
 
 
 #compiled resources and assets

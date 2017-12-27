@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Classroom;
-use App\Classgroup;
 use Illuminate\Http\Request;
+use App\Models\Classes\Classroom;
+use App\Models\Classes\Classgroup;
 
 class ClassroomController extends Controller
 {
