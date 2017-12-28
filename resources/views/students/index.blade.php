@@ -27,14 +27,14 @@
                         <td>{{ $student->name }}</td>
                         <td>{{ $student->gender }}</td>
                         <td>{{ $student->age }}</td>
-                        <td>{{ $student->classroom->name }}</td>
+                        <td>{{ isset($student->classroom) ? $student->classroom->name : '' }}</td>
                         <td>
-                        Its Level is : {{ $student->level->name }}
-                        Which has the following subjects:
-                        @foreach ($student->subjects as $subject)
-                        <li>{{ $subject->name }} 
-                        </li>
-                        @endforeach
+                            {{-- Its Level is : {{ $student->level->name }}
+                            Which has the following subjects:
+                            @foreach ($student->subjects as $subject)
+                            <li>{{ $subject->name }}
+                            </li>
+                            @endforeach --}}
                         </td>
                         <td><a href="/students/edit/{{ $student->id }}"><button type="button" class="btn btn-priamry">Edit</button></a></td>
                         <td><a href="/students/delete/{{ $student->id }}"><button type="button" class="btn btn-danger">Delete</button></a></td>

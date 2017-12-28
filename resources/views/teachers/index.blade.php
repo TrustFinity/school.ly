@@ -24,7 +24,7 @@
                         <td>{{ $teacher->id }}</td>
                         <td>{{ $teacher->name }}</td>
                         <td>{{ $teacher->experience }}</td>
-                        <td>{{ $teacher->classroom->name }}</td>
+                        <td>{{ isset($teacher->classroom) ? $teacher->classroom->name : ' '}}</td>
                         <td><a href="/teachers/edit/{{ $teacher->id }}"><button type="button" class="btn btn-priamry">Edit</button></a></td>
                         <td><a href="/teachers/delete/{{ $teacher->id }}"><button type="button" class="btn btn-danger">Delete</button></a></td>
                     </tr>

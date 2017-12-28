@@ -19,11 +19,12 @@ class CreateStudentsTable extends Migration
             $table->string('gender');
             $table->integer('age');
             $table->string('address');
+
             $table->timestamps();
 
             // FK: classroom_id;level_id
-            $table->integer('classroom_id');
-            $table->integer('level_id');
+            $table->integer('classroom_id')->nullable();
+            $table->integer('level_id')->nullable();
         });
     }
 

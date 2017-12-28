@@ -41,9 +41,9 @@ class TeacherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        $teacher = Teacher::create(request(['name','gender', 'classroom_id', 'level_id', 'experience', 'phone']));
+        $teacher = Teacher::create($request->all());
 
         User::create([
             'name' => $teacher->name,

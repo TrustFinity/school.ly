@@ -17,14 +17,14 @@ class CreateTeachersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('gender');
-            $table->string('experience');
+            $table->string('experience')->nullable();
             $table->string('phone');
             $table->timestamps();
 
             //FK:level_id, classroom_id
 
-            // $table->string('classroom_id')->nullable();
-            $table->string('level_id');
+            $table->integer('classroom_id')->nullable();
+            $table->string('level_id')->nullable();
         });
     }
 
