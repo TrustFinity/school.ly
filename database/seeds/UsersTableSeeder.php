@@ -13,18 +13,18 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //admin users
-        Admin::create([
-            'name'      => 'Piru',
-            'username'  => 'piru'
-        ]);
+        //admin users are created when a new school is created
+        // Admin::create([
+        //     'name'      => 'Piru',
+        //     'username'  => 'piru'
+        // ]);
 
-        User::create([
-            'name' => 'Piru',
-            'email' => 'piruville@gmail.com',
-            'password' => bcrypt('password'),
-            'userable_id' => 1,
-            'userable_type' => 'Admin'
-        ]);
+        // User::create([
+        //     'name' => 'Piru',
+        //     'email' => 'piruville@gmail.com',
+        //     'password' => bcrypt('password'),
+        //     'userable_id' => 1,
+        //     'userable_type' => 'Admin'
+        // ]);
     }
 }
