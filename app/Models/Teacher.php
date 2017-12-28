@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Scopes\SchoolScope;
 use App\Models\Classes\Level;
 use App\Models\Classes\Subject;
 use App\Models\Classes\Classgroup;
@@ -19,6 +20,17 @@ class Teacher extends Model
         'experience' => 'required|string',
         'phone' => 'required|digits_between:7,10',
     ];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope(new SchoolScope());
+    }
 
     public function user()
     {

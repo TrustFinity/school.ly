@@ -24,7 +24,7 @@ class StudentController extends Controller
     
     public function index()
     {
-        $students = Student::where('school_id', Auth::user()->school_id)->paginate(20);
+        $students = Student::paginate(20);
         return view('students.index', compact('students'));
     }
 
@@ -35,8 +35,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $classrooms = Classroom::where('school_id', Auth::user()->school_id)->get();
-        $levels = Level::where('school_id', Auth::user()->school_id)->get();
+        $classrooms = Classroom::all();
+        $levels = Level::all();
         return view('students.create', compact('classrooms', 'levels'));
     }
 
@@ -70,8 +70,8 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        $classrooms = Classroom::where('school_id', Auth::user()->school_id)->get();
-        $levels = Level::where('school_id', Auth::user()->school_id)->get();
+        $classrooms = Classroom::all();
+        $levels = Level::all();
         return view('students.edit', compact('classrooms', 'levels', 'student'));
     }
 

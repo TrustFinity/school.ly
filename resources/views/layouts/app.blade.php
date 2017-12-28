@@ -58,7 +58,7 @@
                         <li><a href="/students">Students</a></li>
                         {{--replace with prefference--}}
                         <li><a href="/teachers">Teachers</a></li>
-                        <li><a href="/examinations">Examinations</a></li>
+                        <li><a href="/academics">Academics</a></li>
                         <li><a href="/reports">Reports</a></li>
                     @endif
                     </ul>
