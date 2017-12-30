@@ -25,7 +25,7 @@ class TeacherController extends Controller
 
     public function index()
     {
-        $teachers = Teacher::where('school_id', Auth::user()->school_id)->paginate(20);
+        $teachers = Teacher::paginate(20);
         return view('teachers.index', compact('teachers'));
     }
 
@@ -36,8 +36,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        $classgroups = Classgroup::where('school_id', Auth::user()->school_id)->get();
-        $levels = Level::where('school_id', Auth::user()->school_id)->get();
+        $classgroups = Classgroup::all();
+        $levels = Level::all();
         return view('teachers.create', compact(['classgroups', 'levels']));
     }
 

@@ -18,5 +18,13 @@ class SchoolSeeder extends Seeder
         $school_one->address = 'New wintstones weather tower. VA';
         $school_one->headmasters_name = 'Mr. John Doe';
         $school_one->save();
+
+        $school_two = new \App\School();
+        $school_two->name = 'Disney Junior';
+        $school_two->slug = 'aa-new-school-two';
+        $school_two->school_url = 'www.schooltwo.com';
+        $school_two->address = 'New wintstones weather tower. VA';
+        $school_two->headmasters_name = 'Mr. John Doe';
+        $school_two->save();
     }
 }

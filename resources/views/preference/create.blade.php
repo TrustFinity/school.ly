@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <h3>{{ $school->name }} Preferences</h3>
+    <h3>{{ $preferences->school->name }} Preferences</h3>
     <hr>
-        <form action="/settings" method="post">
+        <form action="/settings/{{ $preferences->id }}" method="post">
             {{ method_field('PUT') }}
             {{ csrf_field() }}
             <div class="panel panel-default">
@@ -12,18 +12,50 @@
                         <div class="form-group">
                             <label for="name">School Name</label><span class="text-danger"> (Required)</span>
                             <p class="">The name of your school/institution.</p>
-                            <input type="text" id="name" class="form-control" value="{{ old('name', $school->name) }}">
+                            <input type="text" id="name" class="form-control" value="{{ old('name', $preferences->school->name) }}">
                         </div>
                         <div class="form-group">
                             <label for="name">Institutions' Type</label><span class="text-danger"> (Required)</span>
                             <p class="">Your school institutions' type.</p>
                             <select name="institution_type" id="institutions_type" class="form-control">
-                                <option value="University">University</option>
-                                <option value="Secondary">Secondary</option>
-                                <option value="Primary">Primary</option>
-                                <option value="Pre-School">Pre-School</option>
+                                @foreach(['Secondary', 'University', 'Primary', 'Pre-School'] as $option)
+                                    <option value="{{ $option }}"
+                                            @if(old('institution_type', $preferences->institution_type) == $option)
+                                                selected
+                                            @endif>{{ $option }}
+                                    </option>
+                                @endforeach
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label for="name">Instructors' Type</label><span class="text-danger"> (Required)</span>
+                            <p class="">Your institution instructors type.</p>
+                            <select name="instructors_type" id="instructors_type" class="form-control">
+                                @foreach(['Teachers', 'Lecturers'] as $option)
+                                    <option value="{{ $option }}"
+                                            @if(old('instructors_type', $preferences->instructors_type) == $option)
+                                            selected
+                                            @endif>{{ $option }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Attendants' Type</label><span class="text-danger"> (Required)</span>
+                            <p class="">Your institutions' attendants' type.</p>
+                            <select name="attendants_type" id="attendants_type" class="form-control">
+                                @foreach(['Students', 'Pupils'] as $option)
+                                    <option value="{{ $option }}"
+                                            @if(old('attendants_type', $preferences->attendants_type) == $option)
+                                            selected
+                                            @endif>{{ $option }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <hr>
                         <div class="form-group">
                             <label for="name">Grading System</label><span class="text-danger"> (Required)</span>
@@ -34,15 +66,13 @@
                                     <input type="number" step=".5" id="lower"
                                            class="form-control"
                                            name="lower_grade_level"
-                                           value="{{ old('lower_grade_level', 39) }}">
-{{--                                           value="{{ old('lower_grade_level', $preferences->lower_grade_level) }}">--}}
+                                           value="{{ old('lower_grade_level', $preferences->lower_grade_level) }}">
                                 </div>
                                 <div class="col-xs-6">
                                     <p>Upper grade level (D1)</p>
                                     <input type="number" step=".5" id="upper"
                                            class="form-control"
-                                           value="{{ old('upper_grade_level', 74) }}"
-{{--                                           value="{{ old('upper_grade_level', $preferences->upper_grade_level) }}"--}}
+                                           value="{{ old('upper_grade_level', $preferences->upper_grade_level) }}"
                                            name="upper_grade_level">
                                 </div>
                             </div>

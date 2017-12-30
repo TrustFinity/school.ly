@@ -2,22 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\School;
-use App\Models\Setting;
 use Illuminate\Http\Request;
+use App\Models\Settings\Setting;
+use Illuminate\Support\Facades\Auth;
 
 class SettingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('create', 'store');
+    }
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(School $school)
+    public function create()
     {
-        $preferences = $school->preferences;
-        return view('preference.create', compact('school', 'preferences'));
+        $preferences = Setting::all()->first();
+        return view('preference.create', compact('preferences'));
     }
 
     /**
@@ -29,6 +33,7 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
-        dd($setting);
+        $setting->update($request->all());
+        return redirect()->back();
     }
 }
