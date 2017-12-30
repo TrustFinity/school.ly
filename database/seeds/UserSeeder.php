@@ -11,16 +11,14 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        foreach (\App\School::all() as $school){
-            $user = new \App\Models\User();
-            $user->school_id = $school->id;
-            $user->first_name = 'Mwaka';
-            $user->last_name = 'Ambrose';
-            $user->username = 'ambrose';
-            $user->email = 'ambrose@ambrose.pro';
-            $user->gender = 'Male';
-            $user->password = bcrypt('secret');
-            $user->save();
-        }
+        $user = new \App\Models\User();
+        $user->school_id =\App\School::first()->id;
+        $user->first_name = 'Mwaka';
+        $user->last_name = 'Ambrose';
+        $user->username = 'ambrose';
+        $user->email = 'ambrose@ambrose.pro';
+        $user->gender = 'Male';
+        $user->password = bcrypt('secret');
+        $user->save();
     }
 }

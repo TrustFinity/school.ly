@@ -11,7 +11,7 @@
 $factory->define(App\Models\Student::class, function (Faker\Generator $faker) {
 
     $school = \App\School::inRandomOrder()->first();
-    $classroom = \App\Models\Classes\Classroom::where('school_id', $school->id)->first();
+    $classroom = \App\Models\Classes\Classroom::first();
 
     return [
         'school_id' => $school->id,

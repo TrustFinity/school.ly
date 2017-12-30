@@ -27,6 +27,6 @@ class SchoolScope implements Scope
      */
     public function apply(Builder $builder, Model $model)
     {
-        $builder->where('school_id', Auth::user()->school_id);
+        $builder->where('school_id', Auth::user()->school_id ?? 1);
     }
 }

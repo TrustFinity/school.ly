@@ -2,6 +2,7 @@
 
 namespace App\Models\Settings;
 
+use App\School;
 use App\Scopes\SchoolScope;
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,5 +17,10 @@ class Setting extends Model
     {
         parent::boot();
         static::addGlobalScope(new SchoolScope());
+    }
+
+    public function school()
+    {
+        return $this->belongsTo(School::class);
     }
 }
