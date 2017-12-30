@@ -3,7 +3,7 @@
 @section('content')
     <h3>{{ $preferences->school->name }} Preferences</h3>
     <hr>
-        <form action="/settings" method="post">
+        <form action="/settings/{{ $preferences->id }}" method="post">
             {{ method_field('PUT') }}
             {{ csrf_field() }}
             <div class="panel panel-default">
@@ -27,6 +27,35 @@
                                 @endforeach
                             </select>
                         </div>
+
+                        <div class="form-group">
+                            <label for="name">Instructors' Type</label><span class="text-danger"> (Required)</span>
+                            <p class="">Your institution instructors type.</p>
+                            <select name="instructors_type" id="instructors_type" class="form-control">
+                                @foreach(['Teachers', 'Lecturers'] as $option)
+                                    <option value="{{ $option }}"
+                                            @if(old('instructors_type', $preferences->instructors_type) == $option)
+                                            selected
+                                            @endif>{{ $option }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Attendants' Type</label><span class="text-danger"> (Required)</span>
+                            <p class="">Your institutions' attendants' type.</p>
+                            <select name="attendants_type" id="attendants_type" class="form-control">
+                                @foreach(['Students', 'Pupils'] as $option)
+                                    <option value="{{ $option }}"
+                                            @if(old('attendants_type', $preferences->attendants_type) == $option)
+                                            selected
+                                            @endif>{{ $option }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <hr>
                         <div class="form-group">
                             <label for="name">Grading System</label><span class="text-danger"> (Required)</span>

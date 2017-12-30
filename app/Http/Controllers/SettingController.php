@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Settings\Setting;
+use Illuminate\Support\Facades\Auth;
 
 class SettingController extends Controller
 {
@@ -32,6 +33,7 @@ class SettingController extends Controller
      */
     public function update(Request $request, Setting $setting)
     {
-        dd($setting);
+        $setting->update($request->all());
+        return redirect()->back();
     }
 }

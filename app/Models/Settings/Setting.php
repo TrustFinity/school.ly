@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
+
+    protected $fillable = [
+        'institution_type',
+        'lower_grade_level',
+        'upper_grade_level',
+        'instructors_type',
+        'attendants_type',
+    ];
     /**
      * The "booting" method of the model.
      *

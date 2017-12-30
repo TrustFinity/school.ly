@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index');
 
 
 Route::get('/settings', 'SettingController@create');
-Route::put('/settings', 'SettingController@update');
+Route::put('/settings/{setting}', 'SettingController@update');
 
 /**
  * The Teacher routes
