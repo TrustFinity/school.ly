@@ -58,8 +58,24 @@
                         <li><a href="/students">Students</a></li>
                         {{--replace with prefference--}}
                         <li><a href="/teachers">Teachers</a></li>
-                        <li><a href="/academics">Academics</a></li>
-                        <li><a href="/reports">Reports</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Academics</a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="/settings">Results</a></li>
+                                <li><a href="/levels">Examinations</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="/reports" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reports</a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Income Statement</a></li>
+                                <li><a href="#">Balance Sheet</a></li>
+                                <li><a href="#">Trial Balance</a></li>
+                                <li><a href="#">Students Report</a></li>
+                                <li><a href="#">Teachers Report</a></li>
+                                <li><a href="#">School Fees Report</a></li>
+                            </ul>
+                        </li>
                     @endif
                     </ul>
 
