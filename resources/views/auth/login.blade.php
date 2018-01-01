@@ -103,7 +103,6 @@
                     <label>
                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                     </label>
->>>>>>> starts modifying ui
                 </div>
             </form>
         </div>
