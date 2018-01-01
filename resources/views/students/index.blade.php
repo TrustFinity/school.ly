@@ -22,7 +22,7 @@
                         <img src="{{ $student->photo_url }}" alt="Photo" class="img-circle img-responsive">
                     </div>
                     <div class="col-sm-5">
-                        <a href="/students/edit/{{ $student->id }}">
+                        <a href="/students/{{ $student->id }}">
                             <h4>{{ $student->name }}, {{ $student->age }}</h4>
                         </a>
                         <p>{{ $student->level->name ?? '' }} {{ $student->classroom->name }}</p>
