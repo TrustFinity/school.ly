@@ -13,7 +13,7 @@ class SchoolPreferenceSeeder extends Seeder
     {
         // Create a faker factory for this.
         // Seed different school types.w
-        foreach (\App\School::all() as $school){
+        foreach (\App\Models\School::all() as $school) {
             $settings = new App\Models\Settings\Setting();
             $settings->school_id = $school->id;
             $settings->save();

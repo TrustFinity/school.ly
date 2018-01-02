@@ -41,29 +41,28 @@ class CreateSchool extends Command
     public function handle()
     {
         $school_name = $this->argument('name');
-        $email = $this->ask('What is your email address?');
+        $school_slug = str_slug($school_name);
+
+        $new_school = School::create([
+            'name' => $school_name,
+            'slug' => $school_slug
+        ]);
 
         $admin = new Admin([
             'name'      => $school_name,
-            'username'  => str_slug($school_name)
+            'username'  => $school_slug
         ]);
 
-        if ($admin->save()) {
-            $admin_id = Admin::where('username', str_slug($school_name))->first()->id;
+        if ($admin->save() && $new_school->save()) {
+            $admin_id  = Admin::where('username', $school_slug)->first()->id;
+            $school_id = School::where('slug', $school_slug)->first()->id;
 
             User::create([
-                'name'          => str_slug($school_name),
-                'email'         => $email,
+                'school_id'     => $school_id,
+                'username'      => $school_slug,
                 'password'      => bcrypt('password'),
                 'userable_id'   => $admin_id,
                 'userable_type' => 'Admin'
-            ]);
-
-            $user_id = User::where('userable_id', $admin_id)->first()->id;
-
-            $new_school = School::create([
-                'name'          => $school_name,
-                'super_user_id' => $user_id
             ]);
         } else {
             $this->error('School admin couldn\'t be created. Rolling back changes...');
@@ -72,8 +71,8 @@ class CreateSchool extends Command
         }
 
         $this->info('New School has been created: ');
-        $this->info("School Name: \t $school_name");
-        $this->info("Admin User: \t  $email");
+        $this->info("School Name: \t\t $school_name");
+        $this->info("Admin Username: \t $school_slug");
         $this->info("Default password is 'password'. Please change it as soon as you start using the system.");
     }
 }

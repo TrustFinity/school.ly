@@ -15,7 +15,7 @@ class ClassRoomSeeder extends Seeder
         foreach (Classgroup::all() as $class_group) {
             $class = new \App\Models\Classes\Classroom();
             $class->name = $class_group->name .'-Yellow';
-            $class->school_id = \App\School::first()->id;
+            $class->school_id = \App\Models\School::first()->id;
             $class->classgroup_id = $class_group->id;
             $class->save();
         }

@@ -8,24 +8,27 @@ class School extends Model
 {
     protected $fillable = [
         'name',
-        'location',
-        'contact',
-        'alternative_contact',
-        'super_user_id'
+        'slug',
+        'school_url',
+        'address',
+        'headmasters_name',
+        'logo_url'
     ];
 
     public function rules()
     {
         return [
             'name'                  => 'required|string',
-            'location'              => 'sometimes|string',
-            'contact'               => 'sometimes|string',
-            'alternative_contact'   => 'sometimes|string',
+            'slug'                  => 'required|string',
+            'school_url'            => 'sometimes|string',
+            'address'               => 'sometimes|string',
+            'headmasters_name'      => 'sometimes|string',
+            'logo_url'              => 'sometimes|string',
         ];
     }
 
-    public function admin()
+    public function preferences()
     {
-        return $this->hasOne(Admin::class, 'super_user_id');
+        return $this->belongsTo(Setting::class);
     }
 }

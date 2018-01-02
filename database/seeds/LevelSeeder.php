@@ -14,7 +14,7 @@ class LevelSeeder extends Seeder
         foreach (["O'level", "A'level"] as $level) {
             $newlevel = new \App\Models\Classes\Level();
             $newlevel->name = $level;
-            $newlevel->school_id = \App\School::first()->id;
+            $newlevel->school_id = \App\Models\School::first()->id;
             $newlevel->save();
         }
     }

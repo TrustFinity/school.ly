@@ -15,21 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', 'HomeController@index');
+
 Auth::routes();
 
 Route::group([
     'middleware' => ['auth', 'web']
 ], function () {
-    Route::get('/', 'DashboardController@index');
+    // Route::get('/', 'DashboardController@index');
     Route::get('/dashboard', 'DashboardController@index');
-
-    Route::get('/home', 'HomeController@index');
-
 
     Route::get('/settings', 'SettingController@create');
     Route::put('/settings/{setting}', 'SettingController@update');
-
-
 
     Route::resource('/admin', 'AdminController');
 

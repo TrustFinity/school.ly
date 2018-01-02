@@ -8,8 +8,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(App\Models\Teacher::class, function (Faker\Generator $faker) {
-
-    $school = \App\School::inRandomOrder()->first();
+    $school = \App\Models\School::inRandomOrder()->first();
 
     return [
         'school_id' => $school->id,

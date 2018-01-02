@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $user = new \App\Models\User();
-        $user->school_id =\App\School::first()->id;
+        $user->school_id =\App\Models\School::first()->id;
         $user->first_name = 'Mwaka';
         $user->last_name = 'Ambrose';
         $user->username = 'ambrose';
@@ -20,5 +20,15 @@ class UserSeeder extends Seeder
         $user->gender = 'Male';
         $user->password = bcrypt('secret');
         $user->save();
+
+        $new_user = new \App\Models\User();
+        $new_user->school_id =\App\Models\School::first()->id;
+        $new_user->first_name = 'Piru';
+        $new_user->last_name = 'Pius';
+        $new_user->username = 'pius';
+        $new_user->email = 'piruville@gmail.com';
+        $new_user->gender = 'Male';
+        $new_user->password = bcrypt('password');
+        $new_user->save();
     }
 }

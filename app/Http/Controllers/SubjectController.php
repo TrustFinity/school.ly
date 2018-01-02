@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\School;
+use App\Models\School;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Models\Classes\Level;

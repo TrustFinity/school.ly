@@ -13,15 +13,17 @@ function shortDate($date)
 function getClass(string $alias)
 {
     return [
+       's'  => App\Models\School::class,
+
        'u'  => App\Models\User::class,
        'a'  => App\Models\Admin::class,
        't'  => App\Models\Teacher::class,
-       's'  => App\Models\Student::class,
+       'st' => App\Models\Student::class,
 
-       'cg' => App\Models\Classgroup::class,
-       'cr' => App\Models\Classroom::class,
-       'l'  => App\Models\Level::class,
-       'sb' => App\Models\Subject::class,
+       'cg' => App\Models\Classes\Classgroup::class,
+       'cr' => App\Models\Classes\Classroom::class,
+       'l'  => App\Models\Classes\Level::class,
+       'sb' => App\Models\Classes\Subject::class,
 
     ][$alias];
 }
