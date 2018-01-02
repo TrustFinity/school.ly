@@ -7,7 +7,8 @@
  */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Models\Teacher::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Teacher::class, function ($faker) {
+    $faker = Faker\Factory::create('en_UG');
     $school = \App\Models\School::inRandomOrder()->first();
 
     return [

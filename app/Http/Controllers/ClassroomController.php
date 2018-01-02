@@ -45,7 +45,7 @@ class ClassroomController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Classroom  $classroom
+     * @param  \App\Models\Classes\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
     public function show(Classroom $classroom)
@@ -56,7 +56,7 @@ class ClassroomController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Classroom  $classroom
+     * @param  \App\Models\Classes\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
     public function edit(Classroom $classroom)
@@ -69,7 +69,7 @@ class ClassroomController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Classroom  $classroom
+     * @param  \App\Models\Classes\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
     public function update(Classroom $classroom)
@@ -84,7 +84,7 @@ class ClassroomController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Classroom  $classroom
+     * @param  \App\Models\Classes\Classroom  $classroom
      * @return \Illuminate\Http\Response
      */
     public function destroy(Classroom $classroom)

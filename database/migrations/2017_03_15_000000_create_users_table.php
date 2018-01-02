@@ -27,8 +27,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-            $table->integer('userable_id');
-            $table->string('userable_type');
+            $table->integer('userable_id')->nullable();
+            $table->string('userable_type')->nullable();
             $table->unique(['userable_id', 'userable_type']);
 
             $table->foreign('school_id')->references('id')->on('schools');
