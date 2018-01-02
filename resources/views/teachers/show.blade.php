@@ -10,26 +10,19 @@
         <div class="col-sm-9">
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    <h4 class="">Lesson Plan</h4>
+                </div>
+                <div class="panel-body">
+                    <teacher-kanban>
+                    </teacher-kanban>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
                     <h4>Subject Performances</h4>
                 </div>
                 <div class="panel-body">
                     <h5>Graph(line) showing performance changes up or down.</h5>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4>Lesson Calender</h4>
-                </div>
-                <div class="panel-body">
-                    <h3>Embed a calender here</h3>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="">Lesson Plan</h4>
-                </div>
-                <div class="panel-body">
-                    <h3>Build a scrum UI</h3>
                 </div>
             </div>
             <div class="panel panel-default">

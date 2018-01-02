@@ -1,84 +1,53 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-
-        @if (Auth::check() && Auth::user()->hasRole('Student'))
-            <div class="jumbotron">
-                <div class="container">
-                    <h1>Hello Dear Student</h1>
-                    <p>Click button below to access your space</p>
-                    <p>
-                        <a href="/studentpage" class="btn btn-info btn-lg">Access my space</a>
-                    </p>
-                </div>
-            </div>
-        @endif
-
-        @if (Auth::check() && Auth::user()->hasRole('Teacher'))
-            <div class="jumbotron">
-                <div class="container">
-                    <h1>Hello Dear Teacher</h1>
-                    <p>Click button below to access your space</p>
-                    <p>
-                        <a href="/teacherpage" class="btn btn-info btn-lg">Access my space</a>
-                    </p>
-                </div>
-            </div>
-        @endif
-
-        @if (Auth::check() && Auth::user()->hasRole('Admin'))
-            <div class="jumbotron">
-                <div class="container center">
-                    <h2>Hello Dear Admin</h2>
-                    <p class="lead">What do you want to do</p>
-                    <p>
-                        <p><a href="/students" class="btn btn-success btn-lg">Show students</a></p>
-                        <p><a href="/teachers" class="btn btn-success btn-lg">Show teachers</a></p>
-                        <p><a href="/classgroups" class="btn btn-success btn-lg">Show classgroups</a></p>
-                        <p><a href="/levels" class="btn btn-success btn-lg">Show levels</a></p>
-                    </p>
-                </div>
-            </div>
-        @endif
-
-        @if (!Auth::check())
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>School Kanban</h3>
+            <p>Kanban is a lean method to manage and improve work across human systems.</p>
+        </div>
+        <div class="panel-body">
             <div class="row">
-                <div class="col-md-6">
-                    <div class="jumbotron">
-                        <div class="container">
-                            <h2>Are you a teacher?</h2>
-                        <p>
-                            <a href="/teachers/create" class="btn btn-primary btn-lg">Sign Up Here</a>
-                        </p>
+                <div class="col-xs-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h2>Financial board.</h2>
+                            <p>school financial movement details</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-6">
-                    <div class="jumbotron">
-                        <div class="container">
-                            <h2>Are you a Student?</h2>
-                        <p>
-                            <a href="/students/create" class="btn btn-primary btn-lg">Sign Up Here</a>
-                        </p>
+                <div class="col-xs-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h2>Teachers board.</h2>
+                            <p>General teaching planning.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h2>School Dev..</h2>
+                            <p>school planning and financing</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h2><i class="glyphicon glyphicon-plus"></i> Create new..</h2>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="jumbotron">
-                    <div class="container">
-                        <h3>Already registered</h3>
-                        <p class="lead">
-                            <a href="/login" class="btn btn-success btn-lg">Log In</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-         @endif
-
+        </div>
     </div>
-</div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Some nice school dashboard statistics here.
+        </div>
+        <div class="panel-body">
+        </div>
+    </div>
 @endsection
