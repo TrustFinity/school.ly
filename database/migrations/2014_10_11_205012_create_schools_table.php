@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Schools extends Migration
+class CreateSchoolsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -16,7 +16,7 @@ class Schools extends Migration
         Schema::create('schools', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->string('school_url')->nullable();
             $table->string('address')->nullable();
             $table->string('headmasters_name')->nullable();
@@ -35,4 +35,3 @@ class Schools extends Migration
         Schema::dropIfExists('schools');
     }
 }
-

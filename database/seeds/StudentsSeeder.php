@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class StudentssSeeder extends Seeder
+class StudentsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class StudentssSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 1000 ; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             factory(\App\Models\Student::class)->make()->save();
         }
     }

@@ -38,7 +38,47 @@
                     </div>
                 </div>
             @endforeach
+
+
+            {{-- Is this display needed here? --}}
+            <table id="students" class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Classroom</th>
+                        <th>Level with its subjects and their results</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach ($students as $student)
+                    <tr>
+                        <td>{{ $student->id }}</td>
+                        <td>{{ $student->name }}</td>
+                        <td>{{ $student->gender }}</td>
+                        <td>{{ Carbon\Carbon::now()->diffInYears(Carbon\Carbon::parse($student->dob)) }}</td>
+                        <td>{{ isset($student->classroom) ? $student->classroom->name : '' }}</td>
+                        <td>
+                            {{-- Its Level is : {{ $student->level->name }}
+                            Which has the following subjects:
+                            @foreach ($student->subjects as $subject)
+                            <li>{{ $subject->name }}
+                            </li>
+                            @endforeach --}}
+                        </td>
+                        <td><a href="/students/edit/{{ $student->id }}"><button type="button" class="btn btn-priamry">Edit</button></a></td>
+                        <td><a href="/students/delete/{{ $student->id }}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
+
     {{ $students->links() }}
+
 @endsection

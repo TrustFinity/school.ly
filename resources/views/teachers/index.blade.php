@@ -12,7 +12,7 @@
     <hr>
     {{ $teachers->links() }}
     <div class="panel">
-        <div class="panel-heading">
+        <div class="panel-body">
             @foreach ($teachers as $teacher)
                 <div class="row">
                     <div class="col-sm-1">

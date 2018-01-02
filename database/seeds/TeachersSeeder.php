@@ -11,7 +11,7 @@ class TeachersSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 50 ; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             factory(\App\Models\Teacher::class)->make()->save();
         }
     }

@@ -8,9 +8,10 @@
 
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Models\Student::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Student::class, function ($faker) {
+    $faker = Faker\Factory::create('en_UG');
 
-    $school = \App\School::inRandomOrder()->first();
+    $school = \App\Models\School::inRandomOrder()->first();
     $classroom = \App\Models\Classes\Classroom::first();
     $level = \App\Models\Classes\Level::inRandomOrder()->first();
 

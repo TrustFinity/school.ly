@@ -2,13 +2,12 @@
 
 namespace App\Models\Settings;
 
-use App\School;
+use App\Models\School;
 use App\Scopes\SchoolScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
-
     protected $fillable = [
         'institution_type',
         'lower_grade_level',

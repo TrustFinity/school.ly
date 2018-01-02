@@ -50,13 +50,12 @@ Temporary Items
 .env
 
 
-
 #compiled resources and assets
 /node_modules
 
 /public/hot
-/public/css/*.css
-/public/js/*.js
+public/css/app.css
+public/js/app.js
 /public/mix-manifest.json
 /public/storage
 /storage/*.key
@@ -68,4 +67,4 @@ Homestead.yaml
 npm-debug.log
 package-lock.json
 yarn-error.log
-.env
+/.env

@@ -14,16 +14,8 @@ class LevelController extends Controller
      */
     public function index()
     {
-        //
-
         $levels = Level::all();
-
-        //return $levels;
-
         return view('levels.index', compact('levels'));
-
-
-
     }
 
     /**
@@ -33,9 +25,6 @@ class LevelController extends Controller
      */
     public function create()
     {
-        //
-
-
         return view('levels.create');
     }
 
@@ -47,17 +36,14 @@ class LevelController extends Controller
      */
     public function store()
     {
-        //
-
         Level::create(request(['name']));
-
         return redirect('/levels');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Level  $level
+     * @param  \App\Models\Level  $level
      * @return \Illuminate\Http\Response
      */
     public function show(Level $level)
@@ -68,12 +54,11 @@ class LevelController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Level  $level
+     * @param  \App\Models\Level  $level
      * @return \Illuminate\Http\Response
      */
     public function edit(Level $level)
     {
-        //
         return view('levels.edit', compact('level'));
     }
 
@@ -81,15 +66,12 @@ class LevelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Level  $level
+     * @param  \App\Models\Level  $level
      * @return \Illuminate\Http\Response
      */
     public function update(Level $level)
     {
-        //
-
         $input = request(['name']);
-
         $level->fill($input)->save();
 
         return redirect('/levels');
@@ -98,17 +80,13 @@ class LevelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Level  $level
+     * @param  \App\Models\Level  $level
      * @return \Illuminate\Http\Response
      */
     public function destroy(Level $level)
     {
-        //
-
         $level->delete();
 
         return redirect('/levels');
-
-
     }
 }
