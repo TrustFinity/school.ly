@@ -16,8 +16,11 @@ class CreateGeneralLedgerAccountsTable extends Migration
         Schema::create('general_ledger_accounts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('school_id')->unsigned()->indexed();
+            $table->integer('class_group_id')->unsigned()->nullable();
+            $table->string('name');
 
             $table->foreign('school_id')->references('id')->on('schools');
+            $table->foreign('class_group_id')->references('id')->on('class_groups');
             $table->timestamps();
         });
     }

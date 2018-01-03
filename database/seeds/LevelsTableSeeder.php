@@ -14,11 +14,11 @@ class LevelsTableSeeder extends Seeder
     {
         foreach ([
             'Pre-School',
-            'Nursery',
             'Primary',
             'Ordinary Level',
             'Advanced Level',
             'Technical School',
+            'Tertiary Institution',
             'University'
         ] as $level) {
             Level::create([

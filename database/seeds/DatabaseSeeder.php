@@ -13,11 +13,11 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(SchoolTableSeeder::class);
 
-        $this->call(LevelSeeder::class);
-        // $this->call(LevelsTableSeeder::class); //generic seeder
+        //Generic Seeders
+        $this->call(LevelsTableSeeder::class);
+        $this->call(GradesSeeder::class);
 
         $this->call(ClassGroupSeeder::class);
-        $this->call(ClassRoomSeeder::class);
         $this->call(SchoolPreferenceSeeder::class);
 
         $this->call(UserSeeder::class);

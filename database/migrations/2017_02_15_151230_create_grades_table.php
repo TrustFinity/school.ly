@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClassroomsTable extends Migration
+class CreateGradesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateClassroomsTable extends Migration
      */
     public function up()
     {
-        Schema::create('classrooms', function (Blueprint $table) {
+        Schema::create('grades', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('school_id')->unsigned()->indexed();
-            $table->integer('classgroup_id')->unsigned()->nullable();
+            $table->integer('level_id')->unsigned()->indexed();
             $table->string('name');
 
-            $table->foreign('school_id')->references('id')->on('schools');
-            $table->foreign('classgroup_id')->references('id')->on('classgroups');
+            $table->foreign('level_id')->references('id')->on('levels');
             $table->timestamps();
         });
     }

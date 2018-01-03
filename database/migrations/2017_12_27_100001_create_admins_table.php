@@ -17,7 +17,13 @@ class CreateAdminsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('username');
+            $table->integer('school_id')->unsigned();
+            $table->integer('level_id')->unsigned();
+
             $table->timestamps();
+
+            $table->foreign('school_id')->references('id')->on('schools');
+            $table->foreign('level_id')->references('id')->on('levels');
         });
     }
 

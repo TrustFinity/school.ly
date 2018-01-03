@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\Classes\Classgroup;
 
-class ClassRoomSeeder extends Seeder
+class StreamsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,5 +19,13 @@ class ClassRoomSeeder extends Seeder
             $class->classgroup_id = $class_group->id;
             $class->save();
         }
+
+
+        // foreach (["O'level", "A'level"] as $level) {
+        //     $newlevel = new \App\Models\Classes\Level();
+        //     $newlevel->name = $level;
+        //     $newlevel->school_id = \App\Models\School::first()->id;
+        //     $newlevel->save();
+        // }
     }
 }
