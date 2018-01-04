@@ -14,6 +14,7 @@ function getClass(string $alias)
 {
     return [
        's'  => App\Models\School::class,
+       'set' => App\Models\Settings\Setting::class,
 
        'u'  => App\Models\User::class,
        'a'  => App\Models\Admin::class,

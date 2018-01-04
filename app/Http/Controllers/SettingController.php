@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\Settings\Setting;
-use Illuminate\Support\Facades\Auth;
 
 class SettingController extends Controller
 {
@@ -20,7 +20,7 @@ class SettingController extends Controller
      */
     public function create()
     {
-        $preferences = Setting::all()->first();
+        $preferences = Auth::user()->school->preferences;
         return view('preference.create', compact('preferences'));
     }
 

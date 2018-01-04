@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Classes\Stream;
+use App\Models\Settings\Setting;
 use App\Models\Classes\ClassGroup;
 use Illuminate\Database\Eloquent\Model;
 
