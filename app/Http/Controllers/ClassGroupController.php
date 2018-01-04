@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Classes\Classgroup;
+use App\Models\Classes\ClassGroup;
 
-class ClassgroupController extends Controller
+class ClassGroupController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ClassgroupController extends Controller
      */
     public function index()
     {
-        $classgroups = Classgroup::all();
-        return view('classgroups.index', compact('classgroups'));
+        $class_groups = ClassGroup::all();
+        return view('class-groups.index', compact('class_groups'));
     }
 
     /**
@@ -25,7 +25,7 @@ class ClassgroupController extends Controller
      */
     public function create()
     {
-        return view('classgroups.create');
+        return view('class-groups.create');
     }
 
     /**
@@ -36,17 +36,17 @@ class ClassgroupController extends Controller
      */
     public function store()
     {
-        Classgroup::create(request(['name']));
-        return redirect('/classgroups');
+        ClassGroup::create(request(['name']));
+        return redirect('/class-groups');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Classgroup  $classgroup
+     * @param  \App\Models\ClassGroup  $class_group
      * @return \Illuminate\Http\Response
      */
-    public function show(Classgroup $classgroup)
+    public function show(ClassGroup $class_group)
     {
         //
     }
@@ -54,38 +54,38 @@ class ClassgroupController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Classgroup  $classgroup
+     * @param  \App\Models\ClassGroup  $class_group
      * @return \Illuminate\Http\Response
      */
-    public function edit(Classgroup $classgroup)
+    public function edit(ClassGroup $class_group)
     {
-        return view('classgroups.edit', compact('classgroup'));
+        return view('class-groups.edit', compact('classgroup'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Classgroup  $classgroup
+     * @param  \App\Models\ClassGroup  $class_group
      * @return \Illuminate\Http\Response
      */
-    public function update(Classgroup $classgroup)
+    public function update(ClassGroup $class_group)
     {
         $input = request(['name']);
-        $classgroup->fill($input)->save();
+        $class_group->fill($input)->save();
 
-        return redirect('/classgroups');
+        return redirect('/class-groups');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Classgroup  $classgroup
+     * @param  \App\Models\ClassGroup  $class_group
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Classgroup $classgroup)
+    public function destroy(ClassGroup $class_group)
     {
-        $classgroup->delete();
-        return redirect('/classgroups');
+        $class_group->delete();
+        return redirect('/class-groups');
     }
 }

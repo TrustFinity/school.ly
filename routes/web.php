@@ -53,15 +53,15 @@ Route::group([
     Route::post('/studentpage/{student}', 'StudentPageController@update');
 
     /**
-     * The Classgroup routes
+     * The ClassGroup routes
      */
-    Route::get('/classgroups/create', 'ClassgroupController@create');
-    Route::get('/classgroups', 'ClassgroupController@index');
-    Route::post('/classgroups', 'ClassgroupController@store');
-    Route::get('/classgroups/{classgroup}', 'ClassgroupController@show');
-    Route::get('/classgroups/edit/{classgroup}', 'ClassgroupController@edit');
-    Route::post('/classgroups/{classgroup}', 'ClassgroupController@update');
-    Route::get('/classgroups/delete/{classgroup}', 'ClassgroupController@destroy');
+    Route::get('/class-groups/create', 'ClassGroupController@create');
+    Route::get('/class-groups', 'ClassGroupController@index');
+    Route::post('/class-groups', 'ClassGroupController@store');
+    Route::get('/class-groups/{class_group}', 'ClassGroupController@show');
+    Route::get('/class-groups/edit/{class_group}', 'ClassGroupController@edit');
+    Route::post('/class-groups/{class_group}', 'ClassGroupController@update');
+    Route::get('/class-groups/delete/{class_group}', 'ClassGroupController@destroy');
 
 
 

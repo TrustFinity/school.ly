@@ -20,8 +20,8 @@ function getClass(string $alias)
        't'  => App\Models\Teacher::class,
        'st' => App\Models\Student::class,
 
-       'cg' => App\Models\Classes\Classgroup::class,
-       'cr' => App\Models\Classes\Classroom::class,
+       'cg'  => App\Models\Classes\ClassGroup::class,
+       'str' => App\Models\Classes\Stream::class,
        'l'  => App\Models\Classes\Level::class,
        'sb' => App\Models\Classes\Subject::class,
 

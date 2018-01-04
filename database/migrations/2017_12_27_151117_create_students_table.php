@@ -16,7 +16,7 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('school_id')->unsigned()->indexed();
-            $table->integer('classroom_id')->unsigned();
+            $table->integer('stream_id')->unsigned();
             $table->integer('level_id')->unsigned()->nullable();
             $table->string('first_name');
             $table->string('middle_name')->nullable();
@@ -31,7 +31,7 @@ class CreateStudentsTable extends Migration
 
             $table->foreign('school_id')->references('id')->on('schools');
             $table->foreign('level_id')->references('id')->on('levels');
-            $table->foreign('classroom_id')->references('id')->on('classrooms');
+            $table->foreign('stream_id')->references('id')->on('streams');
         });
     }
 

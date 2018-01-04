@@ -8,7 +8,7 @@ use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Models\Classes\Level;
 use App\Models\Classes\Classroom;
-use App\Models\Classes\Classgroup;
+use App\Models\Classes\ClassGroup;
 
 class TeacherController extends Controller
 {
@@ -30,7 +30,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        $classgroups = Classgroup::all();
+        $classgroups = ClassGroup::all();
         $levels = Level::all();
         return view('teachers.create', compact(['classgroups', 'levels']));
     }

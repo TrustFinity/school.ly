@@ -5,7 +5,7 @@ namespace App\Models\Classes;
 use App\Scopes\SchoolScope;
 use Illuminate\Database\Eloquent\Model;
 
-class Classroom extends Model
+class Stream extends Model
 {
     protected $guarded = [];
 
@@ -20,9 +20,9 @@ class Classroom extends Model
         static::addGlobalScope(new SchoolScope());
     }
 
-    public function classgroup()
+    public function classGroup()
     {
-        return $this->belongsTo(Classgroup::class, 'classgroup_id');
+        return $this->belongsTo(ClassGroup::class, 'class_group_id');
     }
 
     public function students()

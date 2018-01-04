@@ -15,13 +15,13 @@ class DatabaseSeeder extends Seeder
 
         //Generic Seeders
         $this->call(LevelsTableSeeder::class);
-        $this->call(GradesSeeder::class);
 
-        $this->call(ClassGroupSeeder::class);
+        //school specific seeders
+        $this->call(StreamSeeder::class);
+
         $this->call(SchoolPreferenceSeeder::class);
 
-        $this->call(UserSeeder::class);
-        // $this->call(UsersTableSeeder::class);
+        $this->call(UsersTableSeeder::class);
 
         $this->call(StudentsSeeder::class);
         $this->call(TeachersSeeder::class);

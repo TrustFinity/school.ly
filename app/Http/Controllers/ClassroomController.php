@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Classes\Classroom;
-use App\Models\Classes\Classgroup;
+use App\Models\Classes\ClassGroup;
 
 class ClassroomController extends Controller
 {
@@ -26,7 +26,7 @@ class ClassroomController extends Controller
      */
     public function create()
     {
-        $classgroups = Classgroup::all();
+        $classgroups = ClassGroup::all();
         return view('classrooms.create', compact('classgroups'));
     }
 
@@ -61,7 +61,7 @@ class ClassroomController extends Controller
      */
     public function edit(Classroom $classroom)
     {
-        $classgroups = Classgroup::all();
+        $classgroups = ClassGroup::all();
         return view('classrooms.edit', compact('classgroups', 'classroom'));
     }
 

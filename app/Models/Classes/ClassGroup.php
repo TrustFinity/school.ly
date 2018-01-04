@@ -5,7 +5,7 @@ namespace App\Models\Classes;
 use App\Scopes\SchoolScope;
 use Illuminate\Database\Eloquent\Model;
 
-class Level extends Model
+class ClassGroup extends Model
 {
     protected $guarded = [];
 
@@ -20,14 +20,8 @@ class Level extends Model
     //     static::addGlobalScope(new SchoolScope());
     // }
 
-
-    public function students()
+    public function streams()
     {
-        return $this->hasMany(Student::class);
-    }
-
-    public function subjects()
-    {
-        return $this->hasMany(Subject::class);
+        return $this->hasMany(Stream::class);
     }
 }

@@ -30,6 +30,6 @@ class CreateClassGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classgroups');
+        Schema::dropIfExists('class_groups');
     }
 }

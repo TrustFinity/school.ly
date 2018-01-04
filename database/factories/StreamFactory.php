@@ -6,7 +6,7 @@
  * Time: 19:55
  */
 
-$factory->define(App\Models\Classes\Classroom::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Classes\Stream::class, function (Faker\Generator $faker) {
     static $password;
 
     return [

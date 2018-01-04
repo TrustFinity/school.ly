@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGradesTable extends Migration
+class CreateStreamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateGradesTable extends Migration
      */
     public function up()
     {
-        Schema::create('grades', function (Blueprint $table) {
+        Schema::create('streams', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('level_id')->unsigned()->indexed();
+            $table->integer('school_id')->unsigned()->indexed();
+            $table->integer('class_group_id')->unsigned()->indexed();
             $table->string('name');
 
-            $table->foreign('level_id')->references('id')->on('levels');
+            $table->foreign('school_id')->references('id')->on('schools');
+            $table->foreign('class_group_id')->references('id')->on('class_groups');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ class CreateGradesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('classrooms');
+        Schema::dropIfExists('streams');
     }
 }

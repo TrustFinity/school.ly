@@ -16,7 +16,7 @@ class CreateTeachersTable extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('school_id')->unsigned()->indexed();
-            $table->integer('classgroup_id')->unsigned()->nullable();
+            $table->integer('class_group_id')->unsigned()->nullable();
             $table->integer('level_id')->unsigned()->nullable();
             $table->string('first_name');
             $table->string('middle_name')->nullable();
@@ -32,7 +32,7 @@ class CreateTeachersTable extends Migration
 
             $table->foreign('school_id')->references('id')->on('schools');
             $table->foreign('level_id')->references('id')->on('levels');
-            $table->foreign('classgroup_id')->references('id')->on('classgroups');
+            $table->foreign('class_group_id')->references('id')->on('class_groups');
             $table->timestamps();
         });
     }

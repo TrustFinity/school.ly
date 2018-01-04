@@ -57,7 +57,7 @@
                                     <li><a href="/settings">Preferences</a></li>
                                     <li><a href="/levels">Levels</a></li>
                                     <li><a href="/subjects">Subjects</a></li>
-                                    <li><a href="/classgroups">Class Groups</a></li>
+                                    <li><a href="/class-groups">Class Groups</a></li>
                                     <li><a href="/classrooms">Class Rooms</a></li>
                                 </ul>
                             </li>

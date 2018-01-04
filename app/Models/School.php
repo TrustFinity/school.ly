@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Classes\Stream;
 use Illuminate\Database\Eloquent\Model;
 
 class School extends Model
@@ -30,5 +31,10 @@ class School extends Model
     public function preferences()
     {
         return $this->belongsTo(Setting::class);
+    }
+
+    public function streams()
+    {
+        return $this->hasMany(Stream::class);
     }
 }
