@@ -14,11 +14,11 @@ class ClassGroup extends Model
      *
      * @return void
      */
-    // protected static function boot()
-    // {
-    //     parent::boot();
-    //     static::addGlobalScope(new SchoolScope());
-    // }
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope(new SchoolScope());
+    }
 
     public function streams()
     {

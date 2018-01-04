@@ -59,7 +59,7 @@ class ClassGroupController extends Controller
      */
     public function edit(ClassGroup $class_group)
     {
-        return view('class-groups.edit', compact('classgroup'));
+        return view('class-groups.edit', compact('class_group'));
     }
 
     /**

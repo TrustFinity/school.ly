@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Auth;
+use App\Models\User;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Classes\Level;
-use App\Models\Classes\Classroom;
+use App\Models\Classes\Stream;
 
 class StudentController extends Controller
 {
@@ -29,7 +29,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $classrooms = Classroom::all();
+        $streams = Stream::all();
         $levels = Level::all();
         $student = new Student();
         return view('students.create', compact('classrooms', 'levels', 'student'));
@@ -85,9 +85,9 @@ class StudentController extends Controller
      */
     public function edit(Student $student)
     {
-        $classrooms = Classroom::all();
+        $streams = Stream::all();
         $levels = Level::all();
-        return view('students.edit', compact('classrooms', 'levels', 'student'));
+        return view('students.edit', compact('streams', 'levels', 'student'));
     }
 
     /**

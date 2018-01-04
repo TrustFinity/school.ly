@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Classes\Stream;
+use App\Models\Classes\ClassGroup;
 use Illuminate\Database\Eloquent\Model;
 
 class School extends Model
@@ -36,5 +37,10 @@ class School extends Model
     public function streams()
     {
         return $this->hasMany(Stream::class);
+    }
+
+    public function classGroups()
+    {
+        return $this->hasMany(ClassGroup::class);
     }
 }

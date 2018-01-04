@@ -22,7 +22,7 @@ class Stream extends Model
 
     public function classGroup()
     {
-        return $this->belongsTo(ClassGroup::class, 'class_group_id');
+        return $this->belongsTo(ClassGroup::class);
     }
 
     public function students()

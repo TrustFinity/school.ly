@@ -58,7 +58,7 @@
                                     <li><a href="/levels">Levels</a></li>
                                     <li><a href="/subjects">Subjects</a></li>
                                     <li><a href="/class-groups">Class Groups</a></li>
-                                    <li><a href="/classrooms">Class Rooms</a></li>
+                                    <li><a href="/streams">Class Streams</a></li>
                                 </ul>
                             </li>
                             <li><a href="/students">Students</a></li>

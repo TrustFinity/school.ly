@@ -1,35 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-sm-6">
+            <h4><b>Class Streams</b></h4>
+        </div>
+        <div class="col-sm-6">
+            <a href="/streams/create" class="btn btn-md btn-info pull-right">Add New Stream</a>
+        </div>
 
-        <a href="/classrooms/create"><button type="button" class="btn btn-lg btn-info">Add a new classroom</button></a>
-        <hr><br>
-            <table class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>ClassGroup</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach ($classrooms as $classroom)
-                    <tr>
-                        <td>{{ $classroom->id }}</td>
-                        <td>{{ $classroom->name }}</td>
-                        <td>{{ $classroom->classgroup->name }}</td>
-                        <td><a href="/classrooms/edit/{{ $classroom->id }}"><button type="button" class="btn btn-priamry">Edit</button></a></td>
-                        <td><a href="/classrooms/delete/{{ $classroom->id }}"><button type="button" class="btn btn-danger">Delete</button></a></td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
+        <hr>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Class Group</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach ($streams as $stream)
+                        <tr>
+                            <td>{{ $stream->id }}</td>
+                            <td>{{ $stream->name }}</td>
+                            <td>{{ $stream->classGroup->name }}</td>
+                            <td><a href="/streams/edit/{{ $stream->id }}" class="btn btn-primary">Edit</a></td>
+                            <td><a href="/streams/delete/{{ $stream->id }}" class="btn btn-danger">Delete</a></td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-</div>
 @endsection

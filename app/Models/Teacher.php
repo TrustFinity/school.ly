@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Scopes\SchoolScope;
 use App\Models\Classes\Level;
+use App\Models\Classes\Stream;
 use App\Models\Classes\Subject;
 use App\Models\Classes\ClassGroup;
 use Illuminate\Database\Eloquent\Model;
@@ -51,9 +52,9 @@ class Teacher extends Model
         return $this->belongsTo(ClassGroup::class, 'classgroup_id');
     }
 
-    public function classroom()
+    public function stream()
     {
-        return $this->belongsTo(Classroom::class, 'classroom_id');
+        return $this->belongsTo(Stream::class, 'classroom_id');
     }
 
     public function level()

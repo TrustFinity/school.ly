@@ -15,7 +15,7 @@ $factory->define(App\Models\Student::class, function ($faker) {
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName(),
         'gender' => $faker->randomElement(['Male', 'Female']),
-        'age' => $faker->numberBetween(3, 25),
+        'dob' => $faker->dateTimeBetween($startDate = '-19 years', $endDate = 'now'),
         'parents_names' => $faker->name,
         'parents_phone_number' => $faker->phoneNumber,
         'address' => $faker->address,

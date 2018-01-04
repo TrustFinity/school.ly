@@ -15,9 +15,11 @@ class CreateClassGroupsTable extends Migration
     {
         Schema::create('class_groups', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('school_id')->unsigned();
             $table->integer('level_id')->unsigned()->indexed();
             $table->string('name');
 
+            $table->foreign('school_id')->references('id')->on('schools');
             $table->foreign('level_id')->references('id')->on('levels');
             $table->timestamps();
         });

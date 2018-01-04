@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Classes\Classroom;
+use App\Models\Classes\Stream;
 use App\Models\Classes\ClassGroup;
 
-class ClassroomController extends Controller
+class StreamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class ClassroomController extends Controller
      */
     public function index()
     {
-        $classrooms = Classroom::all();
-        return view('classrooms.index', compact('classrooms'));
+        $streams = Stream::all()->load('classGroup');
+        return view('streams.index', compact('streams'));
     }
 
     /**
@@ -26,8 +26,8 @@ class ClassroomController extends Controller
      */
     public function create()
     {
-        $classgroups = ClassGroup::all();
-        return view('classrooms.create', compact('classgroups'));
+        $class_groups = ClassGroup::all();
+        return view('streams.create', compact('class_groups'));
     }
 
     /**
@@ -38,17 +38,17 @@ class ClassroomController extends Controller
      */
     public function store()
     {
-        Classroom::create(request(['name', 'classgroup_id']));
-        return redirect('/classrooms');
+        Stream::create(request(['name', 'class_group_id']));
+        return redirect('/streams');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Classes\Classroom  $classroom
+     * @param  \App\Models\Classes\Stream  $stream
      * @return \Illuminate\Http\Response
      */
-    public function show(Classroom $classroom)
+    public function show(Stream $stream)
     {
         //
     }
@@ -56,41 +56,41 @@ class ClassroomController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Classes\Classroom  $classroom
+     * @param  \App\Models\Classes\Stream  $stream
      * @return \Illuminate\Http\Response
      */
-    public function edit(Classroom $classroom)
+    public function edit(Stream $stream)
     {
-        $classgroups = ClassGroup::all();
-        return view('classrooms.edit', compact('classgroups', 'classroom'));
+        $class_groups = ClassGroup::all();
+        return view('streams.edit', compact('class_groups', 'stream'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Classes\Classroom  $classroom
+     * @param  \App\Models\Classes\Stream  $stream
      * @return \Illuminate\Http\Response
      */
-    public function update(Classroom $classroom)
+    public function update(Stream $stream)
     {
         $input = request(['name', 'classgroup_id']);
 
-        $classroom->fill($input)->save();
+        $stream->fill($input)->save();
 
-        return redirect('/classrooms');
+        return redirect('/streams');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Classes\Classroom  $classroom
+     * @param  \App\Models\Classes\Stream  $stream
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Classroom $classroom)
+    public function destroy(Stream $stream)
     {
-        $classroom->delete();
+        $stream->delete();
 
-        return redirect('/classrooms');
+        return redirect('/streams');
     }
 }

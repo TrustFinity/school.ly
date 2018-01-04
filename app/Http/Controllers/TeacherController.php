@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use App\Models\Classes\Level;
-use App\Models\Classes\Classroom;
+use App\Models\Classes\Stream;
 use App\Models\Classes\ClassGroup;
 
 class TeacherController extends Controller
@@ -30,9 +30,9 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        $classgroups = ClassGroup::all();
+        $class_groups = ClassGroup::all();
         $levels = Level::all();
-        return view('teachers.create', compact(['classgroups', 'levels']));
+        return view('teachers.create', compact(['class_groups', 'levels']));
     }
 
     /**
@@ -83,8 +83,8 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        $classrooms = Classroom::all();
-        return view('teachers.edit', compact('teacher', 'classrooms'));
+        $streams = Stream::all();
+        return view('teachers.edit', compact('teacher', 'streams'));
     }
 
     /**
