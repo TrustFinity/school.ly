@@ -20,5 +20,6 @@ $factory->define(\App\Models\Kanban::class, function (Faker\Generator $faker) {
         ]),
         'description' => $faker->sentence,
         'status' => $faker->randomElement(['Planning', 'In Class', 'Testing', 'Completed']),
+        'fixed' => false,
     ];
 });

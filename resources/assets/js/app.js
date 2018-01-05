@@ -19,7 +19,3 @@ Vue.component('TeacherKanban', require('./components/TeacherKanban.vue'));
 const app = new Vue({
     el: '#app'
 });
-
-$(document).ready(function() {
-    $('#students').DataTable();
-} );

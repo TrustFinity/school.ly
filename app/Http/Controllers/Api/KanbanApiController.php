@@ -12,6 +12,8 @@ class KanbanApiController extends Controller
 {
     public function loadForTeacher(Teacher $teacher)
     {
-        return Kanban::where('teacher_id', $teacher->id)->get();
+        return Kanban::where('teacher_id', $teacher->id)
+            ->with(['classgroup'])
+            ->get();
     }
 }

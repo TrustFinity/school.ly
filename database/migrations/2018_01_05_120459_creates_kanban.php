@@ -21,6 +21,7 @@ class CreatesKanban extends Migration
             $table->string('title');
             $table->text('description');
             $table->string('status');
+            $table->boolean('fixed')->default(false);
 
             $table->timestamps();
             $table->foreign('school_id')->references('id')->on('schools');

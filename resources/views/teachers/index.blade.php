@@ -16,7 +16,7 @@
             @foreach ($teachers as $teacher)
                 <div class="row">
                     <div class="col-sm-1">
-                        <img src="{{ $teacher->photo_url }}" alt="Photo" class="img-circle img-responsive">
+                        <img src="/{{ $teacher->photo_url }}" alt="Photo" class="img-circle img-responsive">
                     </div>
                     <div class="col-sm-5">
                         <a href="/teachers/{{ $teacher->id }}">

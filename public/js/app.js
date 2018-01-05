@@ -11549,7 +11549,7 @@ function applyToTag (styleElement, obj) {
 /* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function($) {
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -11570,11 +11570,6 @@ Vue.component('TeacherKanban', __webpack_require__(46));
 var app = new Vue({
   el: '#app'
 });
-
-$(document).ready(function () {
-  $('#students').DataTable();
-});
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
 /* 14 */
@@ -12453,7 +12448,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 34 */
+/* 34 */,
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12562,29 +12558,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
-
-
-var message = ['The repiratory system', 'Lymphatic system', 'Neural network', 'Human Anatomy'];
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'list',
+    name: 'TeacherKanban',
+    props: {
+        teacher: {
+            type: Object,
+            required: true
+        }
+    },
     components: {
         draggable: __WEBPACK_IMPORTED_MODULE_0_vuedraggable___default.a
     },
     data: function data() {
         return {
-            list: message.map(function (name, index) {
-                return { name: name, order: index + 1, description: '', fixed: false };
-            }),
-            list2: ['Reproductive Health', 'Biological Classification', 'Zoology'].map(function (name, index) {
-                return { name: name, order: index + 1, description: '', fixed: false };
-            }),
-            list3: [],
-            list4: ['Public Health'].map(function (name, index) {
-                return { name: name, order: index + 1, description: '', fixed: false };
-            }),
+            planning_list: [],
+            inclass_list: [],
+            testing_list: [],
+            completed_list: [],
             editable: true,
             isDragging: false,
             delayedDragging: false,
@@ -12595,7 +12587,7 @@ var message = ['The repiratory system', 'Lymphatic system', 'Neural network', 'H
 
     methods: {
         orderList: function orderList() {
-            this.list = this.list.sort(function (one, two) {
+            this.planning_list = this.planning_list.sort(function (one, two) {
                 return one.order - two.order;
             });
         },
@@ -12603,9 +12595,9 @@ var message = ['The repiratory system', 'Lymphatic system', 'Neural network', 'H
             var relatedContext = _ref.relatedContext,
                 draggedContext = _ref.draggedContext;
 
-            var relatedElement = relatedContext.element;
-            var draggedElement = draggedContext.element;
-            return (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed;
+            // finc a way of updating the statuses of the
+            // elements asynchronously
+            console.log(relatedContext);
         },
         addNew: function addNew() {
             if (this.isCreating) {
@@ -12621,12 +12613,15 @@ var message = ['The repiratory system', 'Lymphatic system', 'Neural network', 'H
                 console.log("Enter something inside the text area");
                 return;
             }
-            this.list.push({ name: this.newDataTitle, order: 9, description: '', fixed: false });
+            this.planning_list.push({ name: this.newDataTitle, order: 9, description: '', fixed: false });
         },
         cancelNew: function cancelNew() {
             if (this.isCreating) {
                 this.isCreating = false;
             }
+        },
+        presentData: function presentData(data) {
+            console.log(data);
         }
     },
     computed: {
@@ -12651,29 +12646,30 @@ var message = ['The repiratory system', 'Lymphatic system', 'Neural network', 'H
                 _this.delayedDragging = false;
             });
         }
-    }
-});
+    },
+    created: function created() {
+        var _this2 = this;
 
-/***/ }),
-/* 35 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__List__ = __webpack_require__(45);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__List___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__List__);
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: 'TeacherKanban',
-    components: {
-        List: __WEBPACK_IMPORTED_MODULE_0__List___default.a
+        axios.get('/api/teachers-kanban/' + this.teacher.id).then(function (response) {
+            if (response.data.length === 0) {
+                // show default create kanban cards
+                return;
+            }
+            for (var i = 0; i < response.data.length; i++) {
+                var card = response.data[i];
+                if (card.status === 'Planning') {
+                    _this2.planning_list.push(card);
+                } else if (card.status === 'In Class') {
+                    _this2.inclass_list.push(card);
+                } else if (card.status === 'Testing') {
+                    _this2.testing_list.push(card);
+                } else if (card.status === 'Completed') {
+                    _this2.completed_list.push(card);
+                }
+            }
+        }).catch(function (error) {
+            console.log(error);
+        });
     }
 });
 
@@ -15113,20 +15109,8 @@ if (typeof jQuery === 'undefined') {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
-/* 38 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(11)();
-exports.push([module.i, "\n#board {\n    font-family: 'Avenir', Helvetica, Arial, sans-serif;\n     -webkit-font-smoothing: antialiased;\n     -moz-osx-font-smoothing: grayscale;\n    color: #2c3e50;\n}\n", ""]);
-
-/***/ }),
-/* 39 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(11)();
-exports.push([module.i, "\n.flip-list-move[data-v-bce4e21a] {\n    transition: -webkit-transform 0.5s;\n    transition: transform 0.5s;\n    transition: transform 0.5s, -webkit-transform 0.5s;\n}\n.no-move[data-v-bce4e21a] {\n    transition: -webkit-transform 0s;\n    transition: transform 0s;\n    transition: transform 0s, -webkit-transform 0s;\n}\n.ghost[data-v-bce4e21a] {\n    opacity: .5;\n    background: #C8EBFB;\n}\n.list-group[data-v-bce4e21a] {\n    min-height: 20px;\n}\n.list-group-item[data-v-bce4e21a] {\n    cursor: move;\n}\n.list-group-item i[data-v-bce4e21a]{\n    cursor: pointer;\n}\n.heading[data-v-bce4e21a] {\n    background: rgba(0,0,0, .1);\n    padding: 5px;\n    margin-bottom: 0px;\n}\n.col[data-v-bce4e21a] {\n    background: rgba(0,0,0, .1);\n    padding: 5px;\n    box-shadow: 0px 8px 15px 0px #cccccc;\n}\n.add-new[data-v-bce4e21a]{\n    cursor: pointer;\n    text-decoration: underline;\n    padding: 3px;\n    margin-bottom: 0px;\n}\n", ""]);
-
-/***/ }),
+/* 38 */,
+/* 39 */,
 /* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -34055,50 +34039,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(51)
-
-var Component = __webpack_require__(4)(
-  /* script */
-  __webpack_require__(34),
-  /* template */
-  __webpack_require__(49),
-  /* scopeId */
-  "data-v-bce4e21a",
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/ambrose/Sites/schoolly/resources/assets/js/components/List.vue"
-if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] List.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-bce4e21a", Component.options)
-  } else {
-    hotAPI.reload("data-v-bce4e21a", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
+/* 45 */,
 /* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(50)
+__webpack_require__(65)
 
 var Component = __webpack_require__(4)(
   /* script */
@@ -34106,7 +34053,7 @@ var Component = __webpack_require__(4)(
   /* template */
   __webpack_require__(47),
   /* scopeId */
-  null,
+  "data-v-62b60498",
   /* cssModules */
   null
 )
@@ -34139,90 +34086,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "id": "board"
     }
-  }, [_c('list')], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-62b60498", module.exports)
-  }
-}
-
-/***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _vm._m(0)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "container"
   }, [_c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-md-8 col-md-offset-2"
-  }, [_c('div', {
-    staticClass: "panel panel-default"
-  }, [_c('div', {
-    staticClass: "panel-heading"
-  }, [_vm._v("Example Component")]), _vm._v(" "), _c('div', {
-    staticClass: "panel-body"
-  }, [_vm._v("\n                    I'm an example component!\n                ")])])])])])
-}]}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-b89601b6", module.exports)
-  }
-}
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-12"
-  }, [_c('div', {
-    staticClass: "checkbox"
-  }, [_c('label', [_c('input', {
-    directives: [{
-      name: "model",
-      rawName: "v-model",
-      value: (_vm.editable),
-      expression: "editable"
-    }],
-    attrs: {
-      "type": "checkbox"
-    },
-    domProps: {
-      "checked": Array.isArray(_vm.editable) ? _vm._i(_vm.editable, null) > -1 : (_vm.editable)
-    },
-    on: {
-      "change": function($event) {
-        var $$a = _vm.editable,
-          $$el = $event.target,
-          $$c = $$el.checked ? (true) : (false);
-        if (Array.isArray($$a)) {
-          var $$v = null,
-            $$i = _vm._i($$a, $$v);
-          if ($$el.checked) {
-            $$i < 0 && (_vm.editable = $$a.concat([$$v]))
-          } else {
-            $$i > -1 && (_vm.editable = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
-          }
-        } else {
-          _vm.editable = $$c
-        }
-      }
-    }
-  }), _vm._v("Enable drag and drop")])]), _vm._v(" "), _c('hr', {
-    staticClass: "row"
-  })]), _vm._v(" "), _c('div', {
     staticClass: "col-md-3"
   }, [_c('h4', {
     staticClass: "heading"
@@ -34244,26 +34110,26 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     },
     model: {
-      value: (_vm.list),
+      value: (_vm.planning_list),
       callback: function($$v) {
-        _vm.list = $$v
+        _vm.planning_list = $$v
       },
-      expression: "list"
+      expression: "planning_list"
     }
   }, [_c('transition-group', {
     attrs: {
       "type": "transition",
       "name": 'flip-list'
     }
-  }, _vm._l((_vm.list), function(element) {
+  }, _vm._l((_vm.planning_list), function(card, index) {
     return _c('li', {
-      key: element.order,
+      key: index,
       staticClass: "list-group-item"
-    }, [_c('h4', [_vm._v(_vm._s(element.name))]), _vm._v(" "), _c('p', {
+    }, [_c('h4', [_vm._v(_vm._s(card.title))]), _vm._v(" "), _c('p', {
       staticClass: "small"
-    }, [_vm._v("A very short wrapping description here...")]), _vm._v(" "), _c('i', {
-      staticClass: "badge"
-    }, [_vm._v("S " + _vm._s(element.order))])])
+    }, [_vm._v(_vm._s(card.description))]), _vm._v(" "), _c('i', {
+      staticClass: "classroom"
+    }, [_vm._v(_vm._s(card.classgroup ? card.classgroup.name : 'No class'))])])
   }))], 1), _vm._v(" "), (!_vm.isCreating) ? _c('p', {
     staticClass: "text-primary add-new",
     on: {
@@ -34308,16 +34174,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col"
   }, [_c('draggable', {
     attrs: {
-      "element": "span",
+      "card": "span",
       "options": _vm.dragOptions,
       "move": _vm.onMove
     },
     model: {
-      value: (_vm.list2),
+      value: (_vm.inclass_list),
       callback: function($$v) {
-        _vm.list2 = $$v
+        _vm.inclass_list = $$v
       },
-      expression: "list2"
+      expression: "inclass_list"
     }
   }, [_c('transition-group', {
     staticClass: "list-group",
@@ -34325,33 +34191,33 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": "no",
       "tag": "ul"
     }
-  }, _vm._l((_vm.list2), function(element) {
+  }, _vm._l((_vm.inclass_list), function(card, index) {
     return _c('li', {
-      key: element.order,
+      key: index,
       staticClass: "list-group-item"
-    }, [_c('h4', [_vm._v(_vm._s(element.name))]), _vm._v(" "), _c('p', {
+    }, [_c('h4', [_vm._v(_vm._s(card.title))]), _vm._v(" "), _c('p', {
       staticClass: "small"
-    }, [_vm._v("A very short wrapping description here...")]), _vm._v(" "), _c('i', {
-      staticClass: "badge"
-    }, [_vm._v("S " + _vm._s(element.order))])])
+    }, [_vm._v(_vm._s(card.description))]), _vm._v(" "), _c('i', {
+      staticClass: "classroom"
+    }, [_vm._v(_vm._s(card.classgroup ? card.classgroup.name : 'No class'))])])
   }))], 1)], 1)]), _vm._v(" "), _c('div', {
     staticClass: "list-group col-md-3"
   }, [_c('h4', {
     staticClass: "heading"
-  }, [_vm._v("Testing")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("testing_list")]), _vm._v(" "), _c('div', {
     staticClass: "col"
   }, [_c('draggable', {
     attrs: {
-      "element": "span",
+      "card": "span",
       "options": _vm.dragOptions,
       "move": _vm.onMove
     },
     model: {
-      value: (_vm.list3),
+      value: (_vm.testing_list),
       callback: function($$v) {
-        _vm.list3 = $$v
+        _vm.testing_list = $$v
       },
-      expression: "list3"
+      expression: "testing_list"
     }
   }, [_c('transition-group', {
     staticClass: "list-group",
@@ -34359,15 +34225,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": "no",
       "tag": "ul"
     }
-  }, _vm._l((_vm.list3), function(element) {
+  }, _vm._l((_vm.testing_list), function(card, index) {
     return _c('li', {
-      key: element.order,
+      key: index,
       staticClass: "list-group-item"
-    }, [_c('h4', [_vm._v(_vm._s(element.name))]), _vm._v(" "), _c('p', {
+    }, [_c('h4', [_vm._v(_vm._s(card.title))]), _vm._v(" "), _c('p', {
       staticClass: "small"
-    }, [_vm._v("A very short wrapping description here...")]), _vm._v(" "), _c('i', {
-      staticClass: "badge"
-    }, [_vm._v("S " + _vm._s(element.order))])])
+    }, [_vm._v(_vm._s(card.description))]), _vm._v(" "), _c('i', {
+      staticClass: "classroom"
+    }, [_vm._v(_vm._s(card.classgroup ? card.classgroup.name : 'No class'))])])
   }))], 1)], 1)]), _vm._v(" "), _c('div', {
     staticClass: "list-group col-md-3"
   }, [_c('h4', {
@@ -34376,16 +34242,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "col"
   }, [_c('draggable', {
     attrs: {
-      "element": "span",
+      "card": "span",
       "options": _vm.dragOptions,
       "move": _vm.onMove
     },
     model: {
-      value: (_vm.list4),
+      value: (_vm.completed_list),
       callback: function($$v) {
-        _vm.list4 = $$v
+        _vm.completed_list = $$v
       },
-      expression: "list4"
+      expression: "completed_list"
     }
   }, [_c('transition-group', {
     staticClass: "list-group",
@@ -34393,78 +34259,58 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "name": "no",
       "tag": "ul"
     }
-  }, _vm._l((_vm.list4), function(element) {
+  }, _vm._l((_vm.completed_list), function(card, index) {
     return _c('li', {
-      key: element.order,
+      key: index,
       staticClass: "list-group-item"
-    }, [_c('h4', [_vm._v(_vm._s(element.name))]), _vm._v(" "), _c('p', {
+    }, [_c('h4', [_vm._v(_vm._s(card.title))]), _vm._v(" "), _c('p', {
       staticClass: "small"
-    }, [_vm._v("A very short wrapping description here...")]), _vm._v(" "), _c('i', {
-      staticClass: "badge"
-    }, [_vm._v("S " + _vm._s(element.order))])])
-  }))], 1)], 1)])])
+    }, [_vm._v(_vm._s(card.description))]), _vm._v(" "), _c('i', {
+      staticClass: "classroom"
+    }, [_vm._v(_vm._s(card.classgroup ? card.classgroup.name : 'No class'))])])
+  }))], 1)], 1)])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-bce4e21a", module.exports)
+     require("vue-hot-reload-api").rerender("data-v-62b60498", module.exports)
   }
 }
 
 /***/ }),
-/* 50 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(38);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(12)("0affeb9f", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-62b60498!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TeacherKanban.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-62b60498!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TeacherKanban.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "container"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-8 col-md-offset-2"
+  }, [_c('div', {
+    staticClass: "panel panel-default"
+  }, [_c('div', {
+    staticClass: "panel-heading"
+  }, [_vm._v("Example Component")]), _vm._v(" "), _c('div', {
+    staticClass: "panel-body"
+  }, [_vm._v("\n                    I'm an example component!\n                ")])])])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-b89601b6", module.exports)
+  }
 }
 
 /***/ }),
-/* 51 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(39);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(12)("4cbd9b0d", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-bce4e21a&scoped=true!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./List.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-bce4e21a&scoped=true!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./List.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
+/* 49 */,
+/* 50 */,
+/* 51 */,
 /* 52 */
 /***/ (function(module, exports) {
 
@@ -45721,6 +45567,46 @@ module.exports = function(module) {
 __webpack_require__(13);
 module.exports = __webpack_require__(14);
 
+
+/***/ }),
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(11)();
+exports.push([module.i, "\n#board[data-v-62b60498] {\n    font-family: 'Avenir', Helvetica, Arial, sans-serif;\n     -webkit-font-smoothing: antialiased;\n     -moz-osx-font-smoothing: grayscale;\n    color: #2c3e50;\n}\n.flip-list-move[data-v-62b60498] {\n     transition: -webkit-transform 0.5s;\n     transition: transform 0.5s;\n     transition: transform 0.5s, -webkit-transform 0.5s;\n}\n.no-move[data-v-62b60498] {\n    transition: -webkit-transform 0s;\n    transition: transform 0s;\n    transition: transform 0s, -webkit-transform 0s;\n}\n.ghost[data-v-62b60498] {\n    opacity: .5;\n    background: #C8EBFB;\n}\n.list-group[data-v-62b60498] {\n    min-height: 20px;\n}\n.list-group-item[data-v-62b60498] {\n    cursor: move;\n}\n.list-group-item i[data-v-62b60498]{\n    cursor: pointer;\n}\n.heading[data-v-62b60498] {\n    background: rgba(0,0,0, .1);\n    padding: 5px;\n    margin-bottom: 0px;\n}\n.col[data-v-62b60498] {\n    background: rgba(0,0,0, .1);\n    padding: 5px;\n    box-shadow: 0px 8px 15px 0px #cccccc;\n}\n.add-new[data-v-62b60498]{\n    cursor: pointer;\n    text-decoration: underline;\n    padding: 3px;\n    margin-bottom: 0px;\n}\n.classroom[data-v-62b60498] {\n    margin-bottom: 5px;\n}\n", ""]);
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(64);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(12)("1eb061ea", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-62b60498&scoped=true!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TeacherKanban.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-rewriter.js?id=data-v-62b60498&scoped=true!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./TeacherKanban.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);

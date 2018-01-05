@@ -13,7 +13,8 @@
                     <h4 class="">Lesson Plan</h4>
                 </div>
                 <div class="panel-body">
-                    <teacher-kanban>
+                    <teacher-kanban
+                        :teacher="{{ json_encode($teacher) }}">
                     </teacher-kanban>
                 </div>
             </div>
