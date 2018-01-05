@@ -12613,7 +12613,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 console.log("Enter something inside the text area");
                 return;
             }
-            this.planning_list.push({ name: this.newDataTitle, order: 9, description: '', fixed: false });
+            this.planning_list.push({ title: this.newDataTitle, description: '' });
         },
         cancelNew: function cancelNew() {
             if (this.isCreating) {
@@ -34127,7 +34127,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "list-group-item"
     }, [_c('h4', [_vm._v(_vm._s(card.title))]), _vm._v(" "), _c('p', {
       staticClass: "small"
-    }, [_vm._v(_vm._s(card.description))]), _vm._v(" "), _c('i', {
+    }, [_vm._v(_vm._s(card.description))]), _vm._v(" "), _c('span', {
       staticClass: "classroom"
     }, [_vm._v(_vm._s(card.classgroup ? card.classgroup.name : 'No class'))])])
   }))], 1), _vm._v(" "), (!_vm.isCreating) ? _c('p', {
@@ -34197,14 +34197,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "list-group-item"
     }, [_c('h4', [_vm._v(_vm._s(card.title))]), _vm._v(" "), _c('p', {
       staticClass: "small"
-    }, [_vm._v(_vm._s(card.description))]), _vm._v(" "), _c('i', {
+    }, [_vm._v(_vm._s(card.description))]), _vm._v(" "), _c('span', {
       staticClass: "classroom"
     }, [_vm._v(_vm._s(card.classgroup ? card.classgroup.name : 'No class'))])])
   }))], 1)], 1)]), _vm._v(" "), _c('div', {
     staticClass: "list-group col-md-3"
   }, [_c('h4', {
     staticClass: "heading"
-  }, [_vm._v("testing_list")]), _vm._v(" "), _c('div', {
+  }, [_vm._v("Testing")]), _vm._v(" "), _c('div', {
     staticClass: "col"
   }, [_c('draggable', {
     attrs: {
@@ -34231,7 +34231,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "list-group-item"
     }, [_c('h4', [_vm._v(_vm._s(card.title))]), _vm._v(" "), _c('p', {
       staticClass: "small"
-    }, [_vm._v(_vm._s(card.description))]), _vm._v(" "), _c('i', {
+    }, [_vm._v(_vm._s(card.description))]), _vm._v(" "), _c('span', {
       staticClass: "classroom"
     }, [_vm._v(_vm._s(card.classgroup ? card.classgroup.name : 'No class'))])])
   }))], 1)], 1)]), _vm._v(" "), _c('div', {
@@ -34265,7 +34265,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "list-group-item"
     }, [_c('h4', [_vm._v(_vm._s(card.title))]), _vm._v(" "), _c('p', {
       staticClass: "small"
-    }, [_vm._v(_vm._s(card.description))]), _vm._v(" "), _c('i', {
+    }, [_vm._v(_vm._s(card.description))]), _vm._v(" "), _c('span', {
       staticClass: "classroom"
     }, [_vm._v(_vm._s(card.classgroup ? card.classgroup.name : 'No class'))])])
   }))], 1)], 1)])])])
@@ -45580,7 +45580,7 @@ module.exports = __webpack_require__(14);
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(11)();
-exports.push([module.i, "\n#board[data-v-62b60498] {\n    font-family: 'Avenir', Helvetica, Arial, sans-serif;\n     -webkit-font-smoothing: antialiased;\n     -moz-osx-font-smoothing: grayscale;\n    color: #2c3e50;\n}\n.flip-list-move[data-v-62b60498] {\n     transition: -webkit-transform 0.5s;\n     transition: transform 0.5s;\n     transition: transform 0.5s, -webkit-transform 0.5s;\n}\n.no-move[data-v-62b60498] {\n    transition: -webkit-transform 0s;\n    transition: transform 0s;\n    transition: transform 0s, -webkit-transform 0s;\n}\n.ghost[data-v-62b60498] {\n    opacity: .5;\n    background: #C8EBFB;\n}\n.list-group[data-v-62b60498] {\n    min-height: 20px;\n}\n.list-group-item[data-v-62b60498] {\n    cursor: move;\n}\n.list-group-item i[data-v-62b60498]{\n    cursor: pointer;\n}\n.heading[data-v-62b60498] {\n    background: rgba(0,0,0, .1);\n    padding: 5px;\n    margin-bottom: 0px;\n}\n.col[data-v-62b60498] {\n    background: rgba(0,0,0, .1);\n    padding: 5px;\n    box-shadow: 0px 8px 15px 0px #cccccc;\n}\n.add-new[data-v-62b60498]{\n    cursor: pointer;\n    text-decoration: underline;\n    padding: 3px;\n    margin-bottom: 0px;\n}\n.classroom[data-v-62b60498] {\n    margin-bottom: 5px;\n}\n", ""]);
+exports.push([module.i, "\n#board[data-v-62b60498] {\n    font-family: 'Avenir', Helvetica, Arial, sans-serif;\n     -webkit-font-smoothing: antialiased;\n     -moz-osx-font-smoothing: grayscale;\n    color: #2c3e50;\n}\n.flip-list-move[data-v-62b60498] {\n     transition: -webkit-transform 0.5s;\n     transition: transform 0.5s;\n     transition: transform 0.5s, -webkit-transform 0.5s;\n}\n.no-move[data-v-62b60498] {\n    transition: -webkit-transform 0s;\n    transition: transform 0s;\n    transition: transform 0s, -webkit-transform 0s;\n}\n.ghost[data-v-62b60498] {\n    opacity: .5;\n    background: #C8EBFB;\n}\n.list-group[data-v-62b60498] {\n    min-height: 20px;\n}\nh4[data-v-62b60498] {\n    cursor: move;\n}\n.list-group-item i[data-v-62b60498]{\n    cursor: pointer;\n}\n.heading[data-v-62b60498] {\n    background: rgba(0,0,0, .1);\n    padding: 5px;\n    margin-bottom: 0px;\n}\n.col[data-v-62b60498] {\n    background: rgba(0,0,0, .1);\n    padding: 5px;\n    box-shadow: 0px 8px 15px 0px #cccccc;\n}\n.add-new[data-v-62b60498]{\n    cursor: pointer;\n    text-decoration: underline;\n    padding: 3px;\n    margin-bottom: 0px;\n}\n.classroom[data-v-62b60498] {\n    margin-bottom: 5px;\n    background: rgba(10,85,28,0.86);\n    color: #ffffff;\n    padding: 5px;\n    border-radius: 100%;\n    box-shadow: 0px 8px 15px 0px #cccccc;\n}\n.classroom[data-v-62b60498]:hover {\n    cursor: pointer;\n    box-shadow: 0px 0px 0px 0px #cccccc;\n}\n", ""]);
 
 /***/ }),
 /* 65 */

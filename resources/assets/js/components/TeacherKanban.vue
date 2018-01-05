@@ -22,7 +22,7 @@
                                 <!--@click=" card.fixed=! card.fixed" aria-hidden="true"></i>-->
                                 <h4>{{card.title}}</h4>
                                 <p class="small">{{ card.description }}</p>
-                                <i class="classroom">{{ card.classgroup ? card.classgroup.name : 'No class' }}</i>
+                                <span class="classroom">{{ card.classgroup ? card.classgroup.name : 'No class' }}</span>
                             </li>
                         </transition-group>
                     </draggable>
@@ -49,7 +49,7 @@
                                 <!--@click=" card.fixed=! card.fixed" aria-hidden="true"></i>-->
                                 <h4>{{card.title}}</h4>
                                 <p class="small">{{ card.description }}</p>
-                                <i class="classroom">{{ card.classgroup ? card.classgroup.name : 'No class' }}</i>
+                                <span class="classroom">{{ card.classgroup ? card.classgroup.name : 'No class' }}</span>
                             </li>
                         </transition-group>
                     </draggable>
@@ -57,7 +57,7 @@
             </div>
 
             <div  class="list-group col-md-3">
-                <h4 class="heading">testing_list</h4>
+                <h4 class="heading">Testing</h4>
                 <div class="col">
                     <!--<pre>{{listString}}</pre>-->
                     <draggable card="span"
@@ -70,7 +70,7 @@
                                 <!--@click=" card.fixed=! card.fixed" aria-hidden="true"></i>-->
                                 <h4>{{card.title}}</h4>
                                 <p class="small">{{ card.description }}</p>
-                                <i class="classroom">{{ card.classgroup ? card.classgroup.name : 'No class' }}</i>
+                                <span class="classroom">{{ card.classgroup ? card.classgroup.name : 'No class' }}</span>
                             </li>
                         </transition-group>
                     </draggable>
@@ -90,7 +90,7 @@
                                 <!--@click=" card.fixed=! card.fixed" aria-hidden="true"></i>-->
                                 <h4>{{card.title}}</h4>
                                 <p class="small">{{ card.description }}</p>
-                                <i class="classroom">{{ card.classgroup ? card.classgroup.name : 'No class' }}</i>
+                                <span class="classroom">{{ card.classgroup ? card.classgroup.name : 'No class' }}</span>
                             </li>
                         </transition-group>
                     </draggable>
@@ -149,7 +149,7 @@
                     console.log("Enter something inside the text area")
                     return
                 }
-                this.planning_list.push({name:this.newDataTitle, order:9, description:'', fixed:false})
+                this.planning_list.push({title:this.newDataTitle, description:''})
             },
             cancelNew () {
                 if (this.isCreating){
@@ -232,7 +232,7 @@
         min-height: 20px;
     }
 
-    .list-group-item {
+    h4 {
         cursor: move;
     }
 
@@ -258,5 +258,14 @@
     }
     .classroom {
         margin-bottom: 5px;
+        background: rgba(10,85,28,0.86);
+        color: #ffffff;
+        padding: 5px;
+        border-radius: 100%;
+        box-shadow: 0px 8px 15px 0px #cccccc;
+    }
+    .classroom:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 0px 0px #cccccc;
     }
 </style>
