@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Classes\Classgroup;
+use App\Models\Classes\Subject;
 use App\Scopes\SchoolScope;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,5 +23,19 @@ class Kanban extends Model
     public function school()
     {
         return $this->belongsTo(School::class);
+    }
+    public function teacher()
+    {
+        return $this->belongsTo(Teacher::class);
+    }
+
+    public function classgroup()
+    {
+        return $this->belongsTo(Classgroup::class);
+    }
+
+    public function subject()
+    {
+        return $this->belongsTo(Subject::class);
     }
 }
