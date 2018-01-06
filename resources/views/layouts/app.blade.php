@@ -14,15 +14,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Darasini</title>
+    <title>Darasani</title>
 
     <!-- Styles -->
-<<<<<<< 6756464bc2e464b722886d5d480ca067f638a33b
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
-=======
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
->>>>>>> setup wizard wip
 
     <!-- Scripts -->
     <script>
@@ -46,13 +42,8 @@
                     </button>
 
                     <!-- Branding Image -->
-<<<<<<< 6756464bc2e464b722886d5d480ca067f638a33b
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Darasini') }}
-=======
                     <a class="navbar-brand" href="{{ url('/dashboard') }}">
                         {{ config('app.name', 'Darasani') }}
->>>>>>> setup wizard wip
                     </a>
                 </div>
 
@@ -128,13 +119,16 @@
                 </div>
             </div>
         </nav>
-    <div class="container">
 
-        @yield('content')
+        <div class="container">
 
-    </div>
+            @yield('content')
+
+        </div>
     </div>
     <!-- Scripts -->
     <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.bootstrap.wizard.min.js') }}"></script>
 </body>
 </html>

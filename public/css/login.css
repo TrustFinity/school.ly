@@ -1,0 +1,30 @@
+
+html, body, #app, .container, .row, .panel, .sidebar {
+    height: 100%;
+}
+
+.sidebar {
+    margin-bottom: 22px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    border-color: #d3e0e9;
+    float: right;
+}
+
+.sidebar section {
+    padding: 100px;
+}
+
+@media (min-width: 600px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: block;
+    background-color: #fff;
+  }
+}

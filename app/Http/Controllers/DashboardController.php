@@ -14,8 +14,8 @@ class DashboardController extends Controller
             return view('dashboard.preferences');
         }
 
-        $teachers =  Teacher::all();
-        $students = Student::all();
-        return view('dashboard.index', compact('teachers', 'students'));
+        // $teachers =  Teacher::all();
+        // $students = Student::all();
+        // return view('dashboard.index', compact('teachers', 'students'));
     }
 }
