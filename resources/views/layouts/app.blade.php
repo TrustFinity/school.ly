@@ -17,7 +17,7 @@
     <title>Darasini</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -42,7 +42,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Darasani') }}
+                        {{ config('app.name', 'Darasini') }}
                     </a>
                 </div>
 
@@ -118,14 +118,13 @@
                 </div>
             </div>
         </nav>
-    </div>
     <div class="container">
 
         @yield('content')
 
     </div>
-
+    </div>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>

@@ -68,3 +68,8 @@ function inProduction()
 {
     return env('APP_ENV') === PRODUCTION_ENVIRONMENT;
 }
+
+function getPreference()
+{
+    return App\Models\Settings\Setting::all()->first();
+}

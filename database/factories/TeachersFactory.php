@@ -15,7 +15,7 @@ $factory->define(App\Models\Teacher::class, function ($faker) {
         'school_id' => $school->id,
         'first_name' => $faker->firstName,
         'middle_name' => $faker->lastName,
-        'last_name' => $faker->lastName(),
+        'last_name' => $faker->lastName,
         'gender' => $faker->randomElement(['Male', 'Female']),
         'age' => $faker->numberBetween(3, 25),
         'experience' => $faker->numberBetween(0, 5).' yrs',

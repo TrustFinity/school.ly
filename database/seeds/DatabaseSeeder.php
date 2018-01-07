@@ -25,5 +25,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(StudentsSeeder::class);
         $this->call(TeachersSeeder::class);
+
+        //Teaching features
+        $this->call(KanbanSeeder::class);
     }
 }

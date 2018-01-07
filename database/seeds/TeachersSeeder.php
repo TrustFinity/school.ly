@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Classes\Classgroup;
 
 class TeachersSeeder extends Seeder
 {
@@ -12,7 +13,9 @@ class TeachersSeeder extends Seeder
     public function run()
     {
         for ($i = 0; $i < 50; $i++) {
-            factory(\App\Models\Teacher::class)->make()->save();
+            $teacher = factory(\App\Models\Teacher::class)->make();
+            $teacher->classgroup_id = Classgroup::inRandomOrder()->first()->id;
+            $teacher->save();
         }
     }
 }

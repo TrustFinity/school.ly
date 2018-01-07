@@ -11,21 +11,29 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     protected $fillable = [
-        'name',
+        'first_name',
+        'middle_name',
+        'last_name',
         'gender',
-        'dob',
+        'age',
         'address',
+        'parents_names',
+        'parents_phone_numbers',
         'classroom_id',
-        'level_id'
+        'level_id',
     ];
 
     public static $validationRules = [
-        'name'          => 'required|string',
+        'first_name'          => 'required|string',
+        'middle_name'          => 'sometimes|string',
+        'last_name'          => 'required|string',
         'gender'        => 'required',
-        'dob'           => 'required|date',
-        'address'       => 'required|string',
+        'age'           => 'required|integer',
+        'address'       => 'required|text',
         'classroom_id'  => 'required|integer',
-        'level_id'      => 'required|integer',
+        'parents_names'  => 'required|string',
+        'level_id'      => 'sometimes|integer',
+        'parents_phone_number'      => 'sometimes|integer',
     ];
 
     /**
