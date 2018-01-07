@@ -59,15 +59,15 @@
     <div class="col-sm-3">
         <div class="panel panel-default">
             <div class="panel-body">
-                <img src="{{$student->photo_url}}" alt="photo" class="img-rounded img-responsive">
-                <a href="/students/edit/{{$student->id}}">
+                <img src="{{ $student->photo_url ?: '/photos/crane.jpg'}}" alt="photo" class="img-rounded img-responsive">
+                <a href="/students/{{$student->id}}/edit">
                     <h4>{{ $student->name }} {{ $student->age }}</h4>
                 </a>
                 <p>{{ $student->level->name ?? '' }}</p>
                 <p class="small">{{ $student->address}}</p>
             </div>
             <div class="panel-footer">
-                <a href="/students/edit/{{ $student->id }}" class="btn btn-success form-control"> Edit Information</a>
+                <a href="/students/{{ $student->id }}/edit" class="btn btn-success form-control"> Edit Information</a>
             </div>
         </div>
     </div>

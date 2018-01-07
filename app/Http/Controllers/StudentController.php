@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Auth;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class StudentController extends Controller
 
     public function index()
     {
-        $students = Student::paginate(20);
+        $students = Student::orderBy('id', 'desc')->paginate(20);
         return view('students.index', compact('students'));
     }
 
@@ -30,7 +31,8 @@ class StudentController extends Controller
     {
         $classrooms = Classroom::all();
         $levels = Level::all();
-        return view('students.create', compact('classrooms', 'levels'));
+        $student = new Student();
+        return view('students.create', compact('classrooms', 'levels', 'student'));
     }
 
     /**
@@ -40,19 +42,25 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $student = Student::create($request->all());
+        $student = new Student($request->all());
+        $student->school_id = Auth::user()->school_id;
+        if (! $student->save()) {
+            // Return back with errors
+        }
 
         //todo decide weather students need to use the same login or a unique one
         User::create([
             'name' => $student->name,
+            'username' => str_plural($student->name),
             'email' => request('email'),
             'password' => bcrypt(request('password')),
             'userable_id' => $student->id,
+            'school_id' => $student->school_id,
             'userable_type' => 'Student'
         ]);
 
-        if (Auth::check() && Auth::user()->hasRole('Admin')) {
-            return redirect('/students');
+        if (Auth::check() && Auth::user()->hasRole('Admin') || Auth::user()->hasRole('Teacher')) {
+            return redirect('/students/'.$student->id);
         }
 
         return redirect('login');
@@ -91,8 +99,7 @@ class StudentController extends Controller
      */
     public function update(Student $student)
     {
-        $input = request(['name','gender', 'age', 'address', 'classroom_id', 'level_id']);
-        $student->fill($input)->save();
+        $student->fill(request()->all())->save();
         return redirect('/students');
     }
 

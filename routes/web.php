@@ -46,13 +46,7 @@ Route::group([
     /**
      * The Student routes
      */
-    Route::get('/students/create', 'StudentController@create');
-    Route::get('/students', 'StudentController@index');
-    Route::post('/students', 'StudentController@store');
-    Route::get('/students/{student}', 'StudentController@show');
-    Route::get('/students/edit/{student}', 'StudentController@edit');
-    Route::post('/students/{student}', 'StudentController@update');
-    Route::get('/students/delete/{student}', 'StudentController@destroy');
+    Route::resource('students', 'StudentController');
 
     Route::get('/studentpage', 'StudentPageController@index');
     Route::get('/studentpage/edit/{student}', 'StudentPageController@edit');
