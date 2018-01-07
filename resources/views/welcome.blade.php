@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/css/welcome.css">
 </head>
 <body>
-<section class="hero is-medium">
+<section class="hero is-success is-medium">
     <div class="hero-head">
         <nav class="navbar">
             <div class="container">
