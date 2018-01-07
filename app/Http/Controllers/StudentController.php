@@ -13,7 +13,7 @@ class StudentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:Admin')->except('create', 'store');
+        $this->middleware('auth')->except('create', 'store');
     }
 
     public function index()

@@ -44,14 +44,14 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <img src="/{{$teacher->photo_url}}" alt="photo" class="img-rounded img-responsive">
-                    <a href="/teachers/edit/{{$teacher->id}}">
+                    <a href="/teachers/{{$teacher->id}}/edit">
                         <h4>{{ $teacher->name }} {{ $teacher->age }}</h4>
                     </a>
                     <p>{{ $teacher->level->name ?? '' }}</p>
                     <p class="small">{{ $teacher->address}}</p>
                 </div>
                 <div class="panel-footer">
-                    <a href="/teachers/edit/{{ $teacher->id }}" class="btn btn-success form-control"> Edit Information</a>
+                    <a href="/teachers/{{ $teacher->id }}/edit" class="btn btn-success form-control"> Edit Information</a>
                 </div>
             </div>
         </div>

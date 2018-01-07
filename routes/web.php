@@ -31,13 +31,7 @@ Route::group([
     /**
      * The Teacher routes
      */
-    Route::get('/teachers/create', 'TeacherController@create');
-    Route::get('/teachers', 'TeacherController@index');
-    Route::post('/teachers', 'TeacherController@store');
-    Route::get('/teachers/{teacher}', 'TeacherController@show');
-    Route::get('/teachers/edit/{teacher}', 'TeacherController@edit');
-    Route::post('/teachers/{teacher}', 'TeacherController@update');
-    Route::get('/teachers/delete/{teacher}', 'TeacherController@destroy');
+    Route::resource('teachers', 'TeacherController');
 
     Route::get('/teacherpage', 'TeacherPageController@index');
     Route::get('/teacherpage/edit/{teacher}', 'TeacherPageController@edit');

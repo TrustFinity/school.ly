@@ -11612,6 +11612,7 @@ __webpack_require__(36);
 Vue.component('example', __webpack_require__(44));
 Vue.component('TeacherKanban', __webpack_require__(46));
 Vue.component('FormInput', __webpack_require__(45));
+Vue.component('Search', __webpack_require__(66));
 
 var app = new Vue({
   el: '#app'
@@ -45827,6 +45828,216 @@ module.exports = function(module) {
 __webpack_require__(13);
 module.exports = __webpack_require__(14);
 
+
+/***/ }),
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+    name: 'Search',
+    props: {
+        url: {
+            type: String,
+            required: true
+        },
+        resource: {
+            type: String,
+            required: true
+        }
+    },
+    data: function data() {
+        return {
+            search_term: '',
+            searchResults: []
+        };
+    },
+
+    methods: {
+        performSearch: function performSearch() {
+            console.log(this.search_term);
+        }
+    }
+};
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)();
+exports.push([module.i, "\n.search[data-v-5eb2c006] {\n    height: 60px;\n    margin-bottom: -5px;\n    font-size: 3em;\n}\n", ""]);
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(68)
+}
+var Component = __webpack_require__(3)(
+  /* script */
+  __webpack_require__(64),
+  /* template */
+  __webpack_require__(67),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  "data-v-5eb2c006",
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "/Users/ambrose/Sites/schoolly/resources/assets/js/components/Forms/Search.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Search.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5eb2c006", Component.options)
+  } else {
+    hotAPI.reload("data-v-5eb2c006", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', [_c('div', {
+    staticClass: "form-group"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.search_term),
+      expression: "search_term"
+    }],
+    staticClass: "form-control text-center search",
+    attrs: {
+      "type": "text",
+      "placeholder": 'Search ' + _vm.resource + ' here....'
+    },
+    domProps: {
+      "value": (_vm.search_term)
+    },
+    on: {
+      "keyup": _vm.performSearch,
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.search_term = $event.target.value
+      }
+    }
+  })]), _vm._v(" "), _vm._l((_vm.searchResults), function(student) {
+    return _c('div', {
+      staticClass: "results"
+    }, [_c('div', {
+      staticClass: "panel panel-default"
+    }, [_c('div', {
+      staticClass: "panel-body"
+    }, [_c('div', {
+      staticClass: "row"
+    }, [_c('div', {
+      staticClass: "col-sm-1"
+    }, [_c('img', {
+      staticClass: "img-circle img-responsive",
+      attrs: {
+        "src": student.photo_url,
+        "alt": "Photo"
+      }
+    })]), _vm._v(" "), _c('div', {
+      staticClass: "col-sm-4"
+    }, [_c('a', {
+      attrs: {
+        "href": '/' + _vm.resource + '/' + student.id
+      }
+    }, [_c('h4', [_vm._v(_vm._s(student.name) + ", " + _vm._s(student.age))])]), _vm._v(" "), _c('p', [_vm._v(_vm._s(student.level.name) + " " + _vm._s(student.classroom.name))])]), _vm._v(" "), _c('div', {
+      staticClass: "col-sm-7"
+    }, [_vm._v("\n                        " + _vm._s(student.address) + "\n                    ")])])])])])
+  })], 2)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-5eb2c006", module.exports)
+  }
+}
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(65);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(12)("33de132b", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5eb2c006\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Search.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5eb2c006\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Search.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 /******/ ]);

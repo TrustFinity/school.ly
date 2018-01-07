@@ -17,6 +17,7 @@ require('./bootstrap');
 Vue.component('example', require('./components/Example.vue'));
 Vue.component('TeacherKanban', require('./components/TeacherKanban.vue'));
 Vue.component('FormInput', require('./components/Forms/FormInput.vue'));
+Vue.component('Search', require('./components/Forms/Search.vue'));
 
 const app = new Vue({
     el: '#app'
