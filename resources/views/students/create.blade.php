@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <legend>Add a new Student</legend>
+    <legend>Add a new {{ getPreference()->attendants_type }}</legend>
 
     <form action="/students" method="POST" role="form">
         {{ csrf_field() }}
@@ -12,7 +12,7 @@
                     <div class="col-md-8 col-md-offset-2">
 
                         <div class="form-group">
-                            <label for="">Name</label>
+                            <label for="">What is the name of the {{ getPreference()->attendants_type }}</label>
                             <input name="name" type="text" class="form-control" placeholder="Enter Name">
                         </div>
                         <div class="form-group">

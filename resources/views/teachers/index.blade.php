@@ -3,11 +3,11 @@
 @section('content')
     <div class="row">
         <div class="col-sm-6">
-            <h3 class="text-info">Teachers</h3>
-            <p>A listing of all the teachers registered on the platform both support and permanent.</p>
+            <h3 class="text-info">{{ getPreference()->instructors_type }}</h3>
+            <p>A listing of all the {{ getPreference()->instructors_type }} registered on the platform both support and permanent.</p>
         </div>
         <div class="col-sm-6">
-            <a href="/teachers/create" class="btn btn-success pull-right">Add new Teacher</a>
+            <a href="/teachers/create" class="btn btn-success pull-right">Add new {{ getPreference()->instructors_type }}</a>
         </div>
     </div>
     <div class="row">
