@@ -12,14 +12,16 @@
     "bootstrap-sass": "^3.3.7",
     "cross-env": "^5.1.1",
     "jquery": "^3.1.1",
-    "laravel-mix": "^0.6.0",
+    "webpack": "2.2.1",
+    "laravel-mix": "^0.8.1",
     "lodash": "^4.17.4",
     "vue": "^2.5.13",
     "vue-loader": "^12.2.2",
-    "vue-template-compiler": "^2.4.2",
+    "vue-template-compiler": "^2.5.13",
     "vueify": "^9.4.1"
   },
   "dependencies": {
+    "bulma": "^0.6.1",
     "vue-kanban": "^1.2.0",
     "vuedraggable": "^2.16.0"
   }

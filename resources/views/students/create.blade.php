@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     <legend>Add a new Student</legend>
 
     <form action="/students" method="POST" role="form">
