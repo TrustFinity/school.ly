@@ -6,11 +6,13 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "components/jquery": "^3.2",
         "fzaninotto/faker": "^1.7",
         "consoletvs/charts": "5.*",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "laravelcollective/html": "^5.4.0"
+        "laravelcollective/html": "^5.4.0",
+        "twbs/bootstrap": "^3.3"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",

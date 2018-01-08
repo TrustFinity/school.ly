@@ -23,6 +23,7 @@
   "dependencies": {
     "bulma": "^0.6.1",
     "vue-kanban": "^1.2.0",
-    "vuedraggable": "^2.16.0"
+    "vuedraggable": "^2.16.0",
+    "twitter-bootstrap-wizard": "^1.2.0"
   }
 }
