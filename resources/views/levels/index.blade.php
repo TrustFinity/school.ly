@@ -19,7 +19,7 @@
                         <h4>Level Name</h4>
                     </div>
                     <div class="col-xs-5">
-                        <h4>Has dive following subjects</h4>
+                        <h4>Has the following subjects</h4>
                     </div>
                     <div class="col-xs-2 pull-right">
                         <h4>Actions</h4>
