@@ -13,8 +13,9 @@
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-body">
-                <h1>Search text box will be here</h1>
-                <p class="small">It will be an auto complete ajax searche field</p>
+                <search-teachers :url="'/api/v1/search/teachers'"
+                                 :resource="'teachers'">
+                </search-teachers>
             </div>
         </div>
     </div>
