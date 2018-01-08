@@ -13,9 +13,9 @@
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-body">
-                <teachers-search :url="'/api/v1/search/teachers'"
+                <search-teachers :url="'/api/v1/search/teachers'"
                                  :resource="'teachers'">
-                </teachers-search>
+                </search-teachers>
             </div>
         </div>
     </div>

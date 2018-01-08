@@ -33,7 +33,7 @@
 </template>
 <script>
     export default {
-        name: 'TeachersSearch',
+        name: 'SearchTeachers',
         props: {
             url: {
                 type: String,
