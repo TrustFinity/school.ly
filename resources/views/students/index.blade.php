@@ -13,7 +13,7 @@
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-body">
-                <search :url="'/api/v1/students/search'" :resource="'students'"></search>
+                <search-student :url="'/api/v1/search/students'" :resource="'students'"></search-student>
             </div>
         </div>
     </div>

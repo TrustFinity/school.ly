@@ -1,5 +1,5 @@
 <template>
-    <div id="board">
+    <div id="board" v-cloak>
         <div class="row">
             <!--<div class="col-md-12">-->
                 <!--<div class = "checkbox">-->
@@ -182,7 +182,7 @@
             }
         },
         created() {
-            axios.get('/api/teachers-kanban/'+this.teacher.id)
+            axios.get('/api/v1/teachers-kanban/'+this.teacher.id)
                 .then((response) => {
                     if (response.data.length === 0) {
                         // show default create kanban cards

@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" href="/css/welcome.css">
 </head>
 <body>
-<section class="hero is-success is-medium">
+<section class="hero is-large is-success">
     <div class="hero-head">
         <nav class="navbar">
             <div class="container">
@@ -48,14 +48,13 @@
     <div class="hero-body">
         <div class="container has-text-centered">
             <h1 class="title">
-                A faster route to the best talent.
+                Transform your classroom with {{ config('app.name') }}
             </h1>
             <h2 class="subtitle">
-                We make it easy to hire, manage & pay talent from staffing agencies.
+                {{ config('app.name') }} streamlines assignments, boosts collaboration, and fosters seamless communication to make teaching more productive and meaningful.
             </h2>
         </div>
     </div>
-
 </section>
 
 <div class="box cta">
