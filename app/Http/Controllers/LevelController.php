@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\Classes\Level;
 
@@ -19,55 +20,29 @@ class LevelController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('levels.create');
-    }
-
-    /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return \Illuminate\Http\Response
+     * @internal param Request $request
      */
-    public function store()
+    public function store(Request $request)
     {
-        Level::create(request(['name']));
+        $level = new Level();
+        $level->school_id = Auth::user()->school_id;
+        $level->name = $request->name;
+        if ( ! $level->save() ){
+            // flash something with an error message
+        }
+
         return redirect('/levels');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Level  $level
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Level $level)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Level  $level
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Level $level)
-    {
-        return view('levels.edit', compact('level'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Level  $level
+     * @param Level|\App\Models\Level $level
      * @return \Illuminate\Http\Response
+     * @internal param Request $request
      */
     public function update(Level $level)
     {
@@ -80,13 +55,12 @@ class LevelController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Level  $level
+     * @param Level|\App\Models\Level $level
      * @return \Illuminate\Http\Response
      */
     public function destroy(Level $level)
     {
         $level->delete();
-
         return redirect('/levels');
     }
 }

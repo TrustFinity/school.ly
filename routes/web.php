@@ -73,13 +73,7 @@ Route::group([
     /**
      * The Level routes
      */
-    Route::get('/levels/create', 'LevelController@create');
-    Route::get('/levels', 'LevelController@index');
-    Route::post('/levels', 'LevelController@store');
-    Route::get('/levels/{level}', 'LevelController@show');
-    Route::get('/levels/edit/{level}', 'LevelController@edit');
-    Route::post('/levels/{level}', 'LevelController@update');
-    Route::get('/levels/delete/{level}', 'LevelController@destroy');
+    Route::resource('levels', 'LevelController');
 
     /**
      * The Subject routes
