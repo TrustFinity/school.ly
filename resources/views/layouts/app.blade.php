@@ -18,7 +18,6 @@
 
     <!-- Styles -->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('css/form-wizard.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
