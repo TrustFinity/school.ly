@@ -38,7 +38,7 @@
                     </div>
                     <div class="form-group">
                     <label for="">Class</label>
-                    <select name="class_group_id" id="inputclassroom_id" class="form-control" required="required">
+                    <select name="class_group_id" id="inputstream_id" class="form-control" required="required">
                         @foreach ($class_groups as $class_group)
                         <option value="{{ $class_group->id }}">{{ $class_group->name }}</option>
                         @endforeach

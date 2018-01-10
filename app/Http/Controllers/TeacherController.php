@@ -96,7 +96,7 @@ class TeacherController extends Controller
      */
     public function update(Teacher $teacher)
     {
-        $input = request(['name','experience', 'classroom_id']);
+        $input = request(['name','experience', 'stream_id']);
         $teacher->fill($input)->save();
         return redirect('/teachers');
     }

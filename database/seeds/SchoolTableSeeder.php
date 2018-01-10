@@ -15,14 +15,16 @@ class SchoolTableSeeder extends Seeder
                 'slug' => str_slug($school_name)
             ]);
 
+            $school_id = School::where('slug', str_slug($school_name))->first()->id;
+
             $admin = new Admin([
+                'school_id' => $school_id,
                 'name'      => $school_name,
                 'username'  => str_slug($school_name)
             ]);
 
             if ($admin->save() && $new_school->save()) {
                 $admin_id  = Admin::where('username', str_slug($school_name))->first()->id;
-                $school_id = School::where('slug', str_slug($school_name))->first()->id;
 
                 User::create([
                     'school_id'     => $school_id,

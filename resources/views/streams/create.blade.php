@@ -6,7 +6,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="col-md-6 col-md-offset-3">
-                    <form action="/classrooms" method="POST" role="form">
+                    <form action="/streams" method="POST" role="form">
                         {{ csrf_field() }}
 
                         <div class="form-group">

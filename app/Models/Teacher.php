@@ -25,8 +25,8 @@ class Teacher extends Model
     protected $fillable = [
         'name',
         'gender',
-        // 'classroom_id',
-        'classgroup_id',
+        // 'stream_id',
+        'class_group_id',
         'level_id',
         'experience',
         'phone'
@@ -35,8 +35,8 @@ class Teacher extends Model
     public static $validationRules = [
         'name'          => 'required|string',
         'gender'        => 'required',
-        // 'classroom_id'  => 'required|integer',
-        'classgroup_id' => 'required|integer',
+        // 'stream_id'  => 'required|integer',
+        'class_group_id' => 'required|integer',
         'level_id'      => 'required|integer',
         'experience'    => 'required|string',
         'phone'         => 'required|digits_between:7,10',
@@ -49,12 +49,12 @@ class Teacher extends Model
 
     public function classgroup()
     {
-        return $this->belongsTo(ClassGroup::class, 'classgroup_id');
+        return $this->belongsTo(ClassGroup::class, 'class_group_id');
     }
 
     public function stream()
     {
-        return $this->belongsTo(Stream::class, 'classroom_id');
+        return $this->belongsTo(Stream::class, 'stream_id');
     }
 
     public function level()
