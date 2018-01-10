@@ -43,7 +43,7 @@
         <div class="col-sm-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <img src="/{{$teacher->photo_url}}" alt="photo" class="img-rounded img-responsive">
+                    <img src="{{$teacher->photo_url ?: '/img/person.png'}}" alt="photo" class="img-rounded img-responsive">
                     <a href="/teachers/{{$teacher->id}}/edit">
                         <h4>{{ $teacher->name }} {{ $teacher->age }}</h4>
                     </a>

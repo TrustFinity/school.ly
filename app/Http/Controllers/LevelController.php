@@ -30,7 +30,7 @@ class LevelController extends Controller
         $level = new Level();
         $level->school_id = Auth::user()->school_id;
         $level->name = $request->name;
-        if ( ! $level->save() ){
+        if (! $level->save()) {
             // flash something with an error message
         }
 

@@ -32,7 +32,7 @@ class School extends Model
 
     public function preferences()
     {
-        return $this->belongsTo(Setting::class);
+        return $this->hasOne(Setting::class);
     }
 
     public function streams()

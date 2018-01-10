@@ -27,7 +27,7 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-1">
-                        <img src="/{{ $teacher->photo_url }}" alt="Photo" class="img-thumbnail img-responsive">
+                        <img src="{{ $teacher->photo_url ?: '/img/person.png' }}" alt="Photo" class="img-thumbnail img-responsive">
                     </div>
                     <div class="col-sm-4">
                         <a href="/teachers/{{ $teacher->id }}">

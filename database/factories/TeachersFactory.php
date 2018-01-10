@@ -22,6 +22,6 @@ $factory->define(App\Models\Teacher::class, function ($faker) {
         'next_of_kin_names' => $faker->name,
         'next_of_kin_phone_number' => $faker->phoneNumber,
         'address' => $faker->address,
-        'photo_url' => 'photos/crane.jpg',
+        'photo_url' => null,
     ];
 });
