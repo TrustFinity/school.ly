@@ -14,10 +14,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Darasini</title>
+    <title>Darasani</title>
 
     <!-- Styles -->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/form-wizard.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -41,8 +42,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Darasini') }}
+                    <a class="navbar-brand" href="{{ url('/dashboard') }}">
+                        {{ config('app.name', 'Darasani') }}
                     </a>
                 </div>
 
@@ -57,8 +58,8 @@
                                     <li><a href="/settings">Preferences</a></li>
                                     <li><a href="/levels">Levels</a></li>
                                     <li><a href="/subjects">Subjects</a></li>
-                                    <li><a href="/classgroups">Class Groups</a></li>
-                                    <li><a href="/classrooms">Class Rooms</a></li>
+                                    <li><a href="/class-groups">Class Groups</a></li>
+                                    <li><a href="/streams">Class Streams</a></li>
                                 </ul>
                             </li>
                             <li><a href="/students">Students</a></li>
@@ -118,13 +119,53 @@
                 </div>
             </div>
         </nav>
-    <div class="container">
 
-        @yield('content')
+        <div class="container">
 
-    </div>
+            @yield('content')
+
+        </div>
     </div>
     <!-- Scripts -->
     <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.bootstrap.wizard.min.js') }}"></script>
+
+    <script type="text/javascript">
+        $(window).load(function(){
+            $('#rootwizard').bootstrapWizard({
+                onTabShow: function(tab, navigation, index) {
+                    var $total = navigation.find('li').length;
+                    var $current = index+1;
+
+                    // If it's the last tab then hide the last button and show the finish instead
+                    if($current >= $total) {
+                        $('#rootwizard').find('.pager .next').hide();
+                        $('#rootwizard').find('.pager .finish').show();
+                        $('#rootwizard').find('.pager .finish').removeClass('disabled');
+                    } else {
+                        $('#rootwizard').find('.pager .next').show();
+                        $('#rootwizard').find('.pager .finish').hide();
+                    }
+                },
+                onNext: function(tab, navigation, index) {
+                    var form = $('form[name="step'+ index +'"]');
+                    form.parsley().validate();
+                    if (!form.parsley().isValid()) {
+                        return false;
+                    }
+
+                },
+
+                onTabClick: function(tab, navigation, index) {
+                    var form = $('form[name="step'+ (index+1) +'"]');
+                    form.parsley().validate();
+                    if (!form.parsley().isValid()) {
+                        return false;
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -5,7 +5,7 @@ namespace App\Models;
 use App\Scopes\SchoolScope;
 use App\Models\Classes\Level;
 use App\Models\Classes\Subject;
-use App\Models\Classes\Classroom;
+use App\Models\Classes\Stream;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -15,12 +15,12 @@ class Student extends Model
         'middle_name',
         'last_name',
         'gender',
-        'age',
+        'dob',
         'address',
         'parents_names',
         'parents_phone_numbers',
-        'classroom_id',
-        'level_id',
+        'stream_id',
+        'level_id'
     ];
 
     public static $validationRules = [
@@ -28,12 +28,11 @@ class Student extends Model
         'middle_name'          => 'sometimes|string',
         'last_name'          => 'required|string',
         'gender'        => 'required',
-        'age'           => 'required|integer',
+        'dob'           => 'required|date',
         'address'       => 'required|text',
-        'classroom_id'  => 'required|integer',
+        'stream_id'     => 'required|integer',
         'parents_names'  => 'required|string',
-        'level_id'      => 'sometimes|integer',
-        'parents_phone_number'      => 'sometimes|integer',
+        'level_id'      => 'required|integer',
     ];
 
     /**
@@ -52,14 +51,14 @@ class Student extends Model
         return $this->morphOne(User::class, 'userable');
     }
 
-    public function classroom()
+    public function stream()
     {
-        return $this->belongsTo(Classroom::class, 'classroom_id');
+        return $this->belongsTo(Stream::class);
     }
 
     public function level()
     {
-        return $this->belongsTo(Level::class, 'level_id');
+        return $this->belongsTo(Level::class);
     }
 
     public function subjects()

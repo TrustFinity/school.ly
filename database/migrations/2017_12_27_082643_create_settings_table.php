@@ -16,11 +16,12 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('school_id')->unsigned()->indexed();
-            $table->string('institution_type')->nullable()->default('Secondary');
-            $table->integer('lower_grade_level')->default(40);
-            $table->integer('upper_grade_level')->default(75);
-            $table->string('instructors_type')->nullable()->default('Teachers');
-            $table->string('attendants_type')->nullable()->default('Students');
+
+            $table->string('institution_type')->nullable();
+            $table->integer('lower_grade_level')->nullable();
+            $table->integer('upper_grade_level')->nullable();
+            $table->string('instructors_type')->default('Teachers');
+            $table->string('attendants_type')->default('Students');
             $table->timestamps();
 
             $table->foreign('school_id')->references('id')->on('schools');

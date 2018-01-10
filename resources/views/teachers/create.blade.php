@@ -38,9 +38,9 @@
                     </div>
                     <div class="form-group">
                     <label for="">Class</label>
-                    <select name="classgroup_id" id="inputclassroom_id" class="form-control" required="required">
-                        @foreach ($classgroups as $classgroup)
-                        <option value="{{ $classgroup->id }}">{{ $classgroup->name }}</option>
+                    <select name="class_group_id" id="inputclassroom_id" class="form-control" required="required">
+                        @foreach ($class_groups as $class_group)
+                        <option value="{{ $class_group->id }}">{{ $class_group->name }}</option>
                         @endforeach
                     </select>
                     </div>
@@ -61,9 +61,7 @@
                         <input type="password" name="password_confirmation" id="inputPassword" class="form-control" required="required" title="">
                     </div>
 
-
-
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-success pull-right">Submit</button>
                 </form>
             </div>
         </div>

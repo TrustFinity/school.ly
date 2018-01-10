@@ -14,14 +14,15 @@ function getClass(string $alias)
 {
     return [
        's'  => App\Models\School::class,
+       'set' => App\Models\Settings\Setting::class,
 
        'u'  => App\Models\User::class,
        'a'  => App\Models\Admin::class,
        't'  => App\Models\Teacher::class,
        'st' => App\Models\Student::class,
 
-       'cg' => App\Models\Classes\Classgroup::class,
-       'cr' => App\Models\Classes\Classroom::class,
+       'cg'  => App\Models\Classes\ClassGroup::class,
+       'str' => App\Models\Classes\Stream::class,
        'l'  => App\Models\Classes\Level::class,
        'sb' => App\Models\Classes\Subject::class,
 

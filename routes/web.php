@@ -47,28 +47,28 @@ Route::group([
     Route::post('/studentpage/{student}', 'StudentPageController@update');
 
     /**
-     * The Classgroup routes
+     * The ClassGroup routes
      */
-    Route::get('/classgroups/create', 'ClassgroupController@create');
-    Route::get('/classgroups', 'ClassgroupController@index');
-    Route::post('/classgroups', 'ClassgroupController@store');
-    Route::get('/classgroups/{classgroup}', 'ClassgroupController@show');
-    Route::get('/classgroups/edit/{classgroup}', 'ClassgroupController@edit');
-    Route::post('/classgroups/{classgroup}', 'ClassgroupController@update');
-    Route::get('/classgroups/delete/{classgroup}', 'ClassgroupController@destroy');
+    Route::get('/class-groups/create', 'ClassGroupController@create');
+    Route::get('/class-groups', 'ClassGroupController@index');
+    Route::post('/class-groups', 'ClassGroupController@store');
+    Route::get('/class-groups/{class_group}', 'ClassGroupController@show');
+    Route::get('/class-groups/edit/{class_group}', 'ClassGroupController@edit');
+    Route::post('/class-groups/{class_group}', 'ClassGroupController@update');
+    Route::get('/class-groups/delete/{class_group}', 'ClassGroupController@destroy');
 
 
 
     /**
-     * The Classroom routes
+     * The Stream routes
      */
-    Route::get('/classrooms/create', 'ClassroomController@create');
-    Route::get('/classrooms', 'ClassroomController@index');
-    Route::post('/classrooms', 'ClassroomController@store');
-    Route::get('/classrooms/{classroom}', 'ClassroomController@show');
-    Route::get('/classrooms/edit/{classroom}', 'ClassroomController@edit');
-    Route::post('/classrooms/{classroom}', 'ClassroomController@update');
-    Route::get('/classrooms/delete/{classroom}', 'ClassroomController@destroy');
+    Route::get('/streams/create', 'StreamController@create');
+    Route::get('/streams', 'StreamController@index');
+    Route::post('/streams', 'StreamController@store');
+    Route::get('/streams/{stream}', 'StreamController@show');
+    Route::get('/streams/edit/{stream}', 'StreamController@edit');
+    Route::post('/streams/{stream}', 'StreamController@update');
+    Route::get('/streams/delete/{stream}', 'StreamController@destroy');
 
     /**
      * The Level routes

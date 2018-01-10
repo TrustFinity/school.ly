@@ -44,6 +44,11 @@ class User extends Authenticatable
         return $this->morphTo();
     }
 
+    public function school()
+    {
+        return $this->belongsTo(School::class);
+    }
+
     public function hasRole($userable_type = null)
     {
         if ($userable_type) {

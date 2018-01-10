@@ -2,24 +2,17 @@
 
 namespace App\Models\Classes;
 
-use App\Scopes\SchoolScope;
+use App\Models\Student;
 use Illuminate\Database\Eloquent\Model;
 
 class Level extends Model
 {
     protected $guarded = [];
 
-    /**
-     * The "booting" method of the model.
-     *
-     * @return void
-     */
-    protected static function boot()
+    public function classGroups()
     {
-        parent::boot();
-        static::addGlobalScope(new SchoolScope());
+        return $this->hasMany(ClassGroup::class);
     }
-
 
     public function students()
     {

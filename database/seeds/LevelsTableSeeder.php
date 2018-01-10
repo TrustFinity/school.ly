@@ -1,7 +1,8 @@
 <?php
 
-use App\Models\Level;
+use App\Models\Classes\Level;
 use Illuminate\Database\Seeder;
+use App\Models\Classes\ClassGroup;
 
 class LevelsTableSeeder extends Seeder
 {
@@ -12,17 +13,18 @@ class LevelsTableSeeder extends Seeder
      */
     public function run()
     {
-        foreach ([
-            'Pre-School',
-            'Nursery',
-            'Primary',
-            'Ordinary Level',
-            'Advanced Level',
-            'Technical School',
-            'University'
-        ] as $level) {
-            Level::create([
-                'name' => $level
+        //seed for first school (Primary)
+        Level::create([
+            'name' => 'Primary'
+        ]);
+
+        $level_id = Level::all()->last()->id;
+
+        foreach (LEVELS['Primary'] as $index => $name) {
+            ClassGroup::create([
+                'school_id' => 1,
+                'level_id'  => $level_id,
+                'name'      => $name
             ]);
         }
     }

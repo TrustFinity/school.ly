@@ -52,6 +52,7 @@
                             <label for="">How old is the {{ getPreference()->attendants_type }} now ?</label>
                             <p class="small">This is required</p>
                             <input name="age" type="number" class="form-control" value="{{ old('age', $student->age) }}">
+                            {{-- {{ Carbon\Carbon::now()->diffInYears(Carbon\Carbon::parse($student->dob)) }} --}}
                         </div>
 
                     </div>

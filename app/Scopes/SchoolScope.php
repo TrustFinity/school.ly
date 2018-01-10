@@ -1,15 +1,6 @@
 <?php
 namespace App\Scopes;
 
-
-
-/**
- * Created by PhpStorm.
- * User: ambrose
- * Date: 28/12/2017
- * Time: 05:50
- */
-
 use Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
