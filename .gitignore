@@ -47,12 +47,9 @@ Temporary Items
 .apdisk
 
 #Laravel
-.env
+/.env
 
-
-#compiled resources and assets
 /node_modules
-
 /public/hot
 /public/css/app.css
 /public/js/app.js
@@ -67,4 +64,3 @@ Homestead.yaml
 npm-debug.log
 package-lock.json
 yarn-error.log
-/.env

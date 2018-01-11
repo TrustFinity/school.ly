@@ -13,11 +13,12 @@ use Illuminate\Http\Request;
 |
 */
 
-//->middleware('auth:api')
-Route::namespace('Api\v1')->group(function (){
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
 
-   Route::get('/v1/teachers-kanban/{teacher}', 'KanbanApiController@loadForTeacher');
-   Route::post('/v1/search/students', 'StudentApiController@search');
-   Route::post('/v1/search/teachers', 'TeacherApiController@search');
-
+Route::namespace('Api\v1')->group(function () {
+    Route::get('/v1/teachers-kanban/{teacher}', 'KanbanApiController@loadForTeacher');
+    Route::post('/v1/search/students', 'StudentApiController@search');
+    Route::post('/v1/search/teachers', 'TeacherApiController@search');
 });

@@ -6,7 +6,8 @@
  */
 
 require('./bootstrap');
-// require('bulma');
+
+window.Vue = require('vue');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -14,7 +15,6 @@ require('./bootstrap');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
 Vue.component('TeacherKanban', require('./components/TeacherKanban.vue'));
 Vue.component('FormInput', require('./components/Forms/FormInput.vue'));
 Vue.component('SearchStudent', require('./components/Forms/SearchStudent.vue'));
