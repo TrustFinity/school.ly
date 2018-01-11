@@ -13,13 +13,13 @@ class KanbanSeeder extends Seeder
      */
     public function run()
     {
-        foreach (Teacher::all() as $teacher){
-            for ($i = 0; $i < 10; $i++){
+        foreach (Teacher::all() as $teacher) {
+            for ($i = 0; $i < 10; $i++) {
                 $kanban = factory(Kanban::class)->make();
                 $kanban->school_id = $teacher->school_id;
                 $kanban->teacher_id = $teacher->id;
                 $kanban->subject_id = $teacher->subject ? $teacher->subject->id : null;
-                $kanban->classgroup_id = $teacher->classgroup->id;
+                $kanban->class_group_id = $teacher->classgroup->id;
                 $kanban->save();
             }
         }

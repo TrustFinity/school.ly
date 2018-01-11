@@ -32,7 +32,7 @@ class StudentController extends Controller
         $streams = Stream::all();
         $levels = Level::all();
         $student = new Student();
-        return view('students.create', compact('classrooms', 'levels', 'student'));
+        return view('students.create', compact('streams', 'levels', 'student'));
     }
 
     /**

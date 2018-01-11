@@ -20,7 +20,7 @@
                             <a :href="'/'+resource+'/'+student.id">
                                 <h4>{{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}, {{ student.age }}</h4>
                             </a>
-                            <p> {{ student.classroom.name }}</p>
+                            <p> {{ student.stream.name }}</p>
                         </div>
                         <div class="col-sm-7">
                             {{ student.address }}

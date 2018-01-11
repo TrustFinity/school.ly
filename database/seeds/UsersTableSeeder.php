@@ -38,7 +38,7 @@ class UsersTableSeeder extends Seeder
         //     $teacher = Teacher::create([
         //         'name'          => $faker->name($gender),
         //         'gender'        => $gender,
-        //         // 'classroom_id'  => '',
+        //         // 'stream_id'  => '',
         //         'level_id'      => '',
         //         'experience'    => '',
         //         'phone'         => $faker->phoneNumber
@@ -62,7 +62,7 @@ class UsersTableSeeder extends Seeder
         //         'gender' => $gender,
         //         'dob'    => $faker->dateTimeBetween($startDate = '-19 years', $endDate = '-12 years'),
         //         'address' => $faker->streetAddress,
-        //         // 'classroom_id' => '',
+        //         // 'stream_id' => '',
         //         // 'level_id' => '',
         //     ]);
 

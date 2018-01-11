@@ -17,11 +17,11 @@ $factory->define(App\Models\Teacher::class, function ($faker) {
         'middle_name' => $faker->lastName,
         'last_name' => $faker->lastName,
         'gender' => $faker->randomElement(['Male', 'Female']),
-        'age' => $faker->numberBetween(3, 25),
+        'dob' => $faker->dateTimeBetween($startDate = '-60 years', $endDate = '-23'),
         'experience' => $faker->numberBetween(0, 5).' yrs',
         'next_of_kin_names' => $faker->name,
         'next_of_kin_phone_number' => $faker->phoneNumber,
         'address' => $faker->address,
-        'photo_url' => 'photos/crane.jpg',
+        'photo_url' => null,
     ];
 });

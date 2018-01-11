@@ -8,9 +8,9 @@ use App\Http\Controllers\Controller;
 
 class StudentApiController extends Controller
 {
-    public function search (Request $request)
+    public function search(Request $request)
     {
-        $students = Student::with(['classroom', 'level'])
+        $students = Student::with(['stream', 'level'])
                             ->where('first_name', 'LIKE', '%'.$request->search.'%')
                             ->limit(10)
                             ->get();

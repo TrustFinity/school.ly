@@ -74,7 +74,7 @@ class StreamController extends Controller
      */
     public function update(Stream $stream)
     {
-        $input = request(['name', 'classgroup_id']);
+        $input = request(['name', 'class_group_id']);
 
         $stream->fill($input)->save();
 

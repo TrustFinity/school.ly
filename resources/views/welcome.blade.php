@@ -48,7 +48,7 @@
     <div class="hero-body">
         <div class="container has-text-centered">
             <h1 class="title">
-                Transform your classroom with {{ config('app.name') }}
+                Transform your class room with {{ config('app.name') }}
             </h1>
             <h2 class="subtitle">
                 {{ config('app.name') }} streamlines assignments, boosts collaboration, and fosters seamless communication to make teaching more productive and meaningful.

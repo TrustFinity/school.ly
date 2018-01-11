@@ -49,10 +49,9 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="">How old is the {{ getPreference()->attendants_type }} now ?</label>
+                            <label for="">What is the date of birth of the {{ getPreference()->attendants_type }}?</label>
                             <p class="small">This is required</p>
-                            <input name="age" type="number" class="form-control" value="{{ old('age', $student->age) }}">
-                            {{-- {{ Carbon\Carbon::now()->diffInYears(Carbon\Carbon::parse($student->dob)) }} --}}
+                            <input name="dob" type="date" class="form-control" value="{{ old('dob', $student->dob) }}">
                         </div>
 
                     </div>
@@ -98,12 +97,12 @@
                     <div class="col-md-8 col-md-offset-2">
 
                         <div class="form-group">
-                            <label for="">What classroom does the {{ getPreference()->attendants_type }} go to ?</label>
+                            <label for="">What stream does the {{ getPreference()->attendants_type }} go to ?</label>
                             <p class="small">This is required, it can be a current class or the next class they are starting.</p>
-                            <select name="classroom_id" id="inputClassroom_id" class="form-control" required="required">
-                                @foreach ($classrooms as $classroom)
-                                    <option value="{{ $classroom->id }}" {{ $classroom->id === $student->classroom_id ? 'checked' : '' }}>
-                                        {{ $classroom->name }}</option>
+                            <select name="stream_id" id="inputstream_id" class="form-control" required="required">
+                                @foreach ($streams as $stream)
+                                    <option value="{{ $stream->id }}" {{ $stream->id === $student->stream_id ? 'checked' : '' }}>
+                                        {{ $stream->name }}</option>
                                 @endforeach
                             </select>
                         </div>

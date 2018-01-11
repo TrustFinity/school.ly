@@ -14,7 +14,7 @@ class TeachersSeeder extends Seeder
     {
         for ($i = 0; $i < 50; $i++) {
             $teacher = factory(\App\Models\Teacher::class)->make();
-            $teacher->classgroup_id = Classgroup::inRandomOrder()->first()->id;
+            $teacher->class_group_id = Classgroup::inRandomOrder()->first()->id;
             $teacher->save();
         }
     }

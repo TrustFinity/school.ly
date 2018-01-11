@@ -19,8 +19,8 @@
                             <label for="">Experience</label>
                             <input name="experience" type="text" class="form-control" id="" placeholder="Enter Experience" value="{{ $teacher->experience}}">
                         </div>
-                                <div class="form-group">
-                                    <label for="">stream</label>
+                        <div class="form-group">
+                            <label for="">stream</label>
                             <select name="stream_id" id="inputstream_id" class="form-control" required="required">
                                 @foreach ($streams as $stream)
                                     @if ($teacher->stream_id == $stream->id)
@@ -30,6 +30,21 @@
                                     @endif
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Gender</label>
+                            <select name="gender" id="inputGender" class="form-control" required="required">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Teacher's date of birth?</label>
+                            <input name="dob" type="date" class="form-control" value="{{ $teacher->dob }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Phone</label>
+                            <input name="phone_number" type="text" class="form-control" value="{{ $teacher->phone_number }}">
                         </div>
 
                         <button type="submit" class="btn btn-success pull-right">Submit</button>
