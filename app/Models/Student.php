@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Scopes\SchoolScope;
 use App\Models\Classes\Level;
-use App\Models\Classes\Subject;
 use App\Models\Classes\Stream;
+use App\Models\Classes\Subject;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -46,6 +47,16 @@ class Student extends Model
         static::addGlobalScope(new SchoolScope());
     }
 
+    public function getNameAttribute()
+    {
+        return $this->first_name. ' '.$this->middle_name.' '.$this->last_name;
+    }
+
+    public function getAgeAttribute()
+    {
+        return Carbon::now()->diffInYears(Carbon::parse($this->dob));
+    }
+
     public function user()
     {
         return $this->morphOne(User::class, 'userable');
@@ -64,10 +75,5 @@ class Student extends Model
     public function subjects()
     {
         return $this->belongsToMany(Subject::class);
-    }
-
-    public function getNameAttribute()
-    {
-        return $this->first_name. ' '.$this->middle_name.' '.$this->last_name;
     }
 }

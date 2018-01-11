@@ -23,7 +23,7 @@ class CreateTeachersTable extends Migration
             $table->string('last_name');
             $table->enum('gender', ['Male', 'Female']);
             $table->string('experience');
-            $table->integer('age')->nullable();
+            $table->date('dob')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('address')->nullable();
             $table->string('photo_url')->nullable();

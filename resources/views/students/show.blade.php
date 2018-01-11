@@ -61,7 +61,7 @@
             <div class="panel-body">
                 <img src="{{ $student->photo_url ?: '/img/person.png'}}" alt="photo" class="img-rounded img-responsive">
                 <a href="/students/{{$student->id}}/edit">
-                    <h4>{{ $student->name }} {{ $student->age }}</h4>
+                    <h4>{{ $student->name }}, {{ $student->age }}</h4>
                 </a>
                 <p>{{ $student->level->name ?? '' }}</p>
                 <p class="small">{{ $student->address}}</p>

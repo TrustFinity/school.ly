@@ -48,9 +48,9 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="">How old is the {{ getPreference()->attendants_type }} now ?</label>
+                            <label for="">What is the date of birth of the {{ getPreference()->attendants_type }}?</label>
                             <p class="small">This is required</p>
-                            <input name="age" type="number" class="form-control" value="{{ old('age', $student->age) }}">
+                            <input name="dob" type="date" class="form-control" value="{{ old('dob', $student->dob) }}">
                         </div>
 
                     </div>

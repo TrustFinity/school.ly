@@ -28,21 +28,25 @@
                             <option>Female</option>
                         </select>
                     </div>
-                        <div class="form-group">
-                        <label for="">Level</label>
-                    <select name="level_id" id="inputLevel_id" class="form-control">
-                        @foreach ($levels as $level)
-                        <option value="{{ $level->id }}">{{ $level->name }}</option>
-                        @endforeach
-                    </select>
+                    <div class="form-group">
+                        <label for="">What is the date of birth of the teacher?</label>
+                        <input name="dob" type="date" class="form-control">
                     </div>
                     <div class="form-group">
-                    <label for="">Class</label>
-                    <select name="class_group_id" id="inputstream_id" class="form-control" required="required">
-                        @foreach ($class_groups as $class_group)
-                        <option value="{{ $class_group->id }}">{{ $class_group->name }}</option>
-                        @endforeach
-                    </select>
+                        <label for="">Level</label>
+                        <select name="level_id" id="inputLevel_id" class="form-control">
+                            @foreach ($levels as $level)
+                            <option value="{{ $level->id }}">{{ $level->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="">Class</label>
+                        <select name="class_group_id" id="inputstream_id" class="form-control" required="required">
+                            @foreach ($class_groups as $class_group)
+                            <option value="{{ $class_group->id }}">{{ $class_group->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="">Experience</label>

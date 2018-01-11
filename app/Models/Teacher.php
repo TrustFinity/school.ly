@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Scopes\SchoolScope;
 use App\Models\Classes\Level;
 use App\Models\Classes\Stream;
@@ -42,6 +43,16 @@ class Teacher extends Model
         'phone'         => 'required|digits_between:7,10',
     ];
 
+    public function getNameAttribute()
+    {
+        return $this->first_name. ' '.$this->middle_name.' '.$this->last_name;
+    }
+
+    public function getAgeAttribute()
+    {
+        return Carbon::now()->diffInYears(Carbon::parse($this->dob));
+    }
+
     public function user()
     {
         return $this->morphOne(User::class, 'userable');
@@ -65,10 +76,5 @@ class Teacher extends Model
     public function subject()
     {
         return $this->hasOne(Subject::class);
-    }
-
-    public function getNameAttribute()
-    {
-        return $this->first_name. ' '.$this->middle_name.' '.$this->last_name;
     }
 }
