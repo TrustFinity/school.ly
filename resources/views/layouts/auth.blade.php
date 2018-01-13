@@ -14,7 +14,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Darasini</title>
+    <title>Darasani</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -35,7 +35,7 @@
                 <div class="col-md-5 sidebar pull-right">
                     <section>
                         <div class="col-xs-12 text-center">
-                            <img src="{{ asset('img/icon.png') }}" alt="Darasini logo" style="margin-bottom:30px; width:100px;">
+                            <img src="{{ asset('img/icon.png') }}" alt="Darasani logo" style="margin-bottom:30px; width:100px;">
                         </div>
 
                         @yield('content')
