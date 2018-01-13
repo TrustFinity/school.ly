@@ -48,14 +48,15 @@ class CreateSchool extends Command
             'slug' => $school_slug
         ]);
 
+        $school_id = School::where('slug', $school_slug)->first()->id;
         $admin = new Admin([
+            'school_id' => $school_id,
             'name'      => $school_name,
             'username'  => $school_slug
         ]);
 
         if ($admin->save() && $new_school->save()) {
             $admin_id  = Admin::where('username', $school_slug)->first()->id;
-            $school_id = School::where('slug', $school_slug)->first()->id;
 
             User::create([
                 'school_id'     => $school_id,

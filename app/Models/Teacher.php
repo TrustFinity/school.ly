@@ -58,7 +58,7 @@ class Teacher extends Model
         return $this->morphOne(User::class, 'userable');
     }
 
-    public function classgroup()
+    public function classGroup()
     {
         return $this->belongsTo(ClassGroup::class, 'class_group_id');
     }

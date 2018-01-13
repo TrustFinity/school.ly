@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\Classes\Classgroup;
-use App\Models\Classes\Subject;
 use App\Scopes\SchoolScope;
+use App\Models\Classes\Subject;
+use App\Models\Classes\Classgroup;
 use Illuminate\Database\Eloquent\Model;
 
 class Kanban extends Model

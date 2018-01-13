@@ -33,7 +33,7 @@
                         <a href="/teachers/{{ $teacher->id }}">
                             <h4>{{ $teacher->name }}</h4>
                         </a>
-                        <p>{{ $teacher->experience }}, {{ $teacher->classgroup->name ?? '' }}</p>
+                        <p>{{ $teacher->experience }}, {{ $teacher->classGroup->name ?? '' }}</p>
                     </div>
                     <div class="col-sm-7">
                         {{ $teacher->address }}
