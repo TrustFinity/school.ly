@@ -11,8 +11,7 @@
         "laravel/tinker": "~1.0",
         "fzaninotto/faker": "^1.7",
         "consoletvs/charts": "5.*",
-        "laravelcollective/html": "^5.4.0",
-        "twbs/bootstrap": "^3.3"
+        "laravelcollective/html": "^5.4.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
