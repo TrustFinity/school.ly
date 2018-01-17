@@ -13,15 +13,20 @@ class SettingController extends Controller
         $this->middleware('auth')->except('create', 'store');
     }
 
+    public function create()
+    {
+        return view('preference.create');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function edit()
     {
         $preferences = Auth::user()->school->preferences;
-        return view('preference.create', compact('preferences'));
+        return view('preference.edit', compact('preferences'));
     }
 
     /**

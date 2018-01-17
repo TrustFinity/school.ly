@@ -20,6 +20,8 @@ Route::group([
     Route::get('/settings', 'SettingController@create');
     Route::put('/settings/{setting}', 'SettingController@update');
 
+    // Route::resource('/settings', 'SettingController', ['except' => 'destroy']);
+
     /**
      * Admins
      */
