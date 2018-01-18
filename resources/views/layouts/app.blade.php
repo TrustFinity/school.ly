@@ -14,7 +14,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Darasani</title>
+    <title>{{ config('app.name', 'Darasini') }}</title>
 
     <!-- Styles -->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
@@ -42,7 +42,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/dashboard') }}">
-                        {{ config('app.name', 'Darasani') }}
+                        {{ config('app.name', 'Darasini') }}
                     </a>
                 </div>
 
