@@ -2,7 +2,10 @@
 
 namespace App\Models\Classes;
 
+use App\Models\Student;
+use App\Models\Teacher;
 use App\Scopes\SchoolScope;
+use App\Models\Classes\ClassGroup;
 use Illuminate\Database\Eloquent\Model;
 
 class Stream extends Model
@@ -11,7 +14,6 @@ class Stream extends Model
 
     /**
      * The "booting" method of the model.
-     *
      * @return void
      */
     protected static function boot()

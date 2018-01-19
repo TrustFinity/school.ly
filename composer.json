@@ -6,11 +6,12 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "consoletvs/charts": "5.*",
         "fideloper/proxy": "~3.3",
+        "fzaninotto/faker": "^1.7",
+        "laracasts/flash": "^3.0",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "fzaninotto/faker": "^1.7",
-        "consoletvs/charts": "5.*",
         "laravelcollective/html": "^5.4.0"
     },
     "require-dev": {
