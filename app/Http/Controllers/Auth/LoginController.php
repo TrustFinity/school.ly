@@ -37,4 +37,10 @@ class LoginController extends Controller
     {
         $this->middleware('guest', ['except' => 'logout']);
     }
+
+    //override email login in AuthenticateUsers.php
+    public function username()
+    {
+        return 'username';
+    }
 }
