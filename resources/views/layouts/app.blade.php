@@ -60,6 +60,7 @@
                                     <li><a href="/class-groups">Class Groups</a></li>
                                     <li><a href="/streams">Class Streams</a></li>
                                     <li><a href="/support-staffs">Support Staffs</a></li>
+                                    <li><a href="/chart-of-accounts">Chart of Accounts</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">

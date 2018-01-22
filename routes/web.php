@@ -92,4 +92,12 @@ Route::group([
      * Support Staffs
      */
     Route::resource('/support-staffs', 'SupportStaffController');
+
+    /**
+     * Chart of accounts
+     */
+    Route::resource('/chart-of-accounts', 'GeneralLedgerAccountsController');
+    Route::get('/chart-of-accounts/{general_ledger_accounts}/add', 'GeneralLedgerAccountsController@addNewAccount');
+    Route::post('/chart-of-accounts/{general_ledger_accounts}/save', 'GeneralLedgerAccountsController@saveNewAccount');
+    
 });

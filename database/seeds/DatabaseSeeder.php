@@ -29,5 +29,8 @@ class DatabaseSeeder extends Seeder
 
         //Teaching features
         $this->call(KanbanSeeder::class);
+
+        // Chart of accounts
+        $this->call(GLASeeder::class);
     }
 }

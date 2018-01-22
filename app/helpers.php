@@ -46,7 +46,7 @@ function dgl(string $alias)
 
 function ulogin()
 {
-    return Auth::login(mgf('u'));
+    return Auth::login(dgf('u'));
 }
 
 function dga(string $alias)
@@ -73,4 +73,37 @@ function inProduction()
 function getPreference()
 {
     return App\Models\Settings\Setting::all()->first();
+}
+
+function slugify($str) {
+    $search = array('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+    $replace = array('s', 't', 's', 't', 's', 't', 's', 't', 'i', 'a', 'a', 'i', 'a', 'a', 'e', 'E');
+    $str = str_ireplace($search, $replace, strtolower(trim($str)));
+    $str = preg_replace('/[^\w\d\-\ ]/', '', $str);
+    $str = str_replace(' ', '-', $str);
+    return $str;
+}
+
+/**
+ * Build a tree from a given set off arrays. This is not my original
+ * work, it just happend to be exactly what I wanted to build
+ * for gla tree traversing.
+ * @credit https://stackoverflow.com/questions/8840319/build-a-tree-from-a-flat-array-in-php
+ * @param  array   &$elements starting point if building the tree.
+ * @param  integer $parentId  parent id of the current element being built.
+ * @return array             the multi nested array simulating the tree.
+ */
+function buildTree(array &$elements, $parentId = 0) {
+    $branch = array();
+    foreach ($elements as $element) {
+        if ($element['parent_id'] == $parentId) {
+            $children = buildTree($elements, $element['id']);
+            if ($children) {
+                $element['children'] = $children;
+            }
+            $branch[$element['id']] = $element;
+            unset($elements[$element['id']]);
+        }
+    }
+    return $branch;
 }
