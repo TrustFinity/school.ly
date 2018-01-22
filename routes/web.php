@@ -1,16 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -20,12 +9,20 @@ Auth::routes();
 Route::group([
     'middleware' => ['auth', 'web']
 ], function () {
-    // Route::get('/', 'DashboardController@index');
+    /**
+     * Dashboard
+     */
     Route::get('/dashboard', 'DashboardController@index');
 
+    /**
+     * Settings
+     */
     Route::get('/settings', 'SettingController@create');
     Route::put('/settings/{setting}', 'SettingController@update');
 
+    /**
+     * Admins
+     */
     Route::resource('/admin', 'AdminController');
 
     /**
@@ -57,8 +54,6 @@ Route::group([
     Route::post('/class-groups/{class_group}', 'ClassGroupController@update');
     Route::get('/class-groups/delete/{class_group}', 'ClassGroupController@destroy');
 
-
-
     /**
      * The Stream routes
      */
@@ -85,4 +80,16 @@ Route::group([
     Route::get('/subjects/edit/{subject}', 'SubjectController@edit');
     Route::post('/subjects/{subject}', 'SubjectController@update');
     Route::get('/subjects/delete/{subject}', 'SubjectController@destroy');
+
+    /**
+     * Attendance
+     */
+    Route::get('/attendances', 'AttendanceController@index');
+    Route::get('/attendances/teachers', 'TeachersAttendanceController@index');
+    Route::get('/attendances/support-staffs', 'SupportStaffAttendanceController@index');
+
+    /**
+     * Support Staffs
+     */
+    Route::resource('/support-staffs', 'SupportStaffController');
 });

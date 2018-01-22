@@ -18,7 +18,16 @@ use Illuminate\Http\Request;
 // });
 
 Route::namespace('Api\v1')->group(function () {
+	// Teaching tools
     Route::get('/v1/teachers-kanban/{teacher}', 'KanbanApiController@loadForTeacher');
+
+    //Search
     Route::post('/v1/search/students', 'StudentApiController@search');
     Route::post('/v1/search/teachers', 'TeacherApiController@search');
+    Route::post('/v1/search/support-staffs', 'SupportStaffApiController@search');
+
+    // Attendances
+    Route::get('/v1/attendances/save/{student}', 'StudentAttendanceApiController@save');
+    Route::get('/v1/attendances/teachers/save/{teacher}', 'TeacherAttendanceApiController@save');
+    Route::get('/v1/attendances/support-staffs/save/{support_staff}', 'SupportStaffAttendanceApiController@save');
 });
