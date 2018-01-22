@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Settings\Setting;
 
@@ -11,6 +12,12 @@ class SettingController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except('create', 'store');
+    }
+
+    public function index()
+    {
+        $preferences = Auth::user()->school->preferences;
+        return view('preference.edit', compact('preferences'));
     }
 
     public function create()

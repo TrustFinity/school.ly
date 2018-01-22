@@ -5,6 +5,8 @@
 
     <hr>
 
-    <school-preference></school-preference>
+    <school-preference
+        :levels={{ json_encode('LEVELS') }}
+        ></school-preference>
 
 @endsection
