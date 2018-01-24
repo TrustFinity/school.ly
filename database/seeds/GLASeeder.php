@@ -39,6 +39,18 @@ class GLASeeder extends Seeder
 		        $cash_at_hand->is_deletable = false;
 		        $cash_at_hand->save();
 
+                    $bursar_cash_account = new GeneralLedgerAccounts();
+                    $bursar_cash_account->name = 'Bursar Cash Account';
+                    $bursar_cash_account->slug = slugify($bursar_cash_account->name);
+                    $bursar_cash_account->parent_identifier = 'A';
+                    $bursar_cash_account->parent_id = $cash_at_hand->id;
+                    $bursar_cash_account->identifier = 'A111';
+                    $bursar_cash_account->real_depth = 3;
+                    $bursar_cash_account->balance = 500000;
+                    $bursar_cash_account->school_id = $school->id;
+                    $bursar_cash_account->is_deletable = false;
+                    $bursar_cash_account->save();
+
 	        	$cash_at_bank = new GeneralLedgerAccounts();
 	        	$cash_at_bank->name = 'Cash At Bank';
 	        	$cash_at_bank->slug = slugify($cash_at_bank->name);

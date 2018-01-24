@@ -64,6 +64,14 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Accounting</a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/transactions/salaries">Salaries</a></li>
+                                    <li><a href="/transactions/expenses">Expenses</a></li>
+                                    <li><a href="/transactions/school-fees">School Fees</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">DOS</a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="/settings">Results</a></li>
