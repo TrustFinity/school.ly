@@ -43,7 +43,7 @@
             </p>
         </div>
 
-        <div class="container">
+        <div class="container" id="pricing">
             <div class="card-deck mb-3 text-center">
                 
                 <div class="card mb-4 box-shadow">
@@ -96,7 +96,7 @@
         <p class="text-center">We reserve the right to pricing changes without notice or consent</p>
         <h3 class="text-center text-muted">+256 779 512013</h3>
 
-        <div class="container">
+        <div class="container" id="footer">
             <footer class="pt-4 my-md-5 pt-md-5 border-top">
                 <div class="row">
                     <div class="col-12 col-md">
