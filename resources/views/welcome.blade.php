@@ -23,7 +23,7 @@
 
         <div class="row">
             <div class="col"></div>
-            <div class="col">
+            <div class="col-8">
                 <br><br>
                 <h1 class="text-center">Productivity at Scale</h1>
                 <br>
@@ -31,7 +31,7 @@
                     A management platform for schools that aim to simplify creating, distributing and grading assignments in a paperless way
                 </h3>
                 <br>
-                <img src="/img/splash.png" alt="" class="img-responsive">
+                <img src="/img/splash.png" alt="" class="img-responsive img-fluid">
             </div>
             <div class="col"></div>
         </div>
