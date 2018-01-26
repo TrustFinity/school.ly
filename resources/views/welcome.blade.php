@@ -25,7 +25,7 @@
         {{-- </div> --}}
     </div>
 
-    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3">
+    <div class="position-relative overflow-hidden m-md-5 col-xs-6 col-xs-offset-3">
         {{-- <div class="col-md-5 p-lg-5 mx-auto my-5"> --}}
             <p class="lead font-weight-normal text-center">
                 For schools that aim to simplify creating, distributing and grading assignments in a paperless way.
@@ -37,10 +37,10 @@
     </div>
 
     <hr class="row">
-        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-faded">
+        {{-- <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-faded">
             mwaka
-        </div>
-    <hr class="row">
+        </div> --}}
+    {{-- <hr class="row"> --}}
 
     <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
       <h1 class="display-4">Pricing</h1>
