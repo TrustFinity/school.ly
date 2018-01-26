@@ -1,138 +1,138 @@
-<!DOCTYPE html>
-<html lang="{{ config('app.locale') }}">
-<html>
-<head>
+<!doctype html>
+<html lang="en">
+  <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ config('app.name') }}</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/bulma.css">
-    <link rel="stylesheet" type="text/css" href="/css/welcome.css">
-</head>
-<body>
-<section class="hero is-large is-success">
-    <div class="hero-head">
-        <nav class="navbar">
-            <div class="container">
-                <div class="navbar-brand">
-                    <a class="navbar-item" href="../">
-                        <h1 class="title">{{ config('app.name') }}</h1>
-                    </a>
-                    <span class="navbar-burger burger" data-target="navbarMenu">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-                </div>
-                <div class="navbar-menu">
-                    <div class="navbar-end">
-                        <a class="navbar-item is-active">
-                            Home
-                        </a>
-                        @if (Route::has('login'))
-                            <div class="navbar-item">
-                                @if (Auth::check())
-                                    <a class="navbar-item button is-primary" href="{{ url('/dashboard') }}">Dashboard</a>
-                                @else
-                                    <a class="navbar-item" href="{{ url('/login') }}">Login</a>
-                                    <a class="navbar-item button is-primary" href="{{ url('/register') }}">Register</a>
-                                @endif
-                            </div>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </nav>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/favicon.png">
+
+    <title>{{ config('app.name') }} | Mordern tools in your school</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/welcome.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+        {{-- <div class="container"> --}}
+            <h5 class="my-0 mr-md-auto font-weight-bold">{{ config('app.name') }}</h5>
+            <nav class="my-2 my-md-0 mr-md-3">
+                <a class="p-2 text-dark" href="#">Features</a>
+                <a class="p-2 text-dark" href="#">Support</a>
+                <a class="p-2 text-dark" href="#">Pricing</a>
+            </nav>
+            <a class="btn btn-outline-primary" href="/login">Sign in</a>
+        {{-- </div> --}}
     </div>
-    <div class="hero-body">
-        <div class="container has-text-centered">
-            <h1 class="title">
-                Transform your class room with {{ config('app.name') }}
-            </h1>
-            <h2 class="subtitle">
-                {{ config('app.name') }} streamlines assignments, boosts collaboration, and fosters seamless communication to make teaching more productive and meaningful.
-            </h2>
+
+    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3">
+        {{-- <div class="col-md-5 p-lg-5 mx-auto my-5"> --}}
+            <p class="lead font-weight-normal text-center">
+                For schools that aim to simplify creating, distributing and grading assignments in a paperless way.
+            </p>
+        {{-- </div> --}}
+        <div class="product-device product-device-2 box-shadow d-none d-md-block align-items-center">
+            <img src="/img/splash.png" alt="splash" class="card-img img-responsive splash-img">
         </div>
     </div>
-</section>
 
-<div class="box cta">
-    <p class="has-text-centered">
-        <span class="tag is-primary">New</span> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-        ut aliquip ex ea commodo consequat.
-    </p>
-</div>
+    <hr class="row">
+        <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-faded">
+            mwaka
+        </div>
+    <hr class="row">
 
-<section class="container">
-    <div class="columns features">
-        <div class="column is-4">
-            <div class="card">
-                <div class="card-image has-text-centered">
-                    <i class="fa fa-paw"></i>
-                </div>
-                <div class="card-content">
-                    <div class="content">
-                        <h4>Tristique senectus et netus et. </h4>
-                        <p>Purus semper eget duis at tellus at urna condimentum mattis. Non blandit massa enim nec.
-                            Integer enim neque volutpat ac tincidunt vitae semper quis. Accumsan tortor posuere ac ut
-                            consequat semper viverra nam.</p>
-                        <p><a href="#">Learn more</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column is-4">
-            <div class="card">
-                <div class="card-image has-text-centered">
-                    <i class="fa fa-id-card-o"></i>
-                </div>
-                <div class="card-content">
-                    <div class="content">
-                        <h4>Tempor orci dapibus ultrices in.</h4>
-                        <p>Ut venenatis tellus in metus vulputate. Amet consectetur adipiscing elit pellentesque. Sed
-                            arcu non odio euismod lacinia at quis risus. Faucibus turpis in eu mi bibendum neque egestas
-                            cmonsu songue. Phasellus vestibulum lorem sed risus.</p>
-                        <p><a href="#">Learn more</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="column is-4">
-            <div class="card">
-                <div class="card-image has-text-centered">
-                    <i class="fa fa-rocket"></i>
-                </div>
-                <div class="card-content">
-                    <div class="content">
-                        <h4> Leo integer malesuada nunc vel risus. </h4>
-                        <p>Imperdiet dui accumsan sit amet nulla facilisi morbi. Fusce ut placerat orci nulla
-                            pellentesque dignissim enim. Libero id faucibus nisl tincidunt eget nullam. Commodo viverra
-                            maecenas accumsan lacus vel facilisis.</p>
-                        <p><a href="#">Learn more</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+      <h1 class="display-4">Pricing</h1>
+      <p class="lead">Quickly build an effective pricing table for your potential customers with this Bootstrap example. It's built with default Bootstrap components and utilities with little customization.</p>
     </div>
-</section>
 
-<footer class="footer">
     <div class="container">
-        <div class="content has-text-centered">
-            <p>
-                <strong>Bulma Templates</strong> by <a href="https://github.com/dansup">Daniel Supernault</a>. The
-                source code is licensed
-                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
-            </p>
-            <p>
-                <a class="icon" href="https://github.com/dansup/bulma-templates">
-                    <i class="fa fa-github"></i>
-                </a>
-            </p>
+      <div class="card-deck mb-3 text-center">
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Free</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$0 <small class="text-muted">/ mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>10 users included</li>
+              <li>2 GB of storage</li>
+              <li>Email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+          </div>
         </div>
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Pro</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$15 <small class="text-muted">/ mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>20 users included</li>
+              <li>10 GB of storage</li>
+              <li>Priority email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-primary">Get started</button>
+          </div>
+        </div>
+        <div class="card mb-4 box-shadow">
+          <div class="card-header">
+            <h4 class="my-0 font-weight-normal">Enterprise</h4>
+          </div>
+          <div class="card-body">
+            <h1 class="card-title pricing-card-title">$29 <small class="text-muted">/ mo</small></h1>
+            <ul class="list-unstyled mt-3 mb-4">
+              <li>30 users included</li>
+              <li>15 GB of storage</li>
+              <li>Phone and email support</li>
+              <li>Help center access</li>
+            </ul>
+            <button type="button" class="btn btn-lg btn-block btn-primary">Contact us</button>
+          </div>
+        </div>
+      </div>
+
+      <footer class="pt-4 my-md-5 pt-md-5 border-top">
+        <div class="row">
+          <div class="col-12 col-md">
+            <img class="mb-2" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="24" height="24">
+            <small class="d-block mb-3 text-muted">&copy; 2017-2018</small>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Features</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#">Cool stuff</a></li>
+              <li><a class="text-muted" href="#">Random feature</a></li>
+              <li><a class="text-muted" href="#">Team feature</a></li>
+              <li><a class="text-muted" href="#">Stuff for developers</a></li>
+              <li><a class="text-muted" href="#">Another one</a></li>
+              <li><a class="text-muted" href="#">Last time</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>Resources</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#">Resource</a></li>
+              <li><a class="text-muted" href="#">Resource name</a></li>
+              <li><a class="text-muted" href="#">Another resource</a></li>
+              <li><a class="text-muted" href="#">Final resource</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-md">
+            <h5>About</h5>
+            <ul class="list-unstyled text-small">
+              <li><a class="text-muted" href="#">Team</a></li>
+              <li><a class="text-muted" href="#">Locations</a></li>
+              <li><a class="text-muted" href="#">Privacy</a></li>
+              <li><a class="text-muted" href="#">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </div>
-</footer>
-<script src="{{ mix('/js/app.js') }}"></script>
-</body>
+  </body>
 </html>
