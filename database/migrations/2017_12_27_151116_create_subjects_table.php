@@ -16,14 +16,13 @@ class CreateSubjectsTable extends Migration
         Schema::create('subjects', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('school_id')->unsigned()->indexed();
-            $table->integer('level_id')->unsigned();
-            $table->integer('teacher_id')->unsigned()->nullable();
+            $table->integer('class_group_id')->unsigned();
             $table->string('name');
 
-            $table->foreign('school_id')->references('id')->on('schools');
-            $table->foreign('level_id')->references('id')->on('levels');
-            $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->timestamps();
+
+            $table->foreign('school_id')->references('id')->on('schools');
+            $table->foreign('class_group_id')->references('id')->on('class_groups');
         });
     }
 

@@ -24,4 +24,9 @@ class ClassGroup extends Model
     {
         return $this->hasMany(Stream::class);
     }
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
+    }
 }
