@@ -104,7 +104,7 @@
             <div class="panel-footer">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
-                        <button type="submit" class="btn btn-success">Create Expense</button>
+                        <button type="submit" class="btn btn-success">Save School Fees Record</button>
                     </div>
                 </div>
             </div>
