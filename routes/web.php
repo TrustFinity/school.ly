@@ -107,7 +107,7 @@ Route::group([
         'prefix' => 'transactions',
         'namespace' => 'Transactions'
     ], function () {
-        // more transactions here.
+        Route::resource('salaries', 'SalaryController');
         Route::resource('expenses', 'ExpenseController');
         Route::resource('school-fees', 'SchoolFeeController');
     });
