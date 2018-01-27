@@ -7,6 +7,7 @@ use App\Scopes\SchoolScope;
 use App\Models\Classes\Level;
 use App\Models\Classes\Stream;
 use App\Models\Classes\Subject;
+use App\Scopes\ActiveStudentScope;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -45,6 +46,7 @@ class Student extends Model
     {
         parent::boot();
         static::addGlobalScope(new SchoolScope());
+        static::addGlobalScope(new ActiveStudentScope());
     }
 
     public function getNameAttribute()

@@ -27,6 +27,7 @@ class CreateStudentsTable extends Migration
             $table->string('photo_url')->nullable();
             $table->string('parents_names')->nullable();
             $table->string('parents_phone_number')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
 
             $table->foreign('school_id')->references('id')->on('schools');

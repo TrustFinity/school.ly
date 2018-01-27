@@ -23,5 +23,6 @@ $factory->define(App\Models\Teacher::class, function ($faker) {
         'next_of_kin_phone_number' => $faker->phoneNumber,
         'address' => $faker->address,
         'photo_url' => null,
+        'is_active' => $faker->randomElement([true, false]),
     ];
 });

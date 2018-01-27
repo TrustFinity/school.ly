@@ -109,5 +109,6 @@ Route::group([
     ], function () {
         // more transactions here.
         Route::resource('expenses', 'ExpenseController');
-    });   
+        Route::resource('school-fees', 'SchoolFeeController');
+    });
 });
