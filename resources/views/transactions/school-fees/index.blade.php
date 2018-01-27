@@ -28,11 +28,11 @@
                         {{ $school_fee->created_at->toFormattedDateString() }}
                     </div>
                     <div class="col-sm-4">
-                        <h4>{{ $school_fee->expense_gla->name }}</h4>
+                        <h4>{{ $school_fee->student->name }}</h4>
                         <p>{{ $school_fee->amount }}</p>
                     </div>
                     <div class="col-sm-6">
-                        <p>{{ $school_fee->description }}</p>
+                        <p>{{ $school_fee->equity_gla->name }}</p>
                     </div>
                 </div>
             </div>
