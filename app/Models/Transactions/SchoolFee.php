@@ -2,8 +2,10 @@
 
 namespace App\Models\Transactions;
 
+use Auth;
 use App\Models\School;
 use App\Models\Student;
+use App\Models\Transactions\Helpers\TransactionType;
 use App\Scopes\SchoolScope;
 use App\Models\Transactions\Helpers\Transaction;
 use App\Models\Settings\Accounts\GeneralLedgerAccounts;
@@ -14,6 +16,20 @@ class SchoolFee extends Transaction implements Transactable
     const PAYMENT_METHODS = [
         'Bank Slip',
         'Cash'
+    ];
+
+    protected $dates = ['year'];
+
+    protected $fillable = [
+        'payment_method',
+        'equity_account_id',
+        'source_asset_account_id',
+        'student_id',
+        'amount',
+        'receipt_number',
+        'bank_slip_number',
+        'term',
+        'year'
     ];
 
     protected static function boot()
@@ -44,21 +60,36 @@ class SchoolFee extends Transaction implements Transactable
 
     public function transactionType()
     {
-        // TODO: Implement transactionType() method.
+        return TransactionType::SCHOOL_FEES_TYPE;
     }
 
     public function amount()
     {
-        // TODO: Implement amount() method.
+        return $this->amount;
     }
 
     public function debitRecord()
     {
-        // TODO: Implement debitRecord() method.
+        $debit_records = array();
+        $debit_record = new LineItem();
+        $debit_record->general_ledger_account_id = $this->equity_account_id;
+        $debit_record->school_id = Auth::user()->school_id;
+        $debit_record->debit_record = $this->amount;
+        $debit_records[] =  $debit_record;
+
+        return $debit_records;
     }
 
     public function creditRecord()
     {
-        // TODO: Implement creditRecord() method.
+        $credit_records = array();
+        $credit_record = new LineItem();
+        $credit_record->general_ledger_account_id = $this->source_asset_account_id;
+        $credit_record->school_id = Auth::user()->school_id;
+        $credit_record->credit_record = $this->amount;
+        $credit_records[] = $credit_record;
+
+
+        return $credit_records;
     }
 }

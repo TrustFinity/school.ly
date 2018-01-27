@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Transactions;
 
+use Auth;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,10 +31,15 @@ class SchoolFeeController extends Controller
      */
     public function create()
     {
+        $payment_methods = SchoolFee::PAYMENT_METHODS;
         $students = Student::with(['stream'])->get();
         $assets = GeneralLedgerAccounts::assets();
         $equity = GeneralLedgerAccounts::equity();
-        return view('transactions.school-fees.new', compact('assets', 'equity', 'students'));
+        return view('transactions.school-fees.new', compact(
+            'assets',
+            'equity',
+            'students',
+            'payment_methods'));
     }
 
     /**
@@ -44,7 +50,16 @@ class SchoolFeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $school_fee = new SchoolFee($request->all());
+        $school_fee->school_id = Auth::user()->school_id;
+        if (!$school_fee->saveTransaction()){
+            flash("Failed to save the school fees record")->error()->important();
+            return back();
+        }
+        $school_fee->asset_gla->decreaseBalance($school_fee->amount);
+        $school_fee->equity_gla->increaseBalance($school_fee->amount);
+        flash("School fees record created successfully")->success();
+        return back();
     }
 
     /**

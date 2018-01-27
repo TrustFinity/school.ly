@@ -17,7 +17,7 @@ class CreateSchoolFeesTable extends Migration
         Schema::create('school_fees', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('school_id')->unsigned()->index();
-            $table->enum('payment_method', SchoolFee::PAYMENT_METHODS);
+            $table->string('payment_method');
             $table->integer('equity_account_id')->unsigned()->index();
             $table->integer('source_asset_account_id')->unsigned()->index();
             $table->integer('student_id')->unsigned()->index();

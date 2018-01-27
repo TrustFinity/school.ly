@@ -25,7 +25,7 @@
                             <select name="student_id"
                                     id="student_id" class="form-control" required>
                                 @foreach($students as $student)
-                                    <option value="{{ $student }}">{{ $student->name }},
+                                    <option value="{{ $student->id }}">{{ $student->name }},
                                         {{ ($student->stream ? $student->stream->name : $student->age) }}</option>
                                 @endforeach
                             </select>
@@ -54,7 +54,7 @@
                             <label for="payment_method">How was the fee paid?</label><span class="text-danger"> (Required)</span>
                             <select name="payment_method"
                                     id="payment_method" class="form-control" required>
-                                @foreach(['Cash', 'Bank Slip'] as $payment_method)
+                                @foreach($payment_methods as $payment_method)
                                     <option value="{{ $payment_method }}">{{ $payment_method }}</option>
                                 @endforeach
                             </select>
@@ -70,11 +70,11 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="name">Choose the destination equity account</label><span class="text-danger"> (Required)</span>
+                            <label for="equity_account_id">Choose the destination equity account</label><span class="text-danger"> (Required)</span>
                             <p class="">the equity school fees account you want to put money to. To create one, got to the
                                 <a href="/chart-of-accounts">Chart of Accounts</a></p>
-                            <select name="expense_account_id"
-                                    id="expense_account_id" class="form-control" required>
+                            <select name="equity_account_id"
+                                    id="equity_account_id" class="form-control" required>
                                 @foreach($equity as $equity_account)
                                     <option value="{{ $equity_account->id }}">
                                         {{ $equity_account->identifier }} {{ $equity_account->name }} - {{ $equity_account->balance }}
@@ -94,9 +94,9 @@
                             <input type="text" value="{{ old('receipt_number') }}" name="receipt_number" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="cheque_number">If there was a bank slip, provide the slip number.</label><span class=""> (Optional)</span>
+                            <label for="bank_slip_number">If there was a bank slip, provide the slip number.</label><span class=""> (Optional)</span>
                             <p></p>
-                            <input type="text" value="{{ old('bank_slip_number') }}" name="cheque_number" class="form-control">
+                            <input type="text" value="{{ old('bank_slip_number') }}" name="bank_slip_number" class="form-control">
                         </div>
                     </div>
                 </div>
