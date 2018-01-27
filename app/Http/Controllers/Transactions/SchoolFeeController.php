@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Transactions;
 
+use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Transactions\SchoolFee;
@@ -16,7 +17,10 @@ class SchoolFeeController extends Controller
      */
     public function index()
     {
-        //
+        $school_fees = SchoolFee::with(['student', 'equity_gla', 'asset_gla'])
+                            ->orderBy('id', 'desc')
+                            ->paginate(50);
+        return view('transactions.school-fees.index', compact('school_fees'));
     }
 
     /**
@@ -26,7 +30,10 @@ class SchoolFeeController extends Controller
      */
     public function create()
     {
-        //
+        $students = Student::with(['stream'])->get();
+        $assets = GeneralLedgerAccounts::assets();
+        $equity = GeneralLedgerAccounts::equity();
+        return view('transactions.school-fees.new', compact('assets', 'equity', 'students'));
     }
 
     /**
@@ -47,9 +54,7 @@ class SchoolFeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(SchoolFee $schoolFee)
-    {
-        //
-    }
+    {}
 
     /**
      * Show the form for editing the specified resource.
@@ -58,9 +63,7 @@ class SchoolFeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(SchoolFee $schoolFee)
-    {
-        //
-    }
+    {}
 
     /**
      * Update the specified resource in storage.
@@ -70,9 +73,7 @@ class SchoolFeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, SchoolFee $schoolFee)
-    {
-        //
-    }
+    {}
 
     /**
      * Remove the specified resource from storage.
@@ -81,7 +82,5 @@ class SchoolFeeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(SchoolFee $schoolFee)
-    {
-        //
-    }
+    {}
 }
