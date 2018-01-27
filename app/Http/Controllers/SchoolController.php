@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\School;
+use App\Models\Examination;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreExaminationRequest;
 
 class SchoolController extends Controller
 {
@@ -14,7 +17,8 @@ class SchoolController extends Controller
      */
     public function index()
     {
-        //
+        $examinations = Examination::all();
+        return view('examinations.index', compact('examinations'));
     }
 
     /**
@@ -24,7 +28,8 @@ class SchoolController extends Controller
      */
     public function create()
     {
-        //
+        $examination = new Examination;
+        return view('examinations.create', compact('examination'));
     }
 
     /**
@@ -33,9 +38,16 @@ class SchoolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreExaminationRequest $request)
     {
-        //
+        $new_examination = new Examination($request->all());
+        $new_examination->school_id = Auth::user()->school_id;
+
+        if (!$new_examination->save()) {
+            return redirect('/examinations');
+        } else {
+            return "failed";
+        }
     }
 
     /**
