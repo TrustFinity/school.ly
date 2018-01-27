@@ -116,4 +116,15 @@ class GeneralLedgerAccounts extends Model
     {
         return GeneralLedgerAccounts::find($this->parent_id);
     }
+
+    public function increaseBalance($amount)
+    {
+        $this->balance += $amount;
+        $this->save();
+    }
+    public function decreaseBalance($amount)
+    {
+        $this->balance -= $amount;
+        $this->save();
+    }
 }

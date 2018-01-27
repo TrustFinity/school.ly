@@ -17,7 +17,7 @@ class CreateSubjectsTable extends Migration
             $table->increments('id');
             $table->integer('school_id')->unsigned()->indexed();
             $table->integer('level_id')->unsigned();
-             $table->integer('teacher_id')->unsigned()->nullable();
+            $table->integer('teacher_id')->unsigned()->nullable();
             $table->string('name');
             $table->float('score');
 

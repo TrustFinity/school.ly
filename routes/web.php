@@ -66,7 +66,7 @@ Route::group([
     Route::get('/streams/delete/{stream}', 'StreamController@destroy');
 
     /**
-     * The Level routes
+     * The Level route
      */
     Route::resource('levels', 'LevelController');
 
@@ -99,5 +99,15 @@ Route::group([
     Route::resource('/chart-of-accounts', 'GeneralLedgerAccountsController');
     Route::get('/chart-of-accounts/{general_ledger_accounts}/add', 'GeneralLedgerAccountsController@addNewAccount');
     Route::post('/chart-of-accounts/{general_ledger_accounts}/save', 'GeneralLedgerAccountsController@saveNewAccount');
-    
+
+    /**
+     * Transactions
+     */
+    Route::group([
+        'prefix' => 'transactions',
+        'namespace' => 'Transactions'
+    ], function () {
+        // more transactions here.
+        Route::resource('expenses', 'ExpenseController');
+    });   
 });
