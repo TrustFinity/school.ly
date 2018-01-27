@@ -50,6 +50,11 @@ class SalaryController extends Controller
      */
     public function store(Request $request)
     {
+        $source = GeneralLedgerAccounts::find($request->source_asset_account_id);
+        if ($source->balance < $request->amount) {
+            flash($source->name.' doesnt have enough balance to complete the transaction')->error();
+            return back();
+        }
         $salary = new Salary($request->all());
         $salary->school_id = Auth::user()->school_id;
         if (!$salary->saveTransaction()){

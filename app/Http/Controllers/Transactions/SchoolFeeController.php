@@ -50,6 +50,11 @@ class SchoolFeeController extends Controller
      */
     public function store(Request $request)
     {
+        $source = GeneralLedgerAccounts::find($request->source_asset_account_id);
+        if ($source->balance < $request->amount) {
+            flash($source->name.' doesnt have enough balance to complete the transaction')->error();
+            return back();
+        }
         $school_fee = new SchoolFee($request->all());
         $school_fee->school_id = Auth::user()->school_id;
         if (!$school_fee->saveTransaction()){
