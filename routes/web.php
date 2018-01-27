@@ -66,7 +66,7 @@ Route::group([
     Route::get('/streams/delete/{stream}', 'StreamController@destroy');
 
     /**
-     * The Level openssl_random_pseudo_bytes(length)
+     * The Level route
      */
     Route::resource('levels', 'LevelController');
 
