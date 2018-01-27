@@ -7,6 +7,7 @@ use App\Scopes\SchoolScope;
 use App\Models\Classes\Level;
 use App\Models\Classes\Stream;
 use App\Models\Classes\Subject;
+use App\Scopes\ActiveTeacherScope;
 use App\Models\Classes\ClassGroup;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,6 +22,7 @@ class Teacher extends Model
     {
         parent::boot();
         static::addGlobalScope(new SchoolScope());
+        static::addGlobalScope(new ActiveTeacherScope());
     }
 
     protected $fillable = [

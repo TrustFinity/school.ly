@@ -20,5 +20,6 @@ $factory->define(App\Models\Student::class, function ($faker) {
         'parents_phone_number' => $faker->phoneNumber,
         'address' => $faker->address,
         'photo_url' => null,
+        'is_active' => $faker->randomElement([true, false]),
     ];
 });

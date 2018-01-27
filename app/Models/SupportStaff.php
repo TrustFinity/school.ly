@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\School;
 use App\Scopes\SchoolScope;
+use App\Scopes\ActiveSupportStaffScope;
 use Illuminate\Database\Eloquent\Model;
 
 class SupportStaff extends Model
@@ -35,6 +36,7 @@ class SupportStaff extends Model
     {
         parent::boot();
         static::addGlobalScope(new SchoolScope());
+        static::addGlobalScope(new ActiveSupportStaffScope());
     }
 
     public function getNameAttribute()
