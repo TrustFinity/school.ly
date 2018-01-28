@@ -31,6 +31,7 @@ dependencies:
     # Checks all php files within /app for syntax errors
     # - tests/commands/phplint.sh
     - composer install --prefer-dist --no-interaction
+    - composer require predis/predis
 
     # - npm install cross-env
     # - npm install -g npm
