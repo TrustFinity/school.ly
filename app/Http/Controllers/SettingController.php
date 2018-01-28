@@ -22,7 +22,13 @@ class SettingController extends Controller
 
     public function create()
     {
-        return view('preference.create');
+        if ((Auth::user()->school->preferences === null) || (Auth::user()->school->classGroups->count() === 0)) {
+            $school = Auth::user()->school;
+            return view('preference.create', compact('school'));
+        }
+
+        $preferences = Auth::user()->school->preferences;
+        return view('preference.edit', compact('preferences'));
     }
 
     /**

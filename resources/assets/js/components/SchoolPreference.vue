@@ -6,7 +6,7 @@
                          shape="tab"
                          color="#2ab27b">
             <tab-content title="School Preference" icon="glyphicon glyphicon-cog" :before-change="beforeTabSwitch">
-                <form action="/settings/create" method="post">
+                <form action="/settings" method="post">
                     <!-- {{ csrf_field() }} -->
                     <div class="panel panel-default">
                         <div class="panel-body">
@@ -14,18 +14,18 @@
                                 <div class="form-group">
                                     <label for="name">School Name</label><span class="text-danger"> (Required)</span>
                                     <p class="">The name of your school/institution.</p>
-                                    <input type="text" id="name" class="form-control">
+                                    <input type="text" id="name" class="form-control" :value="school.name">
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Institutions' Type</label><span class="text-danger"> (Required)</span>
                                     <p class="">Your school institutions' type.</p>
-                                    <select name="institution_type" id="institutions_type" class="form-control">
+                                    <select v-model="schoolLevel" name="institution_type" id="institutions_type" class="form-control">
+                                        <option disabled value="">--select the institution type</option>
                                         <option v-for="level in ['Secondary', 'University', 'Primary', 'Pre-School']">
                                             {{ level }}
                                         </option>
                                     </select>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="name">Instructors' Type</label><span class="text-danger"> (Required)</span>
                                     <p class="">Your institution instructors type.</p>
@@ -35,7 +35,6 @@
                                         </option>
                                     </select>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="name">Attendants' Type</label><span class="text-danger"> (Required)</span>
                                     <p class="">Your institutions' attendants' type.</p>
@@ -45,15 +44,7 @@
                                         </option>
                                     </select>
                                 </div>
-
                             </div>
-                            <!-- <div class="panel-footer">
-                                <div class="row">
-                                    <div class="row col-xs-6 col-xs-offset-3">
-                                        <button class="btn btn-success" type="submit">Update Preferences</button>
-                                    </div>
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </form>
@@ -64,10 +55,6 @@
             <tab-content title="Subjects" icon="glyphicon glyphicon-list-alt">
                 subjects
             </tab-content>
-
-            <el-button class="btn btn-success" type="submit" slot="prev">Back</el-button>
-            <el-button class="btn btn-success" type="submit" slot="next">Next</el-button>
-            <el-button class="btn btn-success" type="submit" slot="finish">Finish</el-button>
         </form-wizard>
     </div>
 </template>
@@ -77,6 +64,10 @@
     export default {
         name: 'SchoolPreference',
         props: {
+            school: {
+                type: Object,
+                required: true
+            },
             levels: {
                 type: String,
                 required: true
@@ -85,6 +76,11 @@
         components: {
             FormWizard,
             TabContent
+        },
+        data() {
+            return {
+                schoolLevel: ''
+            }
         },
         methods: {
             onComplete: function(){

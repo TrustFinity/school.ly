@@ -6,7 +6,8 @@
     <hr>
 
     <school-preference
-        :levels={{ json_encode('LEVELS') }}
+        :school="{{ json_encode($school) }}"
+        :levels="{{ json_encode('LEVELS') }}"
         ></school-preference>
 
 @endsection
