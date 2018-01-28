@@ -1,22 +1,43 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
+    .img-fluid {
+        padding-left: 15px;
+    }
+    .lead {
+        padding: 50px;
+    }
+}
+
+@media (min-width: 320px) {
+    .lead {
+        padding: 20px;
+    }
+    .splash-word {
+        padding: 20px;
+        margin-top: -50px;
+        margin-bottom: -50px;
+    }
+}
+
+.muted {
+    font-size: 0.3em;
 }
 
 .container {
-  max-width: 960px;
+    max-width: 960px;
 }
 
 .pricing-header {
-  max-width: 700px;
+    max-width: 700px;
 }
 
 .card-deck .card {
-  min-width: 220px;
+    min-width: 220px;
 }
 
 .border-top { border-top: 1px solid #e5e5e5; }
