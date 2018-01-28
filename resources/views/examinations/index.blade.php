@@ -13,16 +13,16 @@
     <hr>
     <div class="panel panel-default">
         <div class="panel-body">
-            @if($examinations->count() === 1)
+            @if($examinations->count() === 0)
                 <h4>Your school doesn't have any examinations recorded.</h4>
             @else
                 <table class="table table-hover table-striped">
-                    <th>
-                        <td>Name</td>
-                        <td>Start Date</td>
-                        <td>End Date</td>
-                        <td colspan="2">Results</td>
-                    </th>
+                    <tr>
+                        <th>Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th colspan="3">Actions</th>
+                    </tr>
                     @foreach($examinations as $exam)
                         <tr>
                             <td>
@@ -35,10 +35,18 @@
                                 {{ isset($exam->end_date) ? shortDate($exam->end_date) : '--' }}
                             </td>
                             <td>
-                                <a href="#">View Results</a>
+                                <a href="/examinations/{{$exam->id}}">View Results</a>
                             </td>
                             <td>
-                                <a href="#">Enter Results</a>
+                                <a href="/examinations/{{$exam->id}}/edit">Enter Results</a>
+                            </td>
+                            <td>
+                                <form action="/examinations/{{ $exam->id }}" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="_method" value="DELETE">
+
+                                    <button class="btn btn-danger">Delete</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach

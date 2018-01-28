@@ -23,7 +23,6 @@ class Examination extends Model
     public function rules()
     {
         return [
-            // 'school_id' => 'required|integer',
             'name'       => 'required|string|min:4',
             'start_date' => 'nullable|date',
             'end_date'   => 'nullable|date',
@@ -33,6 +32,6 @@ class Examination extends Model
     //todo pius make sure this doesn't break
     public function results()
     {
-        return $this->hasMany(Result::class);
+        return Result::where('examination_id', $this->id)->get();
     }
 }

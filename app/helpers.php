@@ -7,7 +7,7 @@ function daysInWeek()
 
 function shortDate($date)
 {
-    return date($date, "Y-m-d");
+    return date("Y-m-d", strtotime($date));
 }
 
 function getClass(string $alias)
@@ -89,9 +89,10 @@ function logged_in_lastname()
     return \Auth::user()->last_name;
 }
 
-function slugify($str) {
-    $search = array('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
-    $replace = array('s', 't', 's', 't', 's', 't', 's', 't', 'i', 'a', 'a', 'i', 'a', 'a', 'e', 'E');
+function slugify($str)
+{
+    $search = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''];
+    $replace = ['s', 't', 's', 't', 's', 't', 's', 't', 'i', 'a', 'a', 'i', 'a', 'a', 'e', 'E'];
     $str = str_ireplace($search, $replace, strtolower(trim($str)));
     $str = preg_replace('/[^\w\d\-\ ]/', '', $str);
     $str = str_replace(' ', '-', $str);
@@ -107,8 +108,9 @@ function slugify($str) {
  * @param  integer $parentId  parent id of the current element being built.
  * @return array             the multi nested array simulating the tree.
  */
-function buildTree(array &$elements, $parentId = 0) {
-    $branch = array();
+function buildTree(array &$elements, $parentId = 0)
+{
+    $branch = [];
     foreach ($elements as $element) {
         if ($element['parent_id'] == $parentId) {
             $children = buildTree($elements, $element['id']);

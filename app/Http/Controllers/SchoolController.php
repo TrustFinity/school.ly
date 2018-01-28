@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\Models\School;
+use App\Models\Result;
 use App\Models\Examination;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreExaminationRequest;
@@ -43,10 +44,12 @@ class SchoolController extends Controller
         $new_examination = new Examination($request->all());
         $new_examination->school_id = Auth::user()->school_id;
 
-        if (!$new_examination->save()) {
+        if ($new_examination->save()) {
+            flash('Expense successfully added, thank you.')->success();
             return redirect('/examinations');
         } else {
-            return "failed";
+            flash('Failed.')->error();
+            return back()->withInput();
         }
     }
 
@@ -58,7 +61,9 @@ class SchoolController extends Controller
      */
     public function show(School $school)
     {
-        //
+        $examination = Examination::find($id);
+        $results = Result::where('examination_id', $id)->get();
+        return view('examinations.show', compact('examination', 'results'));
     }
 
     /**
@@ -92,6 +97,16 @@ class SchoolController extends Controller
      */
     public function destroy(School $school)
     {
-        //
+        $examination = Examination::findOrFail($id);
+
+        if ($examination->results()->count() > 0) {
+            flash("You cannot delete this $examination->name because it has results attached to it.")->error();
+            return redirect("/examinations/$id");
+        }
+
+        $examination->delete();
+
+        flash('Record has been successfully deleted.')->success();
+        return redirect('/examinations');
     }
 }
