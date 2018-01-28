@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-sm-6">
-            <h3 class="text-info">Support Staffs</h3>
+            <h3 class="text-info">Support Staff</h3>
             <p>A listing of all the support staffs registered on the platform.</p>
         </div>
         <div class="col-sm-6">
