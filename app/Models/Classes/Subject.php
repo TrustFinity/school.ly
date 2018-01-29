@@ -2,6 +2,8 @@
 
 namespace App\Models\Classes;
 
+use App\Models\Student;
+use App\Models\Teacher;
 use App\Scopes\SchoolScope;
 use Illuminate\Database\Eloquent\Model;
 

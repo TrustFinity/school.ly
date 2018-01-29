@@ -15,7 +15,8 @@ class LevelsTableSeeder extends Seeder
     {
         //seed for first school (Primary)
         Level::create([
-            'name' => 'Primary'
+            'school_id' => 1,
+            'name' => 'Primary',
         ]);
 
         $level_id = Level::all()->last()->id;

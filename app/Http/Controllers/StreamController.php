@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\Classes\Stream;
 use App\Models\Classes\ClassGroup;
@@ -36,9 +37,15 @@ class StreamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        Stream::create(request(['name', 'class_group_id']));
+        $stream = new Stream($request->all());
+        $stream->school_id = Auth::user()->school_id;
+        if (!$stream->save()){
+            flash('Failed to create '.$stream->name)->error();
+            return back();
+        }
+        flash('Created '.$stream->name. ' stream')->success();
         return redirect('/streams');
     }
 
@@ -49,9 +56,7 @@ class StreamController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Stream $stream)
-    {
-        //
-    }
+    {}
 
     /**
      * Show the form for editing the specified resource.
@@ -68,16 +73,14 @@ class StreamController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Classes\Stream  $stream
+     * @param  \App\Models\Classes\Stream $stream
      * @return \Illuminate\Http\Response
+     * @internal param Request $request
      */
     public function update(Stream $stream)
     {
         $input = request(['name', 'class_group_id']);
-
         $stream->fill($input)->save();
-
         return redirect('/streams');
     }
 
@@ -89,8 +92,16 @@ class StreamController extends Controller
      */
     public function destroy(Stream $stream)
     {
-        $stream->delete();
-
+        if ($stream->students->count() > 0){
+            flash('Cannot delete '.$stream->name.', it has '.getPreference()->attendants_type.' in it.
+             Edit '.getPreference()->attendants_type.' first')->error();
+            return back();
+        }
+        if (!$stream->delete()){
+            flash('Failed to delete '.$stream->name)->error();
+            return back();
+        }
+        flash('Deleted '.$stream->name)->success();
         return redirect('/streams');
     }
 }

@@ -31,9 +31,10 @@ class LevelController extends Controller
         $level->school_id = Auth::user()->school_id;
         $level->name = $request->name;
         if (! $level->save()) {
-            // flash something with an error message
+            flash("Failed to create level ".$level->name)->error();
+            return back();
         }
-
+        flash($level->name. " created successfully.")->success();
         return redirect('/levels');
     }
 
@@ -60,7 +61,15 @@ class LevelController extends Controller
      */
     public function destroy(Level $level)
     {
-        $level->delete();
+        if ($level->students->count() > 0){
+            flash("Cannot delete ".$level->name.", it has ".getPreference()->attendants_type)->error();
+            return back();
+        }
+        if (!$level->delete()){
+            flash("Failed to delete ".$level->name)->error();
+            return back();
+        }
+        flash("Deleted ".$level->name)->success();
         return redirect('/levels');
     }
 }
