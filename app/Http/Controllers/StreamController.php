@@ -92,7 +92,12 @@ class StreamController extends Controller
      */
     public function destroy(Stream $stream)
     {
-        if ($$stream->delete()){
+        if ($stream->students->count() > 0){
+            flash('Cannot delete '.$stream->name.', it has '.getPreference()->attendants_type.' in it.
+             Edit '.getPreference()->attendants_type.' first')->error();
+            return back();
+        }
+        if (!$stream->delete()){
             flash('Failed to delete '.$stream->name)->error();
             return back();
         }
