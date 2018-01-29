@@ -9,7 +9,7 @@
                         </label>
                         <select name="class_group_id" v-model="chooseClassGroup" class="form-control" required>
                             <option disabled value="">--Select a class</option>
-                            <option v-for="classGroup in class_groups" v-bind:value="classGroup.id">
+                            <option v-for="classGroup in class_groups" :value="classGroup">
                                 {{ classGroup.name }}
                             </option>
                         </select>
@@ -53,7 +53,7 @@
         },
         methods: {
             selectedClass(class_group) {
-                this.selectedClassGroup = class_group
+                this.chooseClassGroup = class_group.stream
             }
         }
     };
