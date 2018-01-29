@@ -3,30 +3,37 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-
-        <a href="/subjects/create"><button type="button" class="btn btn-lg btn-info">Add a new subject</button></a>
-        <hr><br>
-            <table class="table table-bordered table-hover">
+        <div class="col-md-6">
+            <h3 class="text-info">Subjects</h3>
+        </div>
+        <div class="col-md-6">
+            <a href="/subjects/create" class="btn btn-success pull-right">Add a new subject</a>
+        </div>
+    </div>
+    <hr>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <table class="table table-hover table-responsive table-striped">
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Level</th>
-                        <th>Teacher</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
+                <tr>
+                    <th>Name</th>
+                    <th>Level</th>
+                    <th>Teacher</th>
+                    <th><p class="pull-right">Action</p></th>
+                </tr>
                 </thead>
                 <tbody>
                 @foreach ($subjects as $subject)
                     <tr>
-                        <td>{{ $subject->id }}</td>
                         <td>{{ $subject->name }}</td>
                         <td>{{ $subject->level->name }}</td>
                         <td>{{ $subject->teacher->name }}</td>
-                        <td><a href="/subjects/edit/{{ $subject->id }}"><button type="button" class="btn btn-priamry">Edit</button></a></td>
-                        <td><a href="/subjects/delete/{{ $subject->id }}"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        <td>
+                            <div class="btn-group pull-right">
+                                <a href="/subjects/edit/{{ $subject->id }}" class="btn btn-default">Edit</a>
+                                <a href="/subjects/delete/{{ $subject->id }}" class="btn btn-default">Delete</a>
+                            </div>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>

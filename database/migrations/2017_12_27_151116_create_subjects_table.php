@@ -19,11 +19,10 @@ class CreateSubjectsTable extends Migration
             $table->integer('level_id')->unsigned();
             $table->integer('teacher_id')->unsigned()->nullable();
             $table->string('name');
-            $table->float('score');
 
             $table->foreign('school_id')->references('id')->on('schools');
             $table->foreign('level_id')->references('id')->on('levels');
-            // $table->foreign('teacher_id')->references('id')->on('teachers');
+            $table->foreign('teacher_id')->references('id')->on('teachers');
             $table->timestamps();
         });
     }
