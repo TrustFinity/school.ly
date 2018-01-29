@@ -19,6 +19,8 @@
     <!-- Styles -->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
 
+    {!! Charts::styles() !!}
+
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -27,7 +29,7 @@
     </script>
 </head>
 <body>
-    <div id="app">
+    <div>
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
@@ -130,14 +132,18 @@
             </div>
         </nav>
 
-        <div class="container">
+        <div class="container" id="app">
             @include('flash::message')
             @yield('content')
-
+        </div>
+        <div id="app">
+            @include('flash::message')
+            @yield('content-full-screen')
         </div>
     </div>
     <!-- Scripts -->
     <script src="{{ mix('/js/app.js') }}"></script>
-
+    {!! Charts::scripts() !!}
+    @yield('scripts')
 </body>
 </html>

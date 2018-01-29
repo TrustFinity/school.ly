@@ -75,6 +75,16 @@ function getPreference()
     return App\Models\Settings\Setting::all()->first();
 }
 
+function school_name()
+{
+    return \Auth::user()->school->name;
+}
+
+function logged_in_lastname()
+{
+    return \Auth::user()->last_name;
+}
+
 function slugify($str) {
     $search = array('', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
     $replace = array('s', 't', 's', 't', 's', 't', 's', 't', 'i', 'a', 'a', 'i', 'a', 'a', 'e', 'E');
@@ -106,4 +116,9 @@ function buildTree(array &$elements, $parentId = 0) {
         }
     }
     return $branch;
+}
+
+function todaysDate()
+{
+    return \Carbon\Carbon::now()->toFormattedDateString();
 }

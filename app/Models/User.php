@@ -39,6 +39,11 @@ class User extends Authenticatable
         // 'remember_token',
     ];
 
+    public function getNameAttribute()
+    {
+        return $this->first_name .' '.$this->last_name;
+    }
+
     public function userable()
     {
         return $this->morphTo();

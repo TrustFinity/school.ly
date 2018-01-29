@@ -1,42 +1,46 @@
 @extends('layouts.app')
+@section('content-full-screen')
 
-@section('content')
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3>School Kanban</h3>
-            <p>Kanban is a lean method to manage and improve work across human systems.</p>
-        </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-xs-3">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h2>Financial board.</h2>
-                            <p>school financial movement details</p>
-                        </div>
-                    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>{{ school_name() }}</h3>
+                    <p>
+                        Hello{{ logged_in_lastname() }}, welcome to {{ config('app.name') }}
+                        <span class="pull-right text-primary">
+                            <strong>{{ todaysDate() }}</strong>
+                        </span>
+                    </p>
                 </div>
-                <div class="col-xs-3">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h2>Teachers board.</h2>
-                            <p>General teaching planning.</p>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h1>{{ $students->count() }}
+                                        <span class="pull-right"><i class="glyphicon glyphicon-user"></i></span></h1>
+                                    <p>{{ getPreference()->attendants_type }}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xs-3">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <h2>School Dev..</h2>
-                            <p>school planning and financing</p>
+                        <div class="col-xs-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h1>{{ $teachers->count() }}
+                                        <span class="pull-right"><i class="glyphicon glyphicon-user"></i></span></h1>
+                                    <p>{{ getPreference()->instructors_type }}</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-xs-3">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h2><i class="glyphicon glyphicon-plus"></i> Create new..</h2>
+                        <div class="col-xs-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h1>{{ $support_staff->count() }}
+                                        <span class="pull-right"><i class="glyphicon glyphicon-user"></i></span></h1>
+                                    <p>Support Staff</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -44,11 +48,85 @@
         </div>
     </div>
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            Some nice school dashboard statistics here.
-        </div>
-        <div class="panel-body">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h2>General Information</h2>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="text-center">{{ getPreference()->attendants_type }} by Gender</h4>
+                        </div>
+                        <div class="panel-body">
+                            {!! $student_chart->html() !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="text-center">{{ getPreference()->instructors_type }} by Gender</h4>
+                        </div>
+                        <div class="panel-body">
+                            {!! $teacher_chart->html() !!}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="text-center">Support Staff by Gender</h4>
+                        </div>
+                        <div class="panel-body">
+                            {!! $support_staff_chart->html() !!}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    {!! $growth_per_year->html() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h2>Performance</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="text-center">
+                        By Gender
+                    </h4>
+                </div>
+                <div class="panel-body">
+                    {!! $performance->html() !!}
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
+@section('scripts')
+    {!! $student_chart->script() !!}
+    {!! $teacher_chart->script() !!}
+    {!! $support_staff_chart->script() !!}
+    {!! $growth_per_year->script() !!}
+    {!! $performance->script() !!}
 @endsection
