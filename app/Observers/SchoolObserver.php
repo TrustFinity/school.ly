@@ -2,14 +2,21 @@
 
 namespace App\Observers;
 
+use App\Models\School;
+use App\Models\Settings\Setting;
+
 /**
-* observer to create school references after running command
+* observer to create school preferences after running command
 */
-class SchoolObservers
+class SchoolObserver
 {
     public function created(School $school)
     {
-        # code...
+        $settings = new Setting([
+            'school_id' => $school->id
+        ]);
+
+        $settings->save();
     }
 
     public function deleting(School $school)

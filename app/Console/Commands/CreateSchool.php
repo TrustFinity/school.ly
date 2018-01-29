@@ -14,7 +14,7 @@ class CreateSchool extends Command
      *
      * @var string
      */
-    protected $signature = 'darasani:create-school {name}';
+    protected $signature = 'darasini:create-school {name}';
 
     /**
      * The console command description.
