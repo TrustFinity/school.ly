@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
 
         //school specific seeders
         $this->call(StreamSeeder::class);
+        $this->call(SubjectSeeder::class);
 
         $this->call(SchoolPreferenceSeeder::class);
 

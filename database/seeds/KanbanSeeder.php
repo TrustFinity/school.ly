@@ -18,7 +18,7 @@ class KanbanSeeder extends Seeder
                 $kanban = factory(Kanban::class)->make();
                 $kanban->school_id = $teacher->school_id;
                 $kanban->teacher_id = $teacher->id;
-                $kanban->subject_id = $teacher->subject ? $teacher->subject->id : null;
+                // $kanban->subject_id = $teacher->subject ? $teacher->subject->id : null;
                 $kanban->class_group_id = $teacher->classgroup->id;
                 $kanban->save();
             }

@@ -132,9 +132,14 @@ Route::group([
     Route::group([
         'prefix' => 'reports',
         'namespace' => 'Reports'
-    ], function (){
+    ], function () {
         Route::get('students', 'StudentReportController@index');
         Route::get('teachers', 'TeacherReportController@index');
         Route::get('support-staff', 'SupportStaffReportController@index');
     });
+
+    /*
+    * Examinations
+    */
+    Route::resource('/examinations', 'ExaminationsController');
 });
