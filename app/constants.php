@@ -36,3 +36,25 @@ define('LEVELS', [
             //todo
         ]
     ]);
+
+define('PRIMARY_SUBJECTS', [
+        'English',
+        'SST',
+        'Science',
+        'Math',
+        'Physical Education',
+        'Luganda',
+        'Religious Education',
+    ]);
+
+define('SECONDARY_SUBJECTS', [
+        'English',
+        'Biology',
+        'Physics',
+        'Chemistry',
+        'Math',
+        'Geography',
+        'C.R.E',
+        'Agriculture',
+        'Music',
+    ]);

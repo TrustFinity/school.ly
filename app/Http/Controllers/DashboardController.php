@@ -12,10 +12,9 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        //todo pius: work on this
-        // if ((Auth::user()->school->preferences === null) || (Auth::user()->school->classGroups->count() === 0)) {
-        //     return view('dashboard.setup');
-        // }
+        if ((Auth::user()->school->preferences === null) || (Auth::user()->school->classGroups->count() === 0)) {
+            return redirect('/settings');
+        }
 
         $teachers =  Teacher::all();
         $students = Student::all();

@@ -30,6 +30,8 @@ Vue.component('AttendanceComponent', require('./components/Attendance/Attendance
 
 
 
+Vue.component('SchoolPreference', require('./components/SchoolPreference.vue'));
+
 const app = new Vue({
     el: '#app'
 });
