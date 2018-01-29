@@ -9,6 +9,7 @@ use App\Models\Classes\Stream;
 use App\Models\Classes\Subject;
 use App\Scopes\ActiveStudentScope;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Collection;
 
 class Student extends Model
 {
@@ -47,6 +48,16 @@ class Student extends Model
         parent::boot();
         static::addGlobalScope(new SchoolScope());
         static::addGlobalScope(new ActiveStudentScope());
+    }
+
+    public function scopeMalePerformance()
+    {
+        return collect([2, 10, 80, 50, 100]);
+    }
+
+    public function scopeFemalePerformance()
+    {
+        return collect([10, 5, 50, 60, 80]);
     }
 
     public function getNameAttribute()
