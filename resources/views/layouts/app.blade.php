@@ -61,7 +61,7 @@
                                     <li><a href="/subjects">Subjects</a></li>
                                     <li><a href="/class-groups">Class Groups</a></li>
                                     <li><a href="/streams">Class Streams</a></li>
-                                    <li><a href="/support-staffs">Support Staffs</a></li>
+                                    <li><a href="/support-staffs">Support Staff</a></li>
                                     <li><a href="/chart-of-accounts">Chart of Accounts</a></li>
                                 </ul>
                             </li>
@@ -81,11 +81,11 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="/dos" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Attendances</a>
+                                <a href="/dos" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Attendance</a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="/attendances">{{ getPreference()->attendants_type }}</a></li>
                                     <li><a href="/attendances/teachers">{{ getPreference()->instructors_type }}</a></li>
-                                    <li><a href="/attendances/support-staffs">Support Staffs</a></li>
+                                    <li><a href="/attendances/support-staffs">Support Staff</a></li>
                                 </ul>
                             </li>
                             <li><a href="/students">{{ getPreference()->attendants_type }}</a></li>
@@ -93,11 +93,11 @@
                             <li class="dropdown">
                                 <a href="/reports" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reports</a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Income Statement</a></li>
-                                    <li><a href="#">Balance Sheet</a></li>
                                     <li><a href="#">Trial Balance</a></li>
-                                    <li><a href="#">Students Report</a></li>
-                                    <li><a href="#">Teachers Report</a></li>
+                                    <li><a href="#">Balance Sheet</a></li>
+                                    <li><a href="#">Income Statement</a></li>
+                                    <li><a href="#">{{ getPreference()->attendants_type }} Report</a></li>
+                                    <li><a href="#">{{ getPreference()->instructors_type }} Report</a></li>
                                     <li><a href="#">School Fees Report</a></li>
                                 </ul>
                             </li>
