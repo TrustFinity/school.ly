@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('content-full-screen')
+@section('content')
 
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
