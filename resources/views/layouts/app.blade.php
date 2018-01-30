@@ -96,9 +96,10 @@
                                     <li><a href="#">Trial Balance</a></li>
                                     <li><a href="#">Balance Sheet</a></li>
                                     <li><a href="#">Income Statement</a></li>
-                                    <li><a href="#">{{ getPreference()->attendants_type }} Report</a></li>
-                                    <li><a href="#">{{ getPreference()->instructors_type }} Report</a></li>
                                     <li><a href="#">School Fees Report</a></li>
+                                    <li><a href="/reports/students">{{ getPreference()->attendants_type }} Report</a></li>
+                                    <li><a href="/reports/teachers">{{ getPreference()->instructors_type }} Report</a></li>
+                                    <li><a href="/reports/support-staff">Support Staff Report</a></li>
                                 </ul>
                             </li>
                         @endif
@@ -136,7 +137,7 @@
             @include('flash::message')
             @yield('content')
         </div>
-        <div id="app">
+        <div id="app" class="container-fluid">
             @include('flash::message')
             @yield('content-full-screen')
         </div>

@@ -15,11 +15,13 @@ $factory->define(App\Models\Student::class, function ($faker) {
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName(),
         'gender' => $faker->randomElement(['Male', 'Female']),
-        'dob' => $faker->dateTimeBetween($startDate = '-19 years', $endDate = 'now'),
+        'dob' => $faker->dateTimeBetween($startDate = '-18 years', $endDate = '-6 years'),
         'parents_names' => $faker->name,
         'parents_phone_number' => $faker->phoneNumber,
         'address' => $faker->address,
         'photo_url' => null,
         'is_active' => $faker->randomElement([true, false]),
+        'joining_year' => $faker->dateTimeBetween($startDate = '-8 years', $endDate = 'now'),
+        'leaving_year' => $faker->dateTimeBetween($startDate = '-8 years', $endDate = 'now'),
     ];
 });
