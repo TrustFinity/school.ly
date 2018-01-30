@@ -3,25 +3,25 @@
     <div class="row">
         <div class="col-md-6">
             <h3 class="text-info">
-                {{ getPreference()->attendants_type }} Report
+                {{ getPreference()->instructors_type }} Report
             </h3>
         </div>
         <div class="col-md-6"></div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            {{ $students->links() }}
+            {{ $teachers->links() }}
         </div>
     </div>
     <div class="row">
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>Filter {{ getPreference()->attendants_type }}</h4>
-                    <p class="small">Filter {{ getPreference()->attendants_type }} that joined between the chosen dates.</p>
+                    <h4>Filter {{ getPreference()->instructors_type }}</h4>
+                    <p class="small">Filter {{ getPreference()->instructors_type }} that joined between the chosen dates.</p>
                 </div>
                 <div class="panel-body">
-                    <form action="/reports/students">
+                    <form action="/reports/teachers">
                         <div class="form-group">
                             <label for="starting_date">From</label>
                             <input type="date" name="starting_date" class="form-control" value="{{ $joining_start_date }}">
@@ -31,7 +31,7 @@
                             <input type="date" name="closing_date" class="form-control" value="{{ $joining_stop_date }}">
                         </div>
                         <button type="submit" class="btn btn-success form-control">
-                            Filter {{ getPreference()->attendants_type }}
+                            Filter {{ getPreference()->instructors_type }}
                         </button>
                     </form>
                 </div>
@@ -40,36 +40,36 @@
         <div class="col-md-9">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>{{ getPreference()->attendants_type }}</h4>
+                    <h4>{{ getPreference()->instructors_type }}</h4>
                 </div>
                 <div class="panel-body">
                     <table class="table table-responsive table-striped">
                         <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Age</th>
-                                <th>Stream</th>
-                                <th>Joining Year</th>
-                                <th>Parent/Guardian Name</th>
-                                <th>Parent/Guardian Phone</th>
-                            </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Experience</th>
+                            <th>Stream</th>
+                            <th>Joining Year</th>
+                            <th>Next of Kins Name</th>
+                            <th>Next of Kins Phone</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            @foreach($students as $student)
-                                <tr>
-                                    <td><p class="text-primary">{{ $student->name }}</p></td>
-                                    <td>{{ $student->age }}</td>
-                                    <td>{{ $student->stream->name }}</td>
-                                    <td>{{ $student->joining_year->year }}</td>
-                                    <td>{{ $student->parents_names }}</td>
-                                    <td>{{ $student->parents_phone_number }}</td>
-                                </tr>
-                            @endforeach
+                        @foreach($teachers as $teacher)
+                            <tr>
+                                <td><p class="text-primary">{{ $teacher->name }}</p></td>
+                                <td>{{ $teacher->experience }}</td>
+                                <td>{{ $teacher->stream->name ?? '' }}</td>
+                                <td>{{ $teacher->created_at->year }}</td>
+                                <td>{{ $teacher->next_of_kin_names }}</td>
+                                <td>{{ $teacher->next_of_kin_phone_number }}</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
                 <div class="panel-footer">
-                    {{ $students->links() }}
+                    {{ $teachers->links() }}
                 </div>
             </div>
         </div>

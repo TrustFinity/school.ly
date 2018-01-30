@@ -47,6 +47,13 @@
                             <input name="phone_number" type="text" class="form-control" value="{{ $teacher->phone_number }}">
                         </div>
 
+                        <div class="form-group">
+                            <label for="joining_year">When did the {{ getPreference()->instructors_type }} join the school?</label>
+                            <p class="small text-danger">This is required</p>
+                            <input name="joining_year" type="date"
+                                   class="form-control" value="{{ old('joining_year', $teacher->joining_year) }}">
+                        </div>
+
                         <button type="submit" class="btn btn-success pull-right">Submit</button>
                     </form>
                 </div>

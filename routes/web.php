@@ -120,7 +120,7 @@ Route::group([
         'namespace' => 'Reports'
     ], function (){
         Route::get('students', 'StudentReportController@index');
-        Route::get('teachers', 'StudentReportController@index');
-        Route::get('support-staff', 'StudentReportController@index');
+        Route::get('teachers', 'TeacherReportController@index');
+        Route::get('support-staff', 'SupportStaffReportController@index');
     });
 });
