@@ -53,17 +53,23 @@
                         <input name="experience" type="text" class="form-control" id="" placeholder="Enter Experience">
                     </div>
                     <div class="form-group">
+                        <label for="joining_year">When did the {{ getPreference()->instructors_type }} join the school?</label>
+                        <p class="small text-danger">This is required</p>
+                        <input name="joining_year" type="date"
+                               class="form-control" value="{{ old('joining_year') }}">
+                    </div>
+                    <div class="form-group">
                         <label for="">Phone</label>
                         <input name="phone" type="text" class="form-control" id="" placeholder="Enter Phone">
                     </div>
-                    <div class="form-group">
-                        <label for="">Password</label>
-                        <input type="password" name="password" id="inputPassword" class="form-control" required="required" title="">
-                    </div>
-                    <div class="form-group">
-                        <label for="">Password Confirmation</label>
-                        <input type="password" name="password_confirmation" id="inputPassword" class="form-control" required="required" title="">
-                    </div>
+                    {{--<div class="form-group">--}}
+                        {{--<label for="">Password</label>--}}
+                        {{--<input type="password" name="password" id="inputPassword" class="form-control" required="required" title="">--}}
+                    {{--</div>--}}
+                    {{--<div class="form-group">--}}
+                        {{--<label for="">Password Confirmation</label>--}}
+                        {{--<input type="password" name="password_confirmation" id="inputPassword" class="form-control" required="required" title="">--}}
+                    {{--</div>--}}
 
                     <button type="submit" class="btn btn-success pull-right">Submit</button>
                 </form>

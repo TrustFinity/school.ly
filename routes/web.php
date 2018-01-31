@@ -111,4 +111,16 @@ Route::group([
         Route::resource('expenses', 'ExpenseController');
         Route::resource('school-fees', 'SchoolFeeController');
     });
+
+    /**
+     * Reports
+     */
+    Route::group([
+        'prefix' => 'reports',
+        'namespace' => 'Reports'
+    ], function (){
+        Route::get('students', 'StudentReportController@index');
+        Route::get('teachers', 'TeacherReportController@index');
+        Route::get('support-staff', 'SupportStaffReportController@index');
+    });
 });

@@ -30,6 +30,8 @@ class CreateTeachersTable extends Migration
             $table->string('next_of_kin_names');
             $table->string('next_of_kin_phone_number')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->date('joining_year');
+            $table->date('leaving_year')->nullable();
 
             $table->foreign('school_id')->references('id')->on('schools');
             $table->foreign('level_id')->references('id')->on('levels');

@@ -96,9 +96,9 @@
                     <div class="col-md-8 col-md-offset-2">
 
                         <div class="form-group">
-                            <label for="">What stream does the {{ getPreference()->attendants_type }} go to ?</label>
+                            <label for="stream_id">What stream does the {{ getPreference()->attendants_type }} go to ?</label>
                             <p class="small">This is required, it can be a current class or the next class they are starting.</p>
-                            <select name="stream_id" id="inputstream_id" class="form-control" required="required">
+                            <select name="stream_id" id="stream_id" class="form-control" required="required">
                                 @foreach ($streams as $stream)
                                 <option value="{{ $stream->id }}" {{ $stream->id === $student->stream_id ? 'checked' : '' }}>
                                     {{ $stream->name }}</option>
@@ -114,6 +114,12 @@
                                 <option value="{{ $level->id }}">{{ $level->name }}</option>
                                 @endforeach
                             </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="joining_year">When did the {{ getPreference()->attendants_type }} join the school?</label>
+                            <p class="small text-danger">This is required</p>
+                            <input name="joining_year" type="date"
+                                   class="form-control" value="{{ old('joining_year', $student->joining_year) }}">
                         </div>
                     </div>
                 </div>

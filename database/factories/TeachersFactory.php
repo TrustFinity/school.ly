@@ -24,5 +24,7 @@ $factory->define(App\Models\Teacher::class, function ($faker) {
         'address' => $faker->address,
         'photo_url' => null,
         'is_active' => $faker->randomElement([true, false]),
+        'joining_year' => $faker->dateTimeBetween($startDate = '-8 years', $endDate = 'now'),
+        'leaving_year' => $faker->dateTimeBetween($startDate = '-8 years', $endDate = 'now'),
     ];
 });

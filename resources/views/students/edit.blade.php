@@ -116,6 +116,12 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="joining_year">When did the {{ getPreference()->attendants_type }} join the school?</label>
+                            <p class="small text-danger">This is required</p>
+                            <input name="joining_year" type="date"
+                                   class="form-control" value="{{ old('joining_year', $student->joining_year) }}">
+                        </div>
                     </div>
                 </div>
             </div>

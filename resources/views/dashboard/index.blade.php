@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@section('content')
+@section('content-full-screen')
 
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3>{{ school_name() }}</h3>
@@ -49,13 +49,13 @@
     </div>
 
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12">
             <h2>General Information</h2>
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12">
             <div class="row">
                 <div class="col-xs-4">
                     <div class="panel panel-default">
@@ -92,7 +92,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-body">
                     {!! $growth_per_year->html() !!}
@@ -101,26 +101,26 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <h2>Performance</h2>
-        </div>
-    </div>
+    {{--<div class="row">--}}
+        {{--<div class="col-md-10 col-md-offset-1">--}}
+            {{--<h2>Performance</h2>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4 class="text-center">
-                        By Gender
-                    </h4>
-                </div>
-                <div class="panel-body">
-                    {!! $performance->html() !!}
-                </div>
-            </div>
-        </div>
-    </div>
+    {{--<div class="row">--}}
+        {{--<div class="col-md-10 col-md-offset-1">--}}
+            {{--<div class="panel panel-default">--}}
+                {{--<div class="panel-heading">--}}
+                    {{--<h4 class="text-center">--}}
+                        {{--By Gender--}}
+                    {{--</h4>--}}
+                {{--</div>--}}
+                {{--<div class="panel-body">--}}
+                    {{--{!! $performance->html() !!}--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
 @endsection
 @section('scripts')
@@ -128,5 +128,5 @@
     {!! $teacher_chart->script() !!}
     {!! $support_staff_chart->script() !!}
     {!! $growth_per_year->script() !!}
-    {!! $performance->script() !!}
+    {{--{!! $performance->script() !!}--}}
 @endsection

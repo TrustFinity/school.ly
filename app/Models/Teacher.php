@@ -13,6 +13,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Teacher extends Model
 {
+    protected $dates = [
+        'joining_year',
+        'dob',
+        'leaving_year'
+    ];
+
     /**
      * The "booting" method of the model.
      *
@@ -43,6 +49,8 @@ class Teacher extends Model
         'level_id'      => 'required|integer',
         'experience'    => 'required|string',
         'phone'         => 'required|digits_between:7,10',
+        'joining_year'  => 'required|date',
+        'leaving_year'  => 'nullable|date',
     ];
 
     public function getNameAttribute()

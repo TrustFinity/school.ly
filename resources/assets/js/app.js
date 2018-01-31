@@ -21,6 +21,10 @@ Vue.component('FormInput', require('./components/Forms/FormInput.vue'));
 Vue.component('SearchStudent', require('./components/Forms/SearchStudent.vue'));
 Vue.component('SearchTeachers', require('./components/Forms/SearchTeachers.vue'));
 Vue.component('SearchSupportStaff', require('./components/Forms/SearchSupportStaff.vue'));
+/**
+ * Forms
+ */
+Vue.component('DatePicker', require('./components/Forms/DatePicker.vue'));
 
 /**
  * Attendance

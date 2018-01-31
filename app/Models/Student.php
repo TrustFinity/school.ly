@@ -9,10 +9,15 @@ use App\Models\Classes\Stream;
 use App\Models\Classes\Subject;
 use App\Scopes\ActiveStudentScope;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Collection;
 
 class Student extends Model
 {
+    protected $dates = [
+        'joining_year',
+        'dob',
+        'leaving_year'
+    ];
+
     protected $fillable = [
         'first_name',
         'middle_name',
@@ -23,18 +28,22 @@ class Student extends Model
         'parents_names',
         'parents_phone_numbers',
         'stream_id',
-        'level_id'
+        'level_id',
+        'joining_year',
+        'leaving_year',
     ];
 
     public static $validationRules = [
-        'first_name'          => 'required|string',
-        'middle_name'          => 'sometimes|string',
-        'last_name'          => 'required|string',
+        'first_name'    => 'required|string',
+        'middle_name'   => 'sometimes|string',
+        'last_name'     => 'required|string',
         'gender'        => 'required',
         'dob'           => 'required|date',
+        'joining_year'  => 'required|date',
+        'leaving_year'  => 'nullable|date',
         'address'       => 'required|text',
         'stream_id'     => 'required|integer',
-        'parents_names'  => 'required|string',
+        'parents_names' => 'required|string',
         'level_id'      => 'required|integer',
     ];
 
