@@ -66,7 +66,10 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Accounting</a>
+                                <a href="#"
+                                   class="dropdown-toggle"
+                                   data-toggle="dropdown" role="button"
+                                   aria-expanded="false">Accounting</a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="/transactions/salaries">Salaries</a></li>
                                     <li><a href="/transactions/expenses">Expenses</a></li>
@@ -81,7 +84,11 @@
                                 </ul>
                             </li>
                             <li class="dropdown">
-                                <a href="/dos" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Attendance</a>
+                                <a href="/dos"
+                                   class="dropdown-toggle"
+                                   data-toggle="dropdown"
+                                   role="button"
+                                   aria-expanded="false">Attendance</a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="/attendances">{{ getPreference()->attendants_type }}</a></li>
                                     <li><a href="/attendances/teachers">{{ getPreference()->instructors_type }}</a></li>
@@ -91,12 +98,16 @@
                             <li><a href="/students">{{ getPreference()->attendants_type }}</a></li>
                             <li><a href="/teachers">{{ getPreference()->instructors_type }}</a></li>
                             <li class="dropdown">
-                                <a href="/reports" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Reports</a>
+                                <a href="/reports"
+                                   class="dropdown-toggle"
+                                   data-toggle="dropdown"
+                                   role="button"
+                                   aria-expanded="false">Reports</a>
                                 <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Trial Balance</a></li>
-                                    <li><a href="#">Balance Sheet</a></li>
-                                    <li><a href="#">Income Statement</a></li>
-                                    <li><a href="#">School Fees Report</a></li>
+                                    {{--<li><a href="#">Trial Balance</a></li>--}}
+                                    {{--<li><a href="#">Balance Sheet</a></li>--}}
+                                    {{--<li><a href="#">Income Statement</a></li>--}}
+                                    {{--<li><a href="#">School Fees Report</a></li>--}}
                                     <li><a href="/reports/students">{{ getPreference()->attendants_type }} Report</a></li>
                                     <li><a href="/reports/teachers">{{ getPreference()->instructors_type }} Report</a></li>
                                     <li><a href="/reports/support-staff">Support Staff Report</a></li>

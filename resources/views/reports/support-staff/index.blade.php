@@ -3,14 +3,14 @@
     <div class="row">
         <div class="col-md-6">
             <h3 class="text-info">
-                {{ getPreference()->instructors_type }} Report
+                Support Staff Report
             </h3>
         </div>
         <div class="col-md-6"></div>
     </div>
     <div class="row">
         <div class="col-md-6">
-            {{ $teachers->links() }}
+            {{ $support_staff->links() }}
         </div>
     </div>
     <div class="row">
@@ -47,29 +47,29 @@
                         <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Experience</th>
-                            <th>Stream</th>
-                            <th>Joining Year</th>
+                            <th>Gender</th>
+                            <th>Phone number</th>
                             <th>Next of Kins Name</th>
                             <th>Next of Kins Phone</th>
+                            <th>Created</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($teachers as $teacher)
+                        @foreach($support_staff as $staff)
                             <tr>
-                                <td><p class="text-primary">{{ $teacher->name }}</p></td>
-                                <td>{{ $teacher->experience }}</td>
-                                <td>{{ $teacher->stream->name ?? '' }}</td>
-                                <td>{{ $teacher->joining_year->year }}</td>
-                                <td>{{ $teacher->next_of_kin_names }}</td>
-                                <td>{{ $teacher->next_of_kin_phone_number }}</td>
+                                <td><p class="text-primary">{{ $staff->name }}</p></td>
+                                <td>{{ $staff->gender }}</td>
+                                <td>{{ $staff->phone_number }}</td>
+                                <td>{{ $staff->next_of_kin_full_names }}</td>
+                                <td>{{ $staff->next_of_kin_phone_number }}</td>
+                                <td>{{ $staff->created_at->year }}</td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                 </div>
                 <div class="panel-footer">
-                    {{ $teachers->links() }}
+                    {{ $support_staff->links() }}
                 </div>
             </div>
         </div>
