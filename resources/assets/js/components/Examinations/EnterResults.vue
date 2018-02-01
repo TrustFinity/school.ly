@@ -21,11 +21,43 @@
                         </label>
                         <select name="stream_id" v-model="chooseStream" class="form-control" required>
                             <option disabled value="">--Select a class</option>
-                            <option v-for="stream in chooseClassGroup.streams" value="stream.id">
+                            <option v-for="stream in chooseClassGroup.streams" :value="stream">
                                 {{ stream.name }}
                             </option>
                         </select>
                     </div>
+                    <div v-if="chooseClassGroup" class="col-sm-8 col-xs-12 col-sm-offset-2">
+                        <label for="subject_id">Subject to enter results</label>
+                        <select name="subject_id" v-model="chooseSubject" class="form-control" required>
+                            <option disabled value="">--Select a subject</option>
+                            <option v-for="subject in chooseClassGroup.subjects" value="subject.id">
+                                {{ subject.name }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div v-if="chooseStream" class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table table-striped table-responsive">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Marks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="student in chooseStream.students" value="student.id">
+                                <td>
+                                    {{ student.first_name }}
+                                </td>
+                                <td>
+                                    <input ype="number" name="mark" class="form-control">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </form>

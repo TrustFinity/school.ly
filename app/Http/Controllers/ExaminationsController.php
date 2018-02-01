@@ -74,7 +74,7 @@ class ExaminationsController extends Controller
      */
     public function edit($id)
     {
-        $class_groups = ClassGroup::with('streams', 'subjects')->get();
+        $class_groups = ClassGroup::with('streams', 'subjects', 'streams.students')->get();
         $examination = Examination::find($id);
         return view('examinations.new', compact('class_groups', 'examination'));
     }
