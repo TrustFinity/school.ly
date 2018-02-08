@@ -24,6 +24,7 @@ class StoreExaminationRequest extends FormRequest
      */
     public function rules()
     {
-        return (new Examination)->rules();
+        // return (new Examination)->rules();
+        return [];
     }
 }

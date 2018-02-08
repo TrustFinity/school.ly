@@ -53,6 +53,11 @@ class ExaminationsController extends Controller
         }
     }
 
+    public function saveResults(StoreExaminationResults $request, $id)
+    {
+        dd($request->all());
+    }
+
     /**
      * Display the specified resource.
      *
@@ -88,7 +93,9 @@ class ExaminationsController extends Controller
      */
     public function update(StoreExaminationResults $request, $id)
     {
-        //
+        $class_group = json_decode($request->class_group_id, true);
+        // dd($class_group);
+        dd($request->all());
     }
 
     /**

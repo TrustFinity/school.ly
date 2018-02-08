@@ -142,4 +142,7 @@ Route::group([
     * Examinations
     */
     Route::resource('/examinations', 'ExaminationsController');
+    Route::post('/examinations/{examination}/save-results', 'ExaminationsController@saveResults');
+
+    // Route::resource('/results', 'ResultsController');
 });

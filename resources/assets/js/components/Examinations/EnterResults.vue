@@ -1,6 +1,9 @@
 <template>
     <div class="row">
-        <form action="/examinations" method="POST">
+        <form method="POST" :action="formAction">
+            <input type="hidden" name="_token" :value="getToken">
+            <input type="hidden" name="_method" value="PUT">
+
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="col-sm-8 col-xs-12 col-sm-offset-2">
@@ -9,7 +12,7 @@
                         </label>
                         <select name="class_group_id" v-model="chooseClassGroup" class="form-control" required>
                             <option disabled value="">--Select a class</option>
-                            <option v-for="classGroup in class_groups" :value="classGroup">
+                            <option v-for="classGroup in class_groups">
                                 {{ classGroup.name }}
                             </option>
                         </select>
@@ -38,28 +41,38 @@
                 </div>
             </div>
 
-            <div v-if="chooseStream" class="panel panel-default">
+            <div v-if="chooseStream && chooseSubject" class="panel panel-default">
                 <div class="panel-body">
                     <table class="table table-striped table-responsive">
                         <thead>
                             <tr>
-                                <th>Student Name</th>
-                                <th>Marks</th>
+                                <th>STUDENT NAME</th>
+                                <th>MARKS</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr v-for="student in chooseStream.students" value="student.id">
                                 <td>
-                                    {{ student.first_name }}
+                                    {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}
                                 </td>
                                 <td>
-                                    <input ype="number" name="mark" class="form-control">
+                                    <input v-model.number="marks[student.id]" type="number" name="student.id" class="form-control">
+                                    <!-- <input type="number" name="student.id" class="form-control"> -->
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button class="btn btn-success pull-right">Save Results</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </form>
     </div>
 </template>
@@ -76,11 +89,22 @@
         },
         data() {
             return {
-                chooseClassGroup: '',
+                chooseClassGroup: {},
                 chooseStream: '',
                 chooseSubject: '',
                 selectedClassGroup: new Object,
                 marks: []
+            }
+        },
+        computed: {
+            getToken() {
+                return document.getElementsByName('csrf-token')[0].getAttribute('content')
+            },
+            formAction() {
+                return '/examinations/' + this.examination.id
+            },
+            studentMark() {
+                return this.marks[student.id]
             }
         },
         methods: {
