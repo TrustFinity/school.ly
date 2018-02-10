@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\Result;
 use App\Models\Examination;
+use App\Models\Classes\Subject;
 use App\Models\Classes\ClassGroup;
 use App\Http\Requests\StoreExaminationRequest;
 use App\Http\Requests\StoreExaminationResults;
@@ -53,11 +54,6 @@ class ExaminationsController extends Controller
         }
     }
 
-    public function saveResults(StoreExaminationResults $request, $id)
-    {
-        dd($request->all());
-    }
-
     /**
      * Display the specified resource.
      *
@@ -93,9 +89,30 @@ class ExaminationsController extends Controller
      */
     public function update(StoreExaminationResults $request, $id)
     {
-        $class_group = json_decode($request->class_group_id, true);
-        // dd($class_group);
         dd($request->all());
+
+        $examination = Examination::find($id);
+        $subject = Subject::find($request->subject_id);
+
+        foreach ($request->all() as $mark) {
+            if (is_numeric($mark)) {
+                dd($mark);
+
+                $result = new Result;
+                $result->school_id = $examination->school_id;
+                $result->examination_id = $id;
+                $result->subject_id = $request->subject_id;
+                $result->class_group_id = $subject->class_group_id;
+
+                $result->student_id = '';
+                $result->marks = $mark;
+
+                $result->save();
+            }
+        }
+
+        flash("Results for $subject->name have been saved.")->success();
+        return redirect('/examinations');
     }
 
     /**

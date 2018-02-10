@@ -10,30 +10,30 @@
                         <label for="class_group_id">
                             Select the Class that you would like to record results for
                         </label>
-                        <select name="class_group_id" v-model="chooseClassGroup" class="form-control" required>
+                        <select v-model="chooseClassGroup" class="form-control" required>
                             <option disabled value="">--Select a class</option>
-                            <option v-for="classGroup in class_groups">
+                            <option v-for="(classGroup, classGroupIndex) in class_groups" :key="classGroup.id" :value="classGroup">
                                 {{ classGroup.name }}
                             </option>
                         </select>
                     </div>
                     <br>
-                    <div v-if="chooseClassGroup" class="col-sm-8 col-xs-12 col-sm-offset-2">
+                    <div v-show="chooseClassGroup" class="col-sm-8 col-xs-12 col-sm-offset-2">
                         <label for="stream_id">
                             Select the Stream
                         </label>
-                        <select name="stream_id" v-model="chooseStream" class="form-control" required>
+                        <select v-model="chooseStream" class="form-control" required>
                             <option disabled value="">--Select a class</option>
-                            <option v-for="stream in chooseClassGroup.streams" :value="stream">
+                            <option v-for="(stream, streamIndex) in chooseClassGroup.streams" :key="streamIndex" :value="stream">
                                 {{ stream.name }}
                             </option>
                         </select>
                     </div>
-                    <div v-if="chooseClassGroup" class="col-sm-8 col-xs-12 col-sm-offset-2">
+                    <div v-show="chooseClassGroup" class="col-sm-8 col-xs-12 col-sm-offset-2">
                         <label for="subject_id">Subject to enter results</label>
                         <select name="subject_id" v-model="chooseSubject" class="form-control" required>
                             <option disabled value="">--Select a subject</option>
-                            <option v-for="subject in chooseClassGroup.subjects" value="subject.id">
+                            <option v-for="subject in chooseClassGroup.subjects" :value="subject.id">
                                 {{ subject.name }}
                             </option>
                         </select>
@@ -56,8 +56,7 @@
                                     {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}
                                 </td>
                                 <td>
-                                    <input v-model.number="marks[student.id]" type="number" name="student.id" class="form-control">
-                                    <!-- <input type="number" name="student.id" class="form-control"> -->
+                                    <input type="number" :name="'student-' + student.id" class="form-control">
                                 </td>
                             </tr>
                         </tbody>
@@ -89,11 +88,9 @@
         },
         data() {
             return {
-                chooseClassGroup: {},
+                chooseClassGroup: '',
                 chooseStream: '',
-                chooseSubject: '',
-                selectedClassGroup: new Object,
-                marks: []
+                chooseSubject: ''
             }
         },
         computed: {
@@ -109,7 +106,7 @@
         },
         methods: {
             selectedClass(class_group) {
-                this.chooseClassGroup = class_group.stream
+                this.chooseClassGroup = class_group.id
             }
         }
     };
