@@ -7,7 +7,7 @@
         <meta name="author" content="">
         <link rel="icon" href="img/favicon.png">
         <title>{{ config('app.name') }} | Modern tools in your school</title>
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap4.min.css" rel="stylesheet">
         <link href="css/welcome.css" rel="stylesheet">
     </head>
 

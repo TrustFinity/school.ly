@@ -8,20 +8,11 @@
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
     <meta name="author" content="Trustfinity Technologies">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="icon" href="/img/favicon.png">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Darasini') }}</title>
-
-    <!-- Styles -->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
-
     {!! Charts::styles() !!}
-
-    <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -152,6 +143,7 @@
             @include('flash::message')
             @yield('content-full-screen')
         </div>
+        
     </div>
     <!-- Scripts -->
     <script src="{{ mix('/js/app.js') }}"></script>
