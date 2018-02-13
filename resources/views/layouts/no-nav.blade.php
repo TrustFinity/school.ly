@@ -14,11 +14,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Darasani</title>
+    <title>{{ config('app.name', 'Darasini') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+
+    {!! Charts::styles() !!}
 
     <!-- Scripts -->
     <script>
@@ -27,25 +28,10 @@
         ]) !!};
     </script>
 </head>
-<body style="background:url(../img/education.jpg) center; background-size: cover; position: relative; background-repeat: no-repeat;background-attachment: fixed;">
-
+<body>
     <div id="app">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5 sidebar pull-right">
-                    <section>
-                        <div class="col-xs-12 text-center">
-                            <img src="{{ asset('img/icon.png') }}" alt="Darasani logo" style="margin-bottom:30px; width:100px;">
-                        </div>
-
-                        @yield('content')
-
-                    </section>
-                </div>
-            </div>
-        </div>
+        @yield('content')
     </div>
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
