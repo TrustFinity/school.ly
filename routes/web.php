@@ -91,7 +91,7 @@ Route::group([
     /**
      * Support Staffs
      */
-    Route::resource('/support-staffs', 'SupportStaffController');
+    Route::resource('/support-staff', 'SupportStaffController');
 
     /**
      * Chart of accounts

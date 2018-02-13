@@ -52,7 +52,7 @@
                                     <li><a href="/subjects">Subjects</a></li>
                                     <li><a href="/class-groups">Class Groups</a></li>
                                     <li><a href="/streams">Class Streams</a></li>
-                                    <li><a href="/support-staffs">Support Staff</a></li>
+                                    <li><a href="/support-staff">Support Staff</a></li>
                                     <li><a href="/chart-of-accounts">Chart of Accounts</a></li>
                                 </ul>
                             </li>
@@ -113,7 +113,7 @@
                         @if (Auth::check())
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <i class="glyphicon glyphicon-user"></i> {{ Auth::user()->username }}
+                                    <i class="glyphicon glyphicon-user"></i> {{ Auth::user()->last_name }}
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">

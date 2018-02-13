@@ -31,7 +31,9 @@ class SchoolTableSeeder extends Seeder
                     'username'      => str_slug($school_name),
                     'password'      => bcrypt('password'),
                     'userable_id'   => $admin_id,
-                    'userable_type' => 'Admin'
+                    'userable_type' => 'Admin',
+                    'first_name'    => 'Ojok',
+                    'last_name'    => 'Justine',
                 ]);
             }
         }
