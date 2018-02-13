@@ -21,7 +21,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-3">
-                            <div class="panel panel-primary">
+                            <div class="panel panel-default">
                                 <div class="panel-body">
                                     <div class="row">
                                         <div class="col-xs-6">
@@ -94,7 +94,7 @@
                 <div class="col-xs-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="text-center">{{ getPreference()->attendants_type }} by Gender</h4>
+                            <h4 class="text-center">{{ getPreference()->attendants_type }}</h4>
                         </div>
                         <div class="panel-body">
                             {!! $student_chart->html() !!}
@@ -104,7 +104,7 @@
                 <div class="col-xs-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="text-center">{{ getPreference()->instructors_type }} by Gender</h4>
+                            <h4 class="text-center">{{ getPreference()->instructors_type }}</h4>
                         </div>
                         <div class="panel-body">
                             {!! $teacher_chart->html() !!}
@@ -114,7 +114,7 @@
                 <div class="col-xs-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4 class="text-center">Support Staff by Gender</h4>
+                            <h4 class="text-center">Support Staff</h4>
                         </div>
                         <div class="panel-body">
                             {!! $support_staff_chart->html() !!}
