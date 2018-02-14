@@ -7,7 +7,7 @@
 	                    <thead>
 	                        <tr>
 	                            <th>
-	                            	Classes
+	                            	Classes/Streams
 	                            </th>
 	                        </tr>
 	                    </thead>
@@ -24,39 +24,49 @@
 	    <div class="col-md-9">
 	    	<div class="panel panel-default">
 	    		<div class="panel-body">
-	    			<h5>Choose a date in which this register was or is being taken. (Default is today if not chosen)</h5>
-	    			<input type="date" class="form-control" v-model="date">
+	    			<h3>Choose a class/stream from the left to get started.</h3>
+	    			<div class="form-group">
+	    				<label>
+	    					Picck the date this register was taken. 
+	    					<span class="text-primary">choose older dates for old entries.</span>
+	    					<span class="small text-danger">(Required)</span>
+	    				</label>
+	    				<input type="date" class="form-control" v-model="date">
+	    			</div>
+	    			<br>
+	    			<div class="alert alert-danger" v-show="dateIsNotChosen">
+						Please choose a date for this attendance record first
+	    			</div>
 	    		</div>
 	    	</div>
-	        <div class="panel panel-default">
+	        <div class="panel panel-default" v-show="chosenStream">
 	            <div class="panel-body">
-	                <table class="table table-striped table-hover">
-	                    <thead>
-	                        <tr>
-	                            <th width="90%">{{ chosenStream }} {{ attendees }}</th>
-	                            <th>P</th>
-	                            <th>A</th>
-	                        </tr>
-	                    </thead>
-	                    <tbody>
-                            <tr v-for="student in students">
-                                <td width="90%">
-                                    <a :href="'/students/'+student.id">
-                                        {{ student.first_name }} {{ student.middle_name }} {{ student.last_name }}
-                                    </a>
-                                </td>
-                                <td>
-                                    <input @click="syncAttendance(student, 1)" type="checkbox" name="is_present">
-                                </td>
-                                <td>
-                                    <input @click="syncAttendance(student, 0)" type="checkbox" name="is_present">
-                                </td>
-                            </tr>
-	                    </tbody>
-	                </table>
-	                <div class="alert alert-info">
-                    	<p>There are currently no {{ attendees }}</p>
-                    </div>
+	            	<div class="form-group">
+	            		<h3>{{ chosenStream }}</h3>
+	            	</div>
+	            	<hr>
+	            	<div class="form-group">
+	            		<label for="boys">
+	            			Number of Boys present
+	            			<span class="text-danger small"> (Required)</span>
+	            		</label>
+	            		<p class="small">Please note that this cannot be updated incase of a mistake.</p>
+	            		<input type="number" class="form-control" v-model="boys">
+	            	</div>
+	            	<div class="form-group">
+	            		<label for="girls">
+	            			Number of Girls present
+	            			<span class="text-danger small"> (Required)</span>
+	            		</label>
+	            		<p class="small">Please note that this cannot be updated incase of a mistake.</p>
+	            		<input type="number" class="form-control" v-model="girls">
+	            	</div>
+	            	<div class="form-group">
+	            		<button class="btn btn-success"
+	            			@click="saveAttendance">
+	            			Save attendance
+	            		</button>
+	            	</div>
 	            </div>
 	        </div>
 	    </div>
@@ -78,7 +88,10 @@
 			return {
 				students: [],
 				chosenStream: '',
-				date: null
+				date: null,
+				boys: '',
+				girls: '',
+				dateIsNotChosen: false,
 			}
 		},
 		methods: {
@@ -86,7 +99,11 @@
 				this.chosenStream = stream.name
 				this.students = stream.students
 			},
-			syncAttendance (student, is_present) {
+			saveAttendance () {
+				if (!this.date) {
+					this.dateIsNotChosen = true
+					return
+				}
 				axios.get('/api/v1/attendances/save/'+student.id, {
 				    params: {
 				      	is_present: is_present,
@@ -100,7 +117,7 @@
 			    	console.log(error)
 			  	})
 			}
-		}
+		},
 	}
 </script>
 <style scoped>
