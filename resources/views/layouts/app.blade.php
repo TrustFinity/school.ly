@@ -8,20 +8,11 @@
     <meta name="keywords" content="HTML,CSS,XML,JavaScript">
     <meta name="author" content="Trustfinity Technologies">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="icon" href="/img/favicon.png">
-
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Darasini') }}</title>
-
-    <!-- Styles -->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
-
     {!! Charts::styles() !!}
-
-    <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
@@ -61,7 +52,7 @@
                                     <li><a href="/subjects">Subjects</a></li>
                                     <li><a href="/class-groups">Class Groups</a></li>
                                     <li><a href="/streams">Class Streams</a></li>
-                                    <li><a href="/support-staffs">Support Staff</a></li>
+                                    <li><a href="/support-staff">Support Staff</a></li>
                                     <li><a href="/chart-of-accounts">Chart of Accounts</a></li>
                                 </ul>
                             </li>
@@ -122,7 +113,7 @@
                         @if (Auth::check())
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <i class="glyphicon glyphicon-user"></i> {{ Auth::user()->username }}
+                                    <i class="glyphicon glyphicon-user"></i> {{ Auth::user()->last_name }}
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
@@ -152,6 +143,7 @@
             @include('flash::message')
             @yield('content-full-screen')
         </div>
+        
     </div>
     <!-- Scripts -->
     <script src="{{ mix('/js/app.js') }}"></script>
