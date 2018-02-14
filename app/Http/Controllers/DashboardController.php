@@ -22,21 +22,24 @@ class DashboardController extends Controller
         $support_staff = SupportStaff::all();
 
         $student_chart = Charts::database($students, 'pie', 'chartjs')
-            ->title("Gender")
+            ->title(getPreference()->attendants_type." Gender")
+            ->colors(['#5D6D7E', '#82E0AA'])
             ->responsive(false)
             ->groupBy('gender');
         $teacher_chart = Charts::database($teachers, 'pie', 'chartjs')
-            ->title("Gender")
+            ->title(getPreference()->instructors_type." Gender")
+            ->colors(['#5D6D7E', '#82E0AA'])
             ->responsive(false)
             ->groupBy('gender');
         $support_staff_chart = Charts::database($support_staff, 'donut', 'chartjs')
-            ->title("Gender")
+            ->title("Support Staff Gender")
+            ->colors(['#5D6D7E', '#85C1E9', '#82E0AA'])
             ->responsive(false)
             ->groupBy('gender');
 
         $growth_per_year = Charts::multiDatabase('bar', 'chartjs')
             ->title("Growth per Year")
-            ->colors(['#42d7f4', '#41f4e5', '#f4c441'])
+            ->colors(['#58D68D', '#FFAB91', '#F1C40F'])
             ->dataset('Students', $students)
             ->dataset('Teachers', $teachers)
             ->dataset('Support Staff', $support_staff)

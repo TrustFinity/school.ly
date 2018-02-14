@@ -140,8 +140,10 @@
             @yield('content')
         </div>
         <div id="app" class="container-fluid">
-            @include('flash::message')
-            @yield('content-full-screen')
+            <div class="col-md-10 col-md-offset-1">
+                @include('flash::message')
+                @yield('content-full-screen')
+            </div>
         </div>
         
     </div>
