@@ -85,8 +85,8 @@ Route::group([
      * Attendance
      */
     Route::get('/attendances', 'AttendanceController@index');
-    Route::get('/attendances/teachers', 'TeachersAttendanceController@index');
-    Route::get('/attendances/support-staffs', 'SupportStaffAttendanceController@index');
+    Route::get('/attendances/teachers/{teacher}', 'TeachersAttendanceController@index');
+    Route::get('/attendances/support-staffs/{support_staff}', 'SupportStaffAttendanceController@index');
 
     /**
      * Support Staffs

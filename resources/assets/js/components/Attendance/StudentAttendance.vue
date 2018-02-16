@@ -27,7 +27,7 @@
 	    			<h3>Choose a class/stream from the left to get started.</h3>
 	    			<div class="form-group">
 	    				<label>
-	    					Picck the date this register was taken. 
+	    					Pick the date this register was taken. 
 	    					<span class="text-primary">choose older dates for old entries.</span>
 	    					<span class="small text-danger">(Required)</span>
 	    				</label>
@@ -36,13 +36,31 @@
 	    			<br>
 	    			<div class="alert alert-danger" v-show="dateIsNotChosen">
 						Please choose a date for this attendance record first
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						</button>
 	    			</div>
 	    		</div>
 	    	</div>
 	        <div class="panel panel-default" v-show="chosenStream">
 	            <div class="panel-body">
+
+	            	<div class="alert alert-danger" v-show="fieldsNotPopulated">
+						Make sure class/stream is chosen first and all fields are filled in properly.
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						</button>
+	    			</div>
+
+	    			<div class="alert alert-info" v-show="info">
+						{{ info }}
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						</button>
+	    			</div>
+
 	            	<div class="form-group">
-	            		<h3>{{ chosenStream }}</h3>
+	            		<h3>{{ chosenStream.name }}</h3>
 	            	</div>
 	            	<hr>
 	            	<div class="form-group">
@@ -51,7 +69,7 @@
 	            			<span class="text-danger small"> (Required)</span>
 	            		</label>
 	            		<p class="small">Please note that this cannot be updated incase of a mistake.</p>
-	            		<input type="number" class="form-control" v-model="boys">
+	            		<input type="number" class="form-control" v-model="boys" required>
 	            	</div>
 	            	<div class="form-group">
 	            		<label for="girls">
@@ -59,7 +77,7 @@
 	            			<span class="text-danger small"> (Required)</span>
 	            		</label>
 	            		<p class="small">Please note that this cannot be updated incase of a mistake.</p>
-	            		<input type="number" class="form-control" v-model="girls">
+	            		<input type="number" class="form-control" v-model="girls" required>
 	            	</div>
 	            	<div class="form-group">
 	            		<button class="btn btn-success"
@@ -86,35 +104,47 @@
 		},
 		data() {
 			return {
-				students: [],
 				chosenStream: '',
 				date: null,
 				boys: '',
 				girls: '',
 				dateIsNotChosen: false,
+				fieldsNotPopulated: false,
+				info: ''
 			}
 		},
 		methods: {
 			loadStudents(stream) {
-				this.chosenStream = stream.name
-				this.students = stream.students
+				this.chosenStream = stream
 			},
 			saveAttendance () {
+				this.info = ''
+				this.dateIsNotChosen = false
 				if (!this.date) {
 					this.dateIsNotChosen = true
 					return
 				}
-				axios.get('/api/v1/attendances/save/'+student.id, {
+
+				this.fieldsNotPopulated = false
+
+				if (!this.chosenStream  || !this.boys || !this.girls) {
+					this.fieldsNotPopulated = true
+					return
+				}
+				axios.get('/api/v1/attendances/save', {
 				    params: {
-				      	is_present: is_present,
-				      	date: this.date
+				      	boys: this.boys,
+				      	girls: this.girls,
+				      	date: this.date,
+				      	stream_id: this.chosenStream.id,
+				      	school_id: this.chosenStream.school_id
 				  	}
 				})
 				.then((response) => {
-			    	console.log(response.data)
+					this.info = response.data
 			    })
 			  	.catch((error) => {
-			    	console.log(error)
+			  		this.info = error
 			  	})
 			}
 		},

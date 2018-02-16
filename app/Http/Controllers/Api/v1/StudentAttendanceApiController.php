@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\Api\v1;
 
-use Auth;
 use Carbon\Carbon;
-use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Attendances\Attendance;
@@ -16,20 +14,28 @@ class StudentAttendanceApiController extends Controller
 	 * ajax request.
 	 * 
 	 * @param  Request $request data from client.
-	 * @param  Student $student to be saved.
 	 * @return String           message.
 	 */
-    public function save(Request $request, Student $student)
+    public function save(Request $request)
     {
     	$attendance = new Attendance($request->all());
-    	$attendance->gender = $student->gender;
-    	$attendance->stream_id = $student->stream_id;
-    	$attendance->student_id = $student->id;
-    	$attendance->school_id = $student->school_id;
     	$attendance->date = Carbon::parse($request->date);
+
+        $exists = Attendance::where('date', $attendance->date)
+                            ->where('stream_id', $attendance->stream_id)
+                            ->first();
+
+        if ($exists) {
+            return $attendance->stream->name.
+                " attendance aready recorded for ".$attendance->date->toDateString();
+        }
+
     	if (!$attendance->save()) {
-    		return 'Failed';
+    		return 'Failed to record attendance for '
+                .$attendance->stream->name." for date ".$attendance->date->toDateString();
     	}
-        return 'Saved';
+
+        return $attendance->stream->name." attendance recorded for "
+            .$attendance->date->toDateString()." successfully.";
     }
 }

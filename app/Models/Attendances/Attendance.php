@@ -15,7 +15,11 @@ class Attendance extends Model
 	protected $dates = ['date'];
 
     protected $fillable = [
-        'is_present',
+        'boys',
+        'girls',
+        'stream_id',
+        'class_group_id',
+        'school_id',
     ];
 
     /**
