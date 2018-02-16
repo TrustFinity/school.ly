@@ -45,7 +45,8 @@ class StudentController extends Controller
         $student = new Student($request->all());
         $student->school_id = Auth::user()->school_id;
         if (! $student->save()) {
-            // Return back with errors
+            flash('Failed to create '.$student->name)->errors();
+            return back();
         }
 
         //todo decide weather students need to use the same login or a unique one
@@ -59,11 +60,7 @@ class StudentController extends Controller
             'userable_type' => 'Student'
         ]);
 
-        if (Auth::check() && Auth::user()->hasRole('Admin') || Auth::user()->hasRole('Teacher')) {
-            return redirect('/students/'.$student->id);
-        }
-
-        return redirect('login');
+        return redirect('/students/'.$student->id);
     }
 
     /**
