@@ -21,6 +21,16 @@ Route::group([
     Route::put('/settings/{setting}', 'SettingController@update');
 
     /**
+     * Users
+     */
+    Route::resource('users', 'UserController');
+
+    /**
+     * Roles
+     */
+    Route::get('/roles', 'RoleController@index');
+
+    /**
      * Admins
      */
     Route::resource('/admin', 'AdminController');

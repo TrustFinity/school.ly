@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Entrust\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -15,7 +16,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'school_id',
         'username',
         'email',
         'first_name',
@@ -25,7 +25,6 @@ class User extends Authenticatable
         'password',
         'userable_id',
         'userable_type',
-        // 'remember_token'
     ];
 
 
@@ -36,7 +35,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        // 'remember_token',
     ];
 
     public function getNameAttribute()
@@ -61,5 +59,10 @@ class User extends Authenticatable
         }
 
         return $this->userable_type;
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
     }
 }
