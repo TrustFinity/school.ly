@@ -51,15 +51,6 @@ class User extends Authenticatable
         return $this->belongsTo(School::class);
     }
 
-    public function hasRole($userable_type = null)
-    {
-        if ($userable_type) {
-            return $this->userable_type == $userable_type;
-        }
-
-        return $this->userable_type;
-    }
-
     public function roles()
     {
         return $this->belongsToMany(Role::class);
