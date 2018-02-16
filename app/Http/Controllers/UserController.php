@@ -45,14 +45,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validator($request->all())->validate();
+        $this->validatorCreation($request->all())->validate();
         $user = new User($request->all());
         $user->school_id = Auth::user()->school_id;
+        $user->password  = bcrypt($request->password);
         if (!$user->save()) {
         	flash('Failed to create the user. An error occured')->error();
         	return back();
         }
-        $user->roles()->syncWithoutDetaching($request->role);
+        // $user->roles()->syncWithoutDetaching($request->role);
+        $user->roles()->sync($request->role);
         flash($user->name." has been created successfully.")->success();
         return redirect('/users');
     }
@@ -74,7 +76,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-    	dd($user);
+    	$roles = Role::all();
+    	return view('settings.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -84,9 +87,17 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $support_staff)
+    public function update(Request $request, User $user)
     {
-        
+    	$this->validatorUpdate($request->all())->validate();
+        if (!$user->update($request->all())) {
+        	flash("Failed to update ".$user->name." data. An error occured")->error();
+        	return back();
+        }
+        // $user->roles()->syncWithoutDetaching($request->role);
+        $user->roles()->sync($request->role);
+        flash($user->name." has been updated successfully.")->success();
+        return redirect('/users');
     }
 
     /**
@@ -104,7 +115,7 @@ class UserController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    protected function validatorCreation(array $data)
     {
         return Validator::make($data, [
             'username' => 'required|max:255|unique:users',
@@ -114,6 +125,24 @@ class UserController extends Controller
             'gender' => 'required|string',
             'email' => 'nullable|email|max:255',
             'password' => 'required|min:6|confirmed',
+        ]);
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validatorUpdate(array $data)
+    {
+        return Validator::make($data, [
+            'username' => 'required|max:255',
+            'first_name' => 'required|max:255',
+            'last_name' => 'required|max:255',
+            'role' => 'required',
+            'gender' => 'required|string',
+            'email' => 'nullable|email|max:255',
         ]);
     }
 }
