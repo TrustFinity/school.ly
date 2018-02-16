@@ -25,6 +25,7 @@ function getClass(string $alias)
        'str'  => App\Models\Classes\Stream::class,
        'l'    => App\Models\Classes\Level::class,
        'sb'   => App\Models\Classes\Subject::class,
+       'sa'   => App\Models\Attendances\Attendance::class,
 
     ][$alias];
 }

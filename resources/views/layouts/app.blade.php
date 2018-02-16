@@ -82,8 +82,8 @@
                                    aria-expanded="false">Attendance</a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="/attendances">{{ getPreference()->attendants_type }}</a></li>
-                                    <li><a href="/attendances/teachers">{{ getPreference()->instructors_type }}</a></li>
-                                    <li><a href="/attendances/support-staffs">Support Staff</a></li>
+                                    {{-- <li><a href="/attendances/teachers">{{ getPreference()->instructors_type }}</a></li> --}}
+                                    {{-- <li><a href="/attendances/support-staffs">Support Staff</a></li> --}}
                                 </ul>
                             </li>
                             <li><a href="/students">{{ getPreference()->attendants_type }}</a></li>

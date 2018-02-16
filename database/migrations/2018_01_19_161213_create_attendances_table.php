@@ -18,10 +18,9 @@ class CreateAttendancesTable extends Migration
             $table->integer('school_id')->unsigned();
             $table->integer('class_group_id')->unsigned()->nullable();
             $table->integer('stream_id')->unsigned()->nullable();
-            $table->integer('student_id')->unsigned();
-            $table->enum('gender', ['Male', 'Female', 'Other']);
+            $table->integer('boys');
+            $table->integer('girls');
             $table->date('date');
-            $table->boolean('is_present');
             $table->timestamps();
         });
 
@@ -29,7 +28,6 @@ class CreateAttendancesTable extends Migration
             $table->foreign('school_id')->references('id')->on('schools');
             $table->foreign('class_group_id')->references('id')->on('class_groups');
             $table->foreign('stream_id')->references('id')->on('streams');
-            $table->foreign('student_id')->references('id')->on('students');
         });
     }
 

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Charts;
+use Carbon\Carbon;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\SupportStaff;
+use App\Models\Attendances\Attendance;
 
 class DashboardController extends Controller
 {
@@ -20,6 +22,7 @@ class DashboardController extends Controller
         $teachers =  Teacher::all();
         $students = Student::all();
         $support_staff = SupportStaff::all();
+        $attendances = Attendance::where('date', Carbon::now()->toDateString())->get();
 
         $student_chart = Charts::database($students, 'pie', 'chartjs')
             ->title(getPreference()->attendants_type." Gender")
@@ -60,6 +63,8 @@ class DashboardController extends Controller
             'teacher_chart',
             'support_staff_chart',
             'growth_per_year',
-            'performance'));
+            'performance',
+            'attendances'
+        ));
     }
 }

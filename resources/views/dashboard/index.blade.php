@@ -17,11 +17,11 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-xs-6">
-                            <h1>200</h1>
+                            <h1>{{ $attendances->sum('boys') }}</h1>
                             <span class="small">boys</span>
                         </div>
                         <div class="col-xs-6">
-                            <h1>185</h1>
+                            <h1>{{ $attendances->sum('girls') }}</h1>
                             <span class="small">girls</span>
                         </div>
                     </div>
