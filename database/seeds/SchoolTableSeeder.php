@@ -43,9 +43,20 @@ class SchoolTableSeeder extends Seeder
             ]);
 
             foreach (User::all() as $user) {
-                $role = Role::first();
+                $role = Role::inRandomOrder()->first();
                 $user->roles()->sync($role->id);
             }
+
+            // Create a director user.
+            $user = User::create([
+                        'school_id'     => $school->id,
+                        'username'      => str_slug('director'),
+                        'password'      => bcrypt('secret'),
+                        'first_name'    => $school->name,
+                        'last_name'    => 'Director',
+                    ]);
+            $role = Role::where('name', Role::DIRECTOR)->first();
+            $user->roles()->sync($role->id);
         }
     }
 }

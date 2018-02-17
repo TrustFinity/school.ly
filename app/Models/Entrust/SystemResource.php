@@ -20,6 +20,7 @@ class SystemResource extends Model
         'teachers',
         'students',
         'class-groups',
+        'support-staff',
         'streams',
         'levels',
         'subjects',
