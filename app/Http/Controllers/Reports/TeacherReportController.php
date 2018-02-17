@@ -8,6 +8,11 @@ use App\Models\Reports\TeacherReport;
 
 class TeacherReportController extends Controller
 {
+	public function __construct()
+    {
+        $this->middleware(['auth', 'entrust']);
+    }
+    
     public function index(Request $request)
     {
         $joining_start_date = $request->starting_date ?? null;

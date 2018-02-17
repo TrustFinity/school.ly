@@ -54,7 +54,6 @@
                                     <li><a href="/class-groups">Class Groups</a></li>
                                     <li><a href="/streams">Class Streams</a></li>
                                     <li><a href="/support-staff">Support Staff</a></li>
-                                    <li><a href="/chart-of-accounts">Chart of Accounts</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -66,6 +65,7 @@
                                     <li><a href="/transactions/salaries">Salaries</a></li>
                                     <li><a href="/transactions/expenses">Expenses</a></li>
                                     <li><a href="/transactions/school-fees">School Fees</a></li>
+                                    <li><a href="/chart-of-accounts">Chart of Accounts</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -151,11 +151,11 @@
 
             @yield('content')
         </div>
-        <div id="app" class="container-fluid">
-            <div class="col-md-10 col-md-offset-1">
+        <div id="app" class="container">
+            {{-- <div class="col-md-10 col-md-offset-1"> --}}
                 @include('flash::message')
                 @yield('content-full-screen')
-            </div>
+            {{-- </div> --}}
         </div>
         
     </div>

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Entrust\Role;
+use App\EntrustMe\AutoPermit;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -54,5 +55,17 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    /**
+     * Checks if user has the permision to access the 
+     * page they are attempting to load.
+     * 
+     * @return boolean [description]
+     */
+    public function isPermitted($request)
+    {
+        $isGranted = (new AutoPermit($this->roles))->grantAccess();
+        return $isGranted;
     }
 }

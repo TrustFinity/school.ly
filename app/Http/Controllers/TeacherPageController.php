@@ -9,7 +9,7 @@ class TeacherPageController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:Teacher');
+        $this->middleware(['auth', 'entrust']);
     }
 
     public function index()

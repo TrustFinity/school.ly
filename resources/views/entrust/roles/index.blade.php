@@ -15,15 +15,21 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th width="50%">Description</th>
+                            <th width="40%">Description</th>
+                            <th width="40%">Access Scope</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($roles as $role)
                         <tr>
                             <td>{{ $role->name }}</td>
-                            <td width="50%">
+                            <td width="40%">
                                 {{ $role->description }}
+                            </td>
+                            <td width="40%">
+                                @foreach($role->resources as $resource)
+                                    <span class="badge">{{ $resource->name }}</span>
+                                @endforeach
                             </td>
                         </tr>
                     @endforeach

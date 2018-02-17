@@ -9,6 +9,11 @@ use App\Models\Classes\ClassGroup;
 
 class ClassGroupController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'entrust']);
+    }
+    
     /**
      * Display a listing of the resource.
      *
