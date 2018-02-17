@@ -14,7 +14,7 @@ class RoleController extends Controller
 
     public function index()
     {
-    	$roles = Role::all();
+    	$roles = Role::with('resources')->get();
     	return view('entrust.roles.index', compact('roles'));
     }
 }
