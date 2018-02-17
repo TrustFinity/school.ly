@@ -10,7 +10,7 @@ class StudentPageController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('role:Student');
+        $this->middleware(['auth', 'entrust']);
     }
 
     public function index()

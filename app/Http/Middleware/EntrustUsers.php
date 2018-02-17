@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Auth;
 use Closure;
 
 class EntrustUsers
@@ -15,8 +16,10 @@ class EntrustUsers
      */
     public function handle($request, Closure $next)
     {
-        // Check users permission heres.
-        // then handle it appropriately.
+        if (Auth::user()->isPermitted($request)) {
+            return $next($request);
+        }
+
         flash('Oh snap! Looks like you don\'t have permission to access that page.')->warning();
         return back();
     }

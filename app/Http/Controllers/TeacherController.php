@@ -14,7 +14,7 @@ class TeacherController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('role:Admin')->except('create', 'store');
+        $this->middleware(['auth', 'entrust']);
     }
 
     public function index()

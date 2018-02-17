@@ -55,4 +55,15 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class);
     }
+
+    /**
+     * Checks if user has the permision to access the 
+     * page they are attempting to load.
+     * 
+     * @return boolean [description]
+     */
+    public function isPermitted($request)
+    {
+        return false;
+    }
 }
