@@ -43,7 +43,7 @@ class SchoolTableSeeder extends Seeder
             ]);
 
             foreach (User::all() as $user) {
-                $role = Role::inRandomOrder()->first();
+                $role = Role::first();
                 $user->roles()->sync($role->id);
             }
         }

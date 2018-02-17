@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Entrust\Role;
+use App\EntrustMe\AutoPermit;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -64,6 +65,7 @@ class User extends Authenticatable
      */
     public function isPermitted($request)
     {
-        return false;
+        $isGranted = (new AutoPermit($this->roles))->grantAccess();
+        return $isGranted;
     }
 }

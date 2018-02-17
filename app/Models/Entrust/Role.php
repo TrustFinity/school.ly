@@ -39,4 +39,9 @@ class Role extends Model
     {
     	return $this->belongsToMany(User::class);
     }
+
+    public function resources()
+    {
+        return $this->belongsToMany(SystemResource::class);
+    }
 }

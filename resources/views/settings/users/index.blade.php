@@ -19,16 +19,24 @@
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th width="50%">Role</th>
+                            <th width="30%">Role</th>
+                            <th width="50%">Access Scope</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach ($users as $user)
                         <tr>
                             <td><a href="/users/{{ $user->id }}/edit">{{ $user->name }}</a></td>
-                            <td width="50%">
+                            <td width="30%">
                                 @foreach($user->roles as $role)
                                     <span>{{ $role->name }}</span><br>
+                                @endforeach
+                            </td>
+                            <td width="50%">
+                                @foreach($user->roles as $role)
+                                    @foreach($role->resources as $resource)
+                                        <span class="badge">{{ $resource->name }}</span>
+                                    @endforeach
                                 @endforeach
                             </td>
                         </tr>
