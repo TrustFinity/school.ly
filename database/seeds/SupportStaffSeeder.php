@@ -13,6 +13,7 @@ class SupportStaffSeeder extends Seeder
     {
         for ($i=0; $i < 40; $i++) { 
         	$support_staff = factory(\App\Models\SupportStaff::class)->make();
+            $support_staff->search_term = $support_staff->constructSearchTerm();
         	$support_staff->save();
         }
     }

@@ -36,6 +36,7 @@ class CreateTeachersTable extends Migration
             $table->foreign('school_id')->references('id')->on('schools');
             $table->foreign('level_id')->references('id')->on('levels');
             $table->foreign('class_group_id')->references('id')->on('class_groups');
+            $table->string('search_term');
             $table->timestamps();
         });
     }

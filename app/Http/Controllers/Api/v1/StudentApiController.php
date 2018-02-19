@@ -11,7 +11,7 @@ class StudentApiController extends Controller
     public function search(Request $request)
     {
         $students = Student::with(['stream', 'level'])
-                            ->where('first_name', 'LIKE', '%'.$request->search.'%')
+                            ->where('search_term', 'LIKE', '%'.$request->search.'%')
                             ->limit(10)
                             ->get();
         return $students;

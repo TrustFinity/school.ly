@@ -4,11 +4,14 @@ namespace App\Models;
 
 use App\Models\School;
 use App\Scopes\SchoolScope;
+use App\Helpers\Search\Searcheable;
 use App\Scopes\ActiveSupportStaffScope;
 use Illuminate\Database\Eloquent\Model;
 
 class SupportStaff extends Model
 {
+    use Searcheable;
+    
     protected $dates = [
         'dob',
     ];

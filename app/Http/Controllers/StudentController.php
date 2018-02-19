@@ -44,21 +44,22 @@ class StudentController extends Controller
     {
         $student = new Student($request->all());
         $student->school_id = Auth::user()->school_id;
+        $student->search_term = $student->constructSearchTerm();
         if (! $student->save()) {
             flash('Failed to create '.$student->name)->errors();
             return back();
         }
 
         //todo decide weather students need to use the same login or a unique one
-        User::create([
-            'name' => $student->name,
-            'username' => str_plural($student->name),
-            'email' => request('email'),
-            'password' => bcrypt(request('password')),
-            'userable_id' => $student->id,
-            'school_id' => $student->school_id,
-            'userable_type' => 'Student'
-        ]);
+        // User::create([
+        //     'name' => $student->name,
+        //     'username' => str_plural($student->name),
+        //     'email' => request('email'),
+        //     'password' => bcrypt(request('password')),
+        //     'userable_id' => $student->id,
+        //     'school_id' => $student->school_id,
+        //     'userable_type' => 'Student'
+        // ]);
 
         return redirect('/students/'.$student->id);
     }

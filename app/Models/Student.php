@@ -8,10 +8,13 @@ use App\Models\Classes\Level;
 use App\Models\Classes\Stream;
 use App\Models\Classes\Subject;
 use App\Scopes\ActiveStudentScope;
+use App\Helpers\Search\Searcheable;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
+    use Searcheable;
+
     protected $dates = [
         'joining_year',
         'dob',

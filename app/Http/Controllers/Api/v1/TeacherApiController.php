@@ -11,7 +11,7 @@ class TeacherApiController extends Controller
     public function search (Request $request)
     {
         $students = Teacher::with(['classgroup', 'level'])
-            ->where('first_name', 'LIKE', '%'.$request->search.'%')
+            ->where('search_term', 'LIKE', '%'.$request->search.'%')
             ->limit(10)
             ->get();
         return $students;

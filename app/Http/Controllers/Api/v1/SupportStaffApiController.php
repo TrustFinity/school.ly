@@ -10,7 +10,7 @@ class SupportStaffApiController extends Controller
 {
     public function search (Request $request)
     {
-        $support_staffs = SupportStaff::where('first_name', 'LIKE', '%'.$request->search.'%')
+        $support_staffs = SupportStaff::where('search_term', 'LIKE', '%'.$request->search.'%')
 				            ->limit(10)
 				            ->get();
         return $support_staffs;
