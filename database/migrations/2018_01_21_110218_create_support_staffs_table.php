@@ -29,6 +29,7 @@ class CreateSupportStaffsTable extends Migration
             $table->string('next_of_kin_full_names');
             $table->string('next_of_kin_phone_number')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->string('search_term');
             $table->timestamps();
 
             $table->foreign('school_id')->references('id')->on('schools');

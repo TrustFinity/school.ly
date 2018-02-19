@@ -45,6 +45,7 @@ class SupportStaffController extends Controller
     {
         $support_staff = new SupportStaff($request->all());
         $support_staff->school_id = Auth::user()->school_id;
+        $support_staff->search_term = $support_staff->constructSearchTerm();
         if (!$support_staff->save()) {
             flash('Failed to save support staff data')->error()->important();
             return back();

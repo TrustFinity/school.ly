@@ -44,23 +44,24 @@ class TeacherController extends Controller
     {
         $teacher = Teacher::create($request->all());
         $teacher->school_id = Auth::user()->school_id;
+        $teacher->search_term = $teacher->constructSearchTerm();
         $saved = $teacher->save();
 
-        $user  = User::create([
-            'name' => $teacher->name,
-            'email' => request('email'),
-            'password' => bcrypt(request('password')),
-            'userable_id' => $teacher->id,
-            'userable_type' => 'Teacher'
-        ]);
+        // $user  = User::create([
+        //     'name' => $teacher->name,
+        //     'email' => request('email'),
+        //     'password' => bcrypt(request('password')),
+        //     'userable_id' => $teacher->id,
+        //     'userable_type' => 'Teacher'
+        // ]);
 
-        if (!$saved) {
-            // Return back with errors.
-            return back()->withErrors();
-        }
-        if (Auth::user() !== null) {
-            Auth::login($user);
-        }
+        // if (!$saved) {
+        //     // Return back with errors.
+        //     return back()->withErrors();
+        // }
+        // if (Auth::user() !== null) {
+        //     Auth::login($user);
+        // }
         return redirect('/teachers');
     }
 

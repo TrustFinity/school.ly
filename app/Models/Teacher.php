@@ -9,10 +9,13 @@ use App\Models\Classes\Stream;
 use App\Models\Classes\Subject;
 use App\Scopes\ActiveTeacherScope;
 use App\Models\Classes\ClassGroup;
+use App\Helpers\Search\Searcheable;
 use Illuminate\Database\Eloquent\Model;
 
 class Teacher extends Model
 {
+    use Searcheable;
+
     protected $dates = [
         'joining_year',
         'dob',
