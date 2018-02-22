@@ -28,7 +28,7 @@
                             <td>{{ $stream->classGroup->name }}</td>
                             <td width="50%">
                                 <div class="btn-group pull-right">
-                                    <a href="/streams/edit/{{ $stream->id }}" class="btn btn-default">Edit</a>
+                                    <a href="/streams/{{ $stream->id }}/edit" class="btn btn-default">Edit</a>
                                     <a href="/streams/delete/{{ $stream->id }}" class="btn btn-default">Delete</a>
                                 </div>
                             </td>

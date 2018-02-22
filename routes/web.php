@@ -57,6 +57,7 @@ Route::group([
      * The ClassGroup routes
      */
     Route::resource('class-groups', 'ClassGroupController');
+    Route::get('/class-groups/delete/{class_group}', 'ClassGroupController@destroy');
 
     // Route::get('/class-groups/create', 'ClassGroupController@create');
     // Route::get('/class-groups', 'ClassGroupController@index');
@@ -64,12 +65,12 @@ Route::group([
     // Route::get('/class-groups/{class_group}', 'ClassGroupController@show');
     // Route::get('/class-groups/edit/{class_group}', 'ClassGroupController@edit');
     // Route::post('/class-groups/{class_group}', 'ClassGroupController@update');
-    // Route::get('/class-groups/delete/{class_group}', 'ClassGroupController@destroy');
 
     /**
      * The Stream routes
      */
     Route::resource('streams', 'StreamController');
+    Route::get('/streams/delete/{stream}', 'StreamController@destroy');
 
     // Route::get('/streams/create', 'StreamController@create');
     // Route::get('/streams', 'StreamController@index');
@@ -77,7 +78,6 @@ Route::group([
     // Route::get('/streams/{stream}', 'StreamController@show');
     // Route::get('/streams/edit/{stream}', 'StreamController@edit');
     // Route::post('/streams/{stream}', 'StreamController@update');
-    // Route::get('/streams/delete/{stream}', 'StreamController@destroy');
 
     /**
      * The Level route
@@ -88,6 +88,7 @@ Route::group([
      * The Subject routes
      */
     Route::resource('subjects', 'SubjectController');
+    Route::get('/subjects/delete/{subject}', 'SubjectController@destroy');
     
     // Route::get('/subjects/create', 'SubjectController@create');
     // Route::get('/subjects', 'SubjectController@index');
@@ -95,7 +96,6 @@ Route::group([
     // Route::get('/subjects/{subject}', 'SubjectController@show');
     // Route::get('/subjects/edit/{subject}', 'SubjectController@edit');
     // Route::post('/subjects/{subject}', 'SubjectController@update');
-    // Route::get('/subjects/delete/{subject}', 'SubjectController@destroy');
 
     /**
      * Attendance
