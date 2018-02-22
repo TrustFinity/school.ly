@@ -12,7 +12,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="col-md-6 col-md-offset-3">
-                    <form action="/support-staffs/{{ $support_staff->id}}" method="POST" role="form">
+                    <form action="/support-staff/{{ $support_staff->id}}" method="POST" role="form">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
                         <div class="form-group">

@@ -28,7 +28,24 @@ class SupportStaff extends Model
         'role',
         'next_of_kin_full_names',
         'next_of_kin_phone_number',
+        'role'
     ];
+
+    public function rules()
+    {
+        return [
+            'first_name'    => 'required|string',
+            'middle_name'   => 'nullable|string',
+            'last_name'     => 'required|string',
+            'gender'        => 'required|string',
+            'dob'           => 'required|date',
+            'address'       => 'required|string',
+            'role'          => 'required|string',
+            'photo_url'     => 'nullable|image',
+            'next_of_kin_full_names' => 'required|string',
+            'next_of_kin_phone_number' => 'nullable|numeric|min:10',
+        ];
+    }
 
     /**
      * The "booting" method of the model.

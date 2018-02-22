@@ -2,8 +2,14 @@
 
 @section('content')
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-6">
             <h3>{{ $teacher->first_name }}'s Profile</h3>
+        </div>
+        <div class="col-xs-6">
+            <div class="btn-group pull-right">
+                <a href="/teachers/{{ $teacher->id }}/edit" class="btn btn-default">Edit Profile</a>
+                <a href="/teachers/{{ $teacher->id }}/edit-photos" class="btn btn-default">Update Photo</a>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -43,15 +49,14 @@
         <div class="col-sm-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <img src="{{$teacher->photo_url ?: '/img/person.png'}}" alt="photo" class="img-rounded img-responsive">
+                    <img src="{{$teacher->photo_url ?: '/img/person.png'}}" alt="photo" class="img-rounded img-responsive img-thumbnail">
+                </div>
+                <div class="panel-footer">
                     <a href="/teachers/{{$teacher->id}}/edit">
                         <h4>{{ $teacher->name }} {{ $teacher->age }}</h4>
                     </a>
                     <p>{{ $teacher->level->name ?? '' }}</p>
                     <p class="small">{{ $teacher->address}}</p>
-                </div>
-                <div class="panel-footer">
-                    <a href="/teachers/{{ $teacher->id }}/edit" class="btn btn-success form-control"> Edit Information</a>
                 </div>
             </div>
         </div>

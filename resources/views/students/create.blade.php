@@ -13,7 +13,7 @@
     </div>
     <hr>
 
-    <form action="/students" method="POST" role="form">
+    <form action="/students" method="POST" role="form" enctype="multipart/form-data">
         {{ csrf_field() }}
         <h3>Personal Information</h3>
         <div class="panel panel-default">
@@ -94,6 +94,12 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
+
+                        <div class="form-group">
+                            <label for="">Please provide the {{ getPreference()->attendants_type }} photo.</label>
+                            <p class="small">This is optional</p>
+                            <input name="photo_url" type="file" class="form-control">
+                        </div>
 
                         <div class="form-group">
                             <label for="stream_id">What stream does the {{ getPreference()->attendants_type }} go to ?</label>

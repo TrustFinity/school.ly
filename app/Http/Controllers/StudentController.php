@@ -8,6 +8,8 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Classes\Level;
 use App\Models\Classes\Stream;
+use App\Http\Requests\StoreStudent;
+use App\Http\Requests\StoreProfilePhoto;
 
 class StudentController extends Controller
 {
@@ -40,27 +42,24 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      * @internal param Request $request
      */
-    public function store(Request $request)
+    public function store(StoreStudent $request)
     {
         $student = new Student($request->all());
         $student->school_id = Auth::user()->school_id;
         $student->search_term = $student->constructSearchTerm();
-        if (! $student->save()) {
+
+        if($request->hasFile('photo_url')){
+            $image_name = str_slug($student->name).time().".jpg";
+            $image = $request->file('photo_url');
+            $destination_path = public_path('/storage/photos');
+            $image->move($destination_path, $image_name);
+            $student->photo_url = '/storage/photos/'.$image_name;
+        }
+
+        if (!$student->save()) {
             flash('Failed to create '.$student->name)->errors();
             return back();
         }
-
-        //todo decide weather students need to use the same login or a unique one
-        // User::create([
-        //     'name' => $student->name,
-        //     'username' => str_plural($student->name),
-        //     'email' => request('email'),
-        //     'password' => bcrypt(request('password')),
-        //     'userable_id' => $student->id,
-        //     'school_id' => $student->school_id,
-        //     'userable_type' => 'Student'
-        // ]);
-
         return redirect('/students/'.$student->id);
     }
 
@@ -111,5 +110,25 @@ class StudentController extends Controller
     {
         $student->delete();
         return redirect('/students');
+    }
+
+    public function showPhotoEditForm(Request $request, Student $student)
+    {
+        $resource = $student;
+        $resource_type = 'students';
+        return view('shared.edit_photos', compact('resource', 'resource_type'));
+    }
+
+    public function editPhoto(StoreProfilePhoto $request, Student $student)
+    {
+        $image_name = $student->photo_url ?? str_slug($student->name).time().".jpg";
+        $image = $request->file('photo_url');
+        $destination_path = public_path('/storage/photos');
+        $image->move($destination_path, $image_name);
+        $student->photo_url = $student->photo_url ?? '/storage/photos/'.$image_name;
+        $student->save();
+
+        flash('Updated '.$student->name.' photo.')->success();
+        return redirect('/students/'.$student->id);
     }
 }

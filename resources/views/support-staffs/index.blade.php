@@ -7,7 +7,7 @@
             <p>A listing of all the support staffs registered on the platform.</p>
         </div>
         <div class="col-sm-6">
-            <a href="/support-staffs/create" class="btn btn-success pull-right">Add Support Staff</a>
+            <a href="/support-staff/create" class="btn btn-success pull-right">Add Support Staff</a>
         </div>
     </div>
     <div class="row">
@@ -30,10 +30,11 @@
                         <img src="{{ $support_staff->photo_url ?: '/img/person.png' }}" alt="Photo" class="img-thumbnail img-responsive">
                     </div>
                     <div class="col-sm-4">
-                        <a href="/support-staffs/{{ $support_staff->id }}/edit">
+                        <a href="/support-staff/{{ $support_staff->id }}/edit">
                             <h4>{{ $support_staff->name }}</h4>
                         </a>
                         <p>{{ $support_staff->role }}</p>
+                        <a href="/support-staff/{{ $support_staff->id }}/edit-photos">update photo</a>
                     </div>
                     <div class="col-sm-7">
                         {{ $support_staff->address }}

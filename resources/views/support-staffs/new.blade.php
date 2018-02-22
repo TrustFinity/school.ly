@@ -12,7 +12,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="col-md-6 col-md-offset-3">
-                    <form action="/support-staffs" method="POST" role="form">
+                    <form action="/support-staff" method="POST" role="form">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="">Supports staff's firstname</label>
