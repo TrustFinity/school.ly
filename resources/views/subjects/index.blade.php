@@ -30,7 +30,7 @@
                         <td>{{ $subject->teacher->name }}</td>
                         <td>
                             <div class="btn-group pull-right">
-                                <a href="/subjects/edit/{{ $subject->id }}" class="btn btn-default">Edit</a>
+                                <a href="/subjects/{{ $subject->id }}/edit" class="btn btn-default">Edit</a>
                                 <a href="/subjects/delete/{{ $subject->id }}" class="btn btn-default">Delete</a>
                             </div>
                         </td>

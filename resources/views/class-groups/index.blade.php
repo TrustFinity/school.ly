@@ -34,7 +34,7 @@
                         </td>
                         <td>
                             <div class="btn-group pull-right">
-                                <a href="/class-groups/edit/{{ $class_group->id }}" class="btn btn-default">Edit</a>
+                                <a href="/class-groups/{{ $class_group->id }}/edit" class="btn btn-default">Edit</a>
                                 <a href="/class-groups/delete/{{ $class_group->id }}" class="btn btn-default">Delete</a>
                             </div>
                         </td>

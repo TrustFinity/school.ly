@@ -10,7 +10,7 @@
                 <div class="col-md-6 col-md-offset-3">
                     <form action="/streams/{{ $stream->id }}" method="POST" role="form">
                         {{ csrf_field() }}
-
+                        {{ method_field('PUT') }}
                         <div class="form-group">
                             <input name="name" type="text" class="form-control" id="" value="{{ $stream->name }}">
                         </div>
