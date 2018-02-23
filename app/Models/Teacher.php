@@ -35,26 +35,42 @@ class Teacher extends Model
     }
 
     protected $fillable = [
-        'name',
+        'first_name',
+        'middle_name',
+        'last_name',
         'gender',
-        // 'stream_id',
+        'dob',
         'class_group_id',
         'level_id',
         'experience',
-        'phone'
+        'phone_number',
+        'next_of_kin_names',
+        'next_of_kin_phone_number',
+        'joining_year'
     ];
-
-    public static $validationRules = [
-        'name'          => 'required|string',
-        'gender'        => 'required',
-        // 'stream_id'  => 'required|integer',
-        'class_group_id' => 'required|integer',
-        'level_id'      => 'required|integer',
-        'experience'    => 'required|string',
-        'phone'         => 'required|digits_between:7,10',
-        'joining_year'  => 'required|date',
-        'leaving_year'  => 'nullable|date',
-    ];
+    
+    public function rules()
+    {
+         return [
+            'first_name'    => 'required|string',
+            'middle_name'   => 'nullable|string',
+            'last_name'     => 'required|string',
+            'gender'        => 'required|string',
+            'dob'           => 'required|date',
+            'joining_year'  => 'required|date',
+            'leaving_year'  => 'nullable|date',
+            'address'       => 'nullable|string',
+            'class_group_id' => 'nullable|integer',
+            'level_id'      => 'required|integer',
+            'experience'    => 'required|string',
+            'phone_number'  => 'nullable|numeric|min:10',
+            'joining_year'  => 'required|date',
+            'leaving_year'  => 'nullable|date',
+            'photo_url'     => 'nullable|image',
+            'next_of_kin_names' => 'required|string',
+            'next_of_kin_phone_number' => 'nullable|numeric|min:10',
+        ];
+    }
 
     public function getNameAttribute()
     {

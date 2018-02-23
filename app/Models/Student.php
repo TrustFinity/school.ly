@@ -36,19 +36,25 @@ class Student extends Model
         'leaving_year',
     ];
 
-    public static $validationRules = [
-        'first_name'    => 'required|string',
-        'middle_name'   => 'sometimes|string',
-        'last_name'     => 'required|string',
-        'gender'        => 'required',
-        'dob'           => 'required|date',
-        'joining_year'  => 'required|date',
-        'leaving_year'  => 'nullable|date',
-        'address'       => 'required|text',
-        'stream_id'     => 'required|integer',
-        'parents_names' => 'required|string',
-        'level_id'      => 'required|integer',
-    ];
+    public function rules () {
+
+        return [
+            'first_name'    => 'required|string',
+            'middle_name'   => 'nullable|string',
+            'last_name'     => 'required|string',
+            'gender'        => 'required',
+            'dob'           => 'required|date',
+            'joining_year'  => 'required|date',
+            'leaving_year'  => 'nullable|date',
+            'address'       => 'nullable|string',
+            'stream_id'     => 'required|integer',
+            'parents_names' => 'required|string',
+            'level_id'      => 'required|integer',
+            'photo_url'     => 'nullable|image',
+            'parents_names' => 'nullable|string',
+            'parents_phone_number' => 'nullable|numeric|min:10',
+        ];
+    }
 
     /**
      * The "booting" method of the model.

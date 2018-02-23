@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\SupportStaff;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreSupportStaff;
+use App\Http\Requests\StoreProfilePhoto;
 
 class SupportStaffController extends Controller
 {
@@ -20,7 +22,7 @@ class SupportStaffController extends Controller
      */
     public function index()
     {
-        $support_staffs = SupportStaff::paginate(10);
+        $support_staffs = SupportStaff::orderBy('id', 'desc')->paginate(20);
         return view('support-staffs.index', compact('support_staffs'));
     }
 
@@ -41,7 +43,7 @@ class SupportStaffController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSupportStaff $request)
     {
         $support_staff = new SupportStaff($request->all());
         $support_staff->school_id = Auth::user()->school_id;
@@ -50,8 +52,8 @@ class SupportStaffController extends Controller
             flash('Failed to save support staff data')->error()->important();
             return back();
         }
-        flash('Support staff data created successfuly.')->success();
-        return redirect('/support-staffs');
+        flash($support_staff->name.' data created successfuly.')->success();
+        return redirect('/support-staff');
     }
 
     /**
@@ -88,7 +90,7 @@ class SupportStaffController extends Controller
             return back()->withErrors($support_staff->errors);
         }
         flash('Successfully updated '.$support_staff->name .'\'s data.')->success();
-        return redirect('/support-staffs');
+        return redirect('/support-staff');
     }
 
     /**
@@ -99,4 +101,24 @@ class SupportStaffController extends Controller
      */
     public function destroy(SupportStaff $supportStaff)
     {}
+
+    public function showPhotoEditForm(Request $request, SupportStaff $support_staff)
+    {
+        $resource = $support_staff;
+        $resource_type = 'support-staff';
+        return view('shared.edit_photos', compact('resource', 'resource_type'));
+    }
+
+    public function editPhoto(StoreProfilePhoto $request, SupportStaff $support_staff)
+    {
+        $image_name = $support_staff->photo_url ?? str_slug($support_staff->name).time().".jpg";
+        $image = $request->file('photo_url');
+        $destination_path = public_path('/storage/photos');
+        $image->move($destination_path, $image_name);
+        $support_staff->photo_url = $support_staff->photo_url ?? '/storage/photos/'.$image_name;
+        $support_staff->save();
+
+        flash('Updated '.$support_staff->name.' photo.')->success();
+        return redirect('/support-staff');
+    }
 }

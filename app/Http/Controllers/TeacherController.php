@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\Classes\Level;
 use App\Models\Classes\Stream;
 use App\Models\Classes\ClassGroup;
+use App\Http\Requests\StoreTeacher;
+use App\Http\Requests\StoreProfilePhoto;
 
 class TeacherController extends Controller
 {
@@ -19,7 +21,7 @@ class TeacherController extends Controller
 
     public function index()
     {
-        $teachers = Teacher::paginate(20);
+        $teachers = Teacher::orderBy('id', 'desc')->paginate(20);
         return view('teachers.index', compact('teachers'));
     }
 
@@ -40,29 +42,19 @@ class TeacherController extends Controller
      * @return \Illuminate\Http\Response
      * @internal param Request $request
      */
-    public function store(Request $request)
+    public function store(StoreTeacher $request)
     {
-        $teacher = Teacher::create($request->all());
+        $teacher = new Teacher($request->all());
         $teacher->school_id = Auth::user()->school_id;
         $teacher->search_term = $teacher->constructSearchTerm();
-        $saved = $teacher->save();
 
-        // $user  = User::create([
-        //     'name' => $teacher->name,
-        //     'email' => request('email'),
-        //     'password' => bcrypt(request('password')),
-        //     'userable_id' => $teacher->id,
-        //     'userable_type' => 'Teacher'
-        // ]);
+        if (!$teacher->save()) {
+            flash('Failed to create new teacher.')->error();
+            return back();
+        }
 
-        // if (!$saved) {
-        //     // Return back with errors.
-        //     return back()->withErrors();
-        // }
-        // if (Auth::user() !== null) {
-        //     Auth::login($user);
-        // }
-        return redirect('/teachers');
+        flash('New teacher '.$teacher->name.' created successfully.')->success();
+        return redirect('/teachers/'.$teacher->id);
     }
 
     /**
@@ -112,5 +104,25 @@ class TeacherController extends Controller
     {
         $teacher->delete();
         return redirect('/teachers');
+    }
+
+    public function showPhotoEditForm(Request $request, Teacher $teacher)
+    {
+        $resource = $teacher;
+        $resource_type = 'teachers';
+        return view('shared.edit_photos', compact('resource', 'resource_type'));
+    }
+
+    public function editPhoto(StoreProfilePhoto $request, Teacher $teacher)
+    {
+        $image_name = $teacher->photo_url ?? str_slug($teacher->name).time().".jpg";
+        $image = $request->file('photo_url');
+        $destination_path = public_path('/storage/photos');
+        $image->move($destination_path, $image_name);
+        $teacher->photo_url = $teacher->photo_url ?? '/storage/photos/'.$image_name;
+        $teacher->save();
+
+        flash('Updated '.$teacher->name.' photo.')->success();
+        return redirect('/teachers/'.$teacher->id);
     }
 }

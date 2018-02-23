@@ -39,19 +39,15 @@ Route::group([
      * The Teacher routes
      */
     Route::resource('teachers', 'TeacherController');
-
-    Route::get('/teacherpage', 'TeacherPageController@index');
-    Route::get('/teacherpage/edit/{teacher}', 'TeacherPageController@edit');
-    Route::post('/teacherpage/{teacher}', 'TeacherPageController@update');
+    Route::get('/teachers/{teacher}/edit-photos', 'TeacherController@showPhotoEditForm');
+    Route::post('/teachers/{teacher}/edit-photos', 'TeacherController@editPhoto');
 
     /**
      * The Student routes
      */
     Route::resource('students', 'StudentController');
-
-    Route::get('/studentpage', 'StudentPageController@index');
-    Route::get('/studentpage/edit/{student}', 'StudentPageController@edit');
-    Route::post('/studentpage/{student}', 'StudentPageController@update');
+    Route::get('/students/{student}/edit-photos', 'StudentController@showPhotoEditForm');
+    Route::post('/students/{student}/edit-photos', 'StudentController@editPhoto');
 
     /**
      * The ClassGroup routes
@@ -108,6 +104,8 @@ Route::group([
      * Support Staffs
      */
     Route::resource('/support-staff', 'SupportStaffController');
+    Route::get('/support-staff/{support_staff}/edit-photos', 'SupportStaffController@showPhotoEditForm');
+    Route::post('/support-staff/{support_staff}/edit-photos', 'SupportStaffController@editPhoto');
 
     /**
      * Chart of accounts
