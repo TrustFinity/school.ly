@@ -9,7 +9,9 @@ use Illuminate\Http\Request;
 use App\Models\Classes\Level;
 use App\Models\Classes\Stream;
 use App\Http\Requests\StoreStudent;
+use App\Models\Transactions\SchoolFee;
 use App\Http\Requests\StoreProfilePhoto;
+use App\Models\Settings\Accounts\GeneralLedgerAccounts;
 
 class StudentController extends Controller
 {
@@ -129,6 +131,44 @@ class StudentController extends Controller
         $student->save();
 
         flash('Updated '.$student->name.' photo.')->success();
+        return redirect('/students/'.$student->id);
+    }
+
+    public function payFeesForm(Student $student)
+    {
+        $payment_methods = SchoolFee::PAYMENT_METHODS;
+        $assets = GeneralLedgerAccounts::assets();
+        $equity = GeneralLedgerAccounts::equity();
+        return view('students.payments.fees-tuition', compact('student', 
+            'payment_methods',
+            'assets',
+            'equity'
+        ));
+    }
+
+    public function payFees(Request $request, Student $student)
+    {
+        $source = GeneralLedgerAccounts::find($request->source_asset_account_id);
+
+        if ($source->balance < $request->amount) {
+            flash($source->name.' doesnt have enough balance to complete the transaction')->error();
+            return back();
+        }
+        $school_fee = new SchoolFee($request->all());
+        $school_fee->school_id = Auth::user()->school_id;
+        $school_fee->student_id = $student->id;
+        $school_fee->stream = $student->stream->name;
+
+        if (!$school_fee->saveTransaction()){
+            flash("Failed to save the school fees record")->error()->important();
+            return back();
+        }
+
+        $school_fee->asset_gla->decreaseBalance($school_fee->amount);
+        $school_fee->equity_gla->increaseBalance($school_fee->amount);
+
+        flash("Payment for {$school_fee->year->year} term {$school_fee->term} was saved successfully")->success();
+
         return redirect('/students/'.$student->id);
     }
 }

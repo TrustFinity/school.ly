@@ -7,7 +7,9 @@
             <p>A listing of all the {{ getPreference()->attendants_type }} registered on the platform both completed and current.</p>
         </div>
         <div class="col-sm-6">
-            <a href="/students/create" class="btn btn-success pull-right">Add new {{ getPreference()->attendants_type }}</a>
+            <a href="/students/create" class="btn btn-success pull-right">
+               <i class="fa fa-user-plus"></i> Add new {{ getPreference()->attendants_type }}
+            </a>
         </div>
     </div>
     <div class="row">
@@ -25,7 +27,10 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-sm-1">
-                        <img src="{{ $student->photo_url ?: '/img/person.png' }}" alt="Photo" class="img-thumbnail img-responsive">
+                        <a href="/students/{{ $student->id }}">
+                            <img src="{{ $student->photo_url ?: '/img/person.png' }}" alt="Photo" 
+                                class="img-thumbnail img-responsive profile-img">
+                        </a>
                     </div>
                     <div class="col-sm-4">
                         <a href="/students/{{ $student->id }}">

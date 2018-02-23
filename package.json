@@ -24,8 +24,9 @@
     },
     "dependencies": {
         "bulma": "^0.6.1",
+        "font-awesome": "^4.7.0",
         "vue-kanban": "^1.2.0",
         "vuedraggable": "^2.16.0",
-        "vuejs-datepicker": "^0.9.25"
+        "vuejs-datepicker": "^0.9.26"
     }
 }

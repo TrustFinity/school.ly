@@ -9,6 +9,7 @@ use App\Models\Classes\Stream;
 use App\Models\Classes\Subject;
 use App\Scopes\ActiveStudentScope;
 use App\Helpers\Search\Searcheable;
+use App\Models\Transactions\SchoolFee;
 use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
@@ -106,5 +107,10 @@ class Student extends Model
     public function subjects()
     {
         return $this->belongsToMany(Subject::class);
+    }
+
+    public function fees()
+    {
+        return $this->hasMany(SchoolFee::class);
     }
 }

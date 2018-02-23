@@ -41,6 +41,9 @@ Route::group([
     Route::resource('teachers', 'TeacherController');
     Route::get('/teachers/{teacher}/edit-photos', 'TeacherController@showPhotoEditForm');
     Route::post('/teachers/{teacher}/edit-photos', 'TeacherController@editPhoto');
+    // Salary
+    Route::get('/teachers/{teacher}/pay-salary', 'TeacherController@paySalaryForm');
+    Route::post('/teachers/{teacher}/pay-salary', 'TeacherController@paySalary');
 
     /**
      * The Student routes
@@ -48,6 +51,9 @@ Route::group([
     Route::resource('students', 'StudentController');
     Route::get('/students/{student}/edit-photos', 'StudentController@showPhotoEditForm');
     Route::post('/students/{student}/edit-photos', 'StudentController@editPhoto');
+    // Fees
+    Route::get('/students/{student}/pay-fees', 'StudentController@payFeesForm');
+    Route::post('/students/{student}/pay-fees', 'StudentController@payFees');
 
     /**
      * The ClassGroup routes
@@ -106,6 +112,7 @@ Route::group([
     Route::resource('/support-staff', 'SupportStaffController');
     Route::get('/support-staff/{support_staff}/edit-photos', 'SupportStaffController@showPhotoEditForm');
     Route::post('/support-staff/{support_staff}/edit-photos', 'SupportStaffController@editPhoto');
+    Route::post('/support-staff/{support_staff}/pay-salary', 'SupportStaffController@paySalary');
 
     /**
      * Chart of accounts
