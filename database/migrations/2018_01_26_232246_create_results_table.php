@@ -20,7 +20,7 @@ class CreateResultsTable extends Migration
             $table->integer('subject_id')->unsigned();
             $table->integer('student_id')->unsigned();
             $table->integer('class_group_id')->unsigned();
-            $table->decimal('marks', 3, 2);
+            $table->decimal('marks', 5, 2)->nullable();
 
             $table->timestamps();
 

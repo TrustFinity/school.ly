@@ -12,7 +12,7 @@
                         </label>
                         <select v-model="chooseClassGroup" class="form-control" required>
                             <option disabled value="">--Select a class</option>
-                            <option v-for="(classGroup, classGroupIndex) in class_groups" :key="classGroup.id" :value="classGroup">
+                            <option v-for="(classGroup, classGroupIndex) in class_groups" :key="classGroupIndex" :value="classGroup">
                                 {{ classGroup.name }}
                             </option>
                         </select>
@@ -24,10 +24,11 @@
                         </label>
                         <select v-model="chooseStream" class="form-control" required>
                             <option disabled value="">--Select a class</option>
-                            <option v-for="(stream, streamIndex) in chooseClassGroup.streams" :key="streamIndex" :value="stream">
+                            <option v-for="stream in chooseClassGroup.streams" :value="stream">
                                 {{ stream.name }}
                             </option>
                         </select>
+                        <input type="hidden" name="stream_id" :value="selectedStream">
                     </div>
                     <div v-show="chooseClassGroup" class="col-sm-8 col-xs-12 col-sm-offset-2">
                         <label for="subject_id">Subject to enter results</label>
@@ -100,8 +101,8 @@
             formAction() {
                 return '/examinations/' + this.examination.id
             },
-            studentMark() {
-                return this.marks[student.id]
+            selectedStream() {
+                return this.chooseStream.id
             }
         },
         methods: {

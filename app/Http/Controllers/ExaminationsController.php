@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Models\Result;
 use App\Models\Examination;
+use App\Models\Classes\Stream;
 use App\Models\Classes\Subject;
 use App\Models\Classes\ClassGroup;
 use App\Http\Requests\StoreExaminationRequest;
@@ -89,26 +90,21 @@ class ExaminationsController extends Controller
      */
     public function update(StoreExaminationResults $request, $id)
     {
-        dd($request->all());
-
         $examination = Examination::find($id);
         $subject = Subject::find($request->subject_id);
+        $students = Stream::find($request->stream_id)->students;
 
-        foreach ($request->all() as $mark) {
-            if (is_numeric($mark)) {
-                dd($mark);
+        foreach ($students as $student) {
+            $result = new Result;
+            $result->school_id = $examination->school_id;
+            $result->examination_id = $id;
+            $result->subject_id = $request->subject_id;
+            $result->class_group_id = $subject->class_group_id;
 
-                $result = new Result;
-                $result->school_id = $examination->school_id;
-                $result->examination_id = $id;
-                $result->subject_id = $request->subject_id;
-                $result->class_group_id = $subject->class_group_id;
+            $result->student_id = $student->id;
+            $result->marks = $request->input("student-$student->id");
 
-                $result->student_id = '';
-                $result->marks = $mark;
-
-                $result->save();
-            }
+            $result->save();
         }
 
         flash("Results for $subject->name have been saved.")->success();
