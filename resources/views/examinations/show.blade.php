@@ -13,7 +13,11 @@
     <hr>
     <div class="panel panel-default">
         <div class="panel-body">
-            {{--  --}}
+            <view-results
+                :examination = "{{ json_encode($examination) }}"
+                :results = "{{ json_encode($results) }}"
+                :streams = "{{ json_encode($streams) }}"
+                ></view-results>
         </div>
     </div>
 

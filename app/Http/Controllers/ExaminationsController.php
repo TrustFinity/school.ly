@@ -9,7 +9,6 @@ use App\Models\Classes\Stream;
 use App\Models\Classes\Subject;
 use App\Models\Classes\ClassGroup;
 use App\Http\Requests\StoreExaminationRequest;
-use App\Http\Requests\StoreExaminationResults;
 
 class ExaminationsController extends Controller
 {
@@ -65,7 +64,8 @@ class ExaminationsController extends Controller
     {
         $examination = Examination::find($id);
         $results = Result::where('examination_id', $id)->get();
-        return view('examinations.show', compact('examination', 'results'));
+        $streams = Stream::with('students', 'classGroup.subjects')->get();
+        return view('examinations.show', compact('examination', 'results', 'streams'));
     }
 
     /**
@@ -88,7 +88,7 @@ class ExaminationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreExaminationResults $request, $id)
+    public function update(StoreExaminationRequest $request, $id)
     {
         $examination = Examination::find($id);
         $subject = Subject::find($request->subject_id);

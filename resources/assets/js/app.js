@@ -32,7 +32,9 @@ Vue.component('DatePicker', require('./components/Forms/DatePicker.vue'));
 Vue.component('StudentAttendance', require('./components/Attendance/StudentAttendance.vue'));
 Vue.component('AttendanceComponent', require('./components/Attendance/AttendanceComponent.vue'));
 
-
+/** Examinations **/
+Vue.component('EnterResults', require('./components/Examinations/EnterResults.vue'));
+Vue.component('ViewResults', require('./components/Examinations/ViewResults.vue'));
 
 const app = new Vue({
     el: '#app'
