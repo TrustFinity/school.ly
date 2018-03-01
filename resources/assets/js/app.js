@@ -32,8 +32,6 @@ Vue.component('DatePicker', require('./components/Forms/DatePicker.vue'));
 Vue.component('StudentAttendance', require('./components/Attendance/StudentAttendance.vue'));
 Vue.component('AttendanceComponent', require('./components/Attendance/AttendanceComponent.vue'));
 
-
-
 const app = new Vue({
     el: '#app'
 });
