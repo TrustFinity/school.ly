@@ -104,7 +104,7 @@ class CreateSchool extends Command
             $secondary_preferences->upper_grade_level = 74;
             $secondary_preferences->attendants_type = 'Students';
             $secondary_preferences->save();
-
+            
             // Levels
             $o_level = Level::create([
                 'school_id' => $new_school->id,
