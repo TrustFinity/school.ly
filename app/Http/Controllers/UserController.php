@@ -22,7 +22,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with('roles.resources')->get();
+        $users = User::with('roles.resources')
+                    ->where('school_id', Auth::user()->school_id)
+                    ->get();
         return view('settings.users.index', compact('users'));
     }
 

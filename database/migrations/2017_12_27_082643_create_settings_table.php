@@ -16,7 +16,6 @@ class CreateSettingsTable extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('school_id')->unsigned()->indexed();
-
             $table->string('institution_type')->nullable();
             $table->integer('lower_grade_level')->nullable();
             $table->integer('upper_grade_level')->nullable();
