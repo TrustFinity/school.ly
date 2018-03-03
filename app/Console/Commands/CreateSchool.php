@@ -10,6 +10,7 @@ use App\Models\Classes\Subject;
 use Illuminate\Console\Command;
 use App\Models\Settings\Setting;
 use App\Models\Classes\ClassGroup;
+use App\SharedSeeders\GLA\GLASharedSeeder;
 
 class CreateSchool extends Command
 {
@@ -171,6 +172,9 @@ class CreateSchool extends Command
         // Set the role
         $role = Role::where('name', Role::DIRECTOR)->first();
         $user->roles()->sync($role->id);
+
+        // Seed the GLAs
+        (new GLASharedSeeder)->seedFor($new_school);
 
         $this->info('New School has been created Boostrapped in the process: ');
         $this->info("School Name: \t\t $school_name");
