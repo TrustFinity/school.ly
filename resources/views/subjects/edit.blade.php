@@ -10,7 +10,7 @@
                     <div class="col-md-8 col-md-offset-2">
                         <form action="/subjects/{{$subject->id}}" method="POST">
                             {{ csrf_field() }}
-                            {{--{{ method_field('PUT') }}--}}
+                            {{ method_field('PUT') }}
                             <div class="form-group">
                                 <input name="name" type="text" class="form-control" placeholder="Enter subject name"
                                        value="{{ old('name', $subject->name) }}">
@@ -25,9 +25,9 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Teacher</label>
-                                <select name="teacher_id" id="inputteacher_id" class="form-control" required="required">
+                                <select name="teacher_id" id="inputteacher_id" class="form-control">
                                     @foreach ($teachers as $teacher)
-                                        <option value="{{ $teacher->id }}" {{ $teacher->id == $subject->teacher->id ? 'selected':'' }}>
+                                        <option value="{{ $teacher->id }}" {{ $teacher->id == isset($subject->teacher->id) ? 'selected':'' }}>
                                             {{ $teacher->name }}
                                         </option>
                                     @endforeach

@@ -10,7 +10,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Stream extends Model
 {
+    protected $fillables = [
+        'name',
+        'class_group_id'
+    ];
+
     protected $guarded = [];
+
+    public function rules()
+    {
+        return [
+            'name' => 'required|string',
+            'class_group_id' => 'required|numeric'
+        ];
+    }
 
     /**
      * The "booting" method of the model.
