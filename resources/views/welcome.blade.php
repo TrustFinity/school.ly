@@ -97,7 +97,7 @@
                                 <li>Priority phone and email support</li>
                                 <li>Onsite support</li>
                             </ul>
-                            <a href="https://m.me/TrustFinity.ug"" class="btn btn-lg btn-primary">Contact us</a>
+                            <a href="https://m.me/TrustFinity.ug"" class="btn btn-lg btn-block btn-primary">Contact us</a>
                         </div>
                     </div>
                 </div>
