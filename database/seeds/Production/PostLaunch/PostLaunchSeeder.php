@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\SharedSeeders\GLA\GLASharedSeeder;
 
-class GLASeeder extends Seeder
+class PostLaunchSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,6 +11,6 @@ class GLASeeder extends Seeder
      */
     public function run()
     {
-        (new GLASharedSeeder)->seedForAll();
+        //
     }
 }

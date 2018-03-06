@@ -16,6 +16,16 @@
         <div class="col-sm-9">
             <div class="panel panel-default">
                 <div class="panel-heading">
+                    <h4>Kin's information</h4>
+                </div>
+                <div class="panel-body">
+                    <h4>{{ $teacher->next_of_kin_names }}</h4>
+                    <p>{{ $teacher->next_of_kin_phone_number }}</p>
+                </div>
+            </div>
+            {{-- This is an experimental feature. Will be for different paying users. --}}
+            {{-- <div class="panel panel-default">
+                <div class="panel-heading">
                     <h4 class="">Lesson Plan</h4>
                 </div>
                 <div class="panel-body">
@@ -23,26 +33,35 @@
                         :teacher="{{ json_encode($teacher) }}">
                     </teacher-kanban>
                 </div>
-            </div>
+            </div> --}}
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>Subject Performances</h4>
+                    <h4>Subject Performance</h4>
                 </div>
                 <div class="panel-body">
-                    <h5>Graph(line) showing performance changes up or down.</h5>
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h4>Information & Notifications</h4>
-                </div>
-                <div class="panel-body">
-                    {{--<h3 class="text-info">Parent</h3>--}}
-                    {{--<hr>--}}
-                    {{--<h4>{{ $teacher->parents_names }}</h4>--}}
-                    {{--<p>{{ $teacher->parents_phone_number }}</p>--}}
-                    <div class="alert alert-info">There are no pending notifications.</div>
-                    <div class="alert alert-success">School fees cleared on time. Thank you.</div>
+                    <table class="table table-responsive table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>No. of {{ getPreference()->attendants_type }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($teacher->subjects as $subject)
+                                <tr>
+                                    <td>{{ $subject->name }}</td>
+                                    <td>{{ $subject->students->count() }}</td>
+                                </tr>
+                            @endforeach
+                            <tr>
+                                @if($teacher->subjects->count() == 0)
+                                    <div class="alert alert-info">
+                                        <p>{{ $teacher->name }} doesn't seem to be having any subject assigned.</p>
+                                    </div>
+                                @endif
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

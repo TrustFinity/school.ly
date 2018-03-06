@@ -34,7 +34,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/dashboard') }}">
+                    <a class="navbar-brand title" href="{{ url('/dashboard') }}">
                         {{ config('app.name', 'Darasini') }}
                     </a>
                 </div>
@@ -44,7 +44,7 @@
                     <ul class="nav navbar-nav">
                         @if (Auth::check())
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings</a>
+                                <a href="#" class="blue dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings</a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="/settings">Preferences</a></li>
                                     <li><a href="/roles">Roles</a></li>
@@ -114,10 +114,11 @@
                         @if (Auth::check())
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <i class="glyphicon glyphicon-user"></i> {{ Auth::user()->last_name }}
+                                    <i class="fa fa-user-circle"></i> {{ Auth::user()->last_name }}
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li><a href="/users/{{Auth::user()->id}}/edit">Update Information</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

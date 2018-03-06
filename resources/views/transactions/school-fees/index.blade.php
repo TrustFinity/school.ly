@@ -8,7 +8,7 @@
         </div>
         <div class="col-sm-6">
             <br>
-            <a href="/transactions/school-fees/create" class="btn btn-success pull-right">New School Fee Entry</a>
+            {{-- <a href="/transactions/school-fees/create" class="btn btn-success pull-right">New School Fee Entry</a> --}}
         </div>
     </div>
 

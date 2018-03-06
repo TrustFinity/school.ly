@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <label for="">Class Group</label>
-                            <select name="stream_id" id="inputstream_id" class="form-control" required="required">
+                            <select name="class_group_id" id="inputclass_group_id" class="form-control" required="required">
                                 @foreach ($class_groups as $class_group)
                                     @if ($stream->class_group_id === $class_group->id)
                                         <option value="{{ $stream->class_group_id }}" selected>

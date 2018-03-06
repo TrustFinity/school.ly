@@ -24,6 +24,7 @@ class CreateSchoolFeesTable extends Migration
             $table->decimal('amount', 19, 4);
             $table->string('receipt_number', 50)->nullable();
             $table->string('bank_slip_number', 50)->nullable();
+            $table->string('stream')->nullable();
             $table->string('term');
             $table->date('year');
 

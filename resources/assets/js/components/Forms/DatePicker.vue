@@ -1,5 +1,5 @@
 <template>
-    <datepicker :value="value" :name="name"></datepicker>
+    <!-- <datepicker :value="value" :name="name"></datepicker> -->
 </template>
 <script>
     import Datepicker from 'vuejs-datepicker'
