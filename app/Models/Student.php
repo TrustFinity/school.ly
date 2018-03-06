@@ -109,6 +109,11 @@ class Student extends Model
         return $this->belongsToMany(Subject::class);
     }
 
+    public function results()
+    {
+        return $this->hasMany(Result::class);
+    }
+  
     public function fees()
     {
         return $this->hasMany(SchoolFee::class);

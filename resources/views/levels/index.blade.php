@@ -31,12 +31,12 @@
                             {{ $level->name }}
                         </div>
                         <div class="col-xs-5">
-                            @foreach ($level->subjects as $subject)
+                            {{-- @foreach ($level->subjects as $subject)
                                 @if($level->subjects->count() === 0)
                                     <p>There are subjects associated with this level.</p>
                                 @endif
                                 <p class="badge">{{ $subject->name }}</p>
-                            @endforeach
+                            @endforeach --}}
                                 <hr>
                         </div>
                         <div class="col-xs-2 pull-right">

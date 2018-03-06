@@ -17,8 +17,8 @@
                 <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Level</th>
-                    <th>Teacher</th>
+                    {{-- <th>Level</th> --}}
+                    {{-- <th>Teacher</th> --}}
                     <th><p class="pull-right">Action</p></th>
                 </tr>
                 </thead>
@@ -26,8 +26,8 @@
                 @foreach ($subjects as $subject)
                     <tr>
                         <td>{{ $subject->name }}</td>
-                        <td>{{ $subject->level->name }}</td>
-                        <td>{{ $subject->teacher->name ?? " -- " }}</td>
+                        {{-- <td>{{ $subject->level->name }}</td> --}}
+                        {{-- <td>{{ $subject->teacher->name }}</td> --}}
                         <td>
                             <div class="btn-group pull-right">
                                 <a href="/subjects/{{ $subject->id }}/edit" class="btn btn-default">Edit</a>
@@ -40,5 +40,5 @@
             </table>
         </div>
     </div>
-</div>
+
 @endsection

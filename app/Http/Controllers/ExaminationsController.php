@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Models\School;
 use App\Models\Result;
 use App\Models\Examination;
-use Illuminate\Http\Request;
+use App\Models\Classes\Stream;
+use App\Models\Classes\Subject;
+use App\Models\Classes\ClassGroup;
 use App\Http\Requests\StoreExaminationRequest;
 
-class SchoolController extends Controller
+class ExaminationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -45,7 +46,7 @@ class SchoolController extends Controller
         $new_examination->school_id = Auth::user()->school_id;
 
         if ($new_examination->save()) {
-            flash('Expense successfully added, thank you.')->success();
+            flash('New Examination record successfully added.')->success();
             return redirect('/examinations');
         } else {
             flash('Failed.')->error();
@@ -56,46 +57,67 @@ class SchoolController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\School  $school
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(School $school)
+    public function show($id)
     {
         $examination = Examination::find($id);
         $results = Result::where('examination_id', $id)->get();
-        return view('examinations.show', compact('examination', 'results'));
+        $streams = Stream::with('students', 'classGroup.subjects')->get();
+        return view('examinations.show', compact('examination', 'results', 'streams'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\School  $school
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(School $school)
+    public function edit($id)
     {
-        //
+        $class_groups = ClassGroup::with('streams', 'subjects', 'streams.students')->get();
+        $examination = Examination::find($id);
+        return view('examinations.new', compact('class_groups', 'examination'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\School  $school
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, School $school)
+    public function update(StoreExaminationRequest $request, $id)
     {
-        //
+        $examination = Examination::find($id);
+        $subject = Subject::find($request->subject_id);
+        $students = Stream::find($request->stream_id)->students;
+
+        foreach ($students as $student) {
+            $result = new Result;
+            $result->school_id = $examination->school_id;
+            $result->examination_id = $id;
+            $result->subject_id = $request->subject_id;
+            $result->class_group_id = $subject->class_group_id;
+
+            $result->student_id = $student->id;
+            $result->marks = $request->input("student-$student->id");
+
+            $result->save();
+        }
+
+        flash("Results for $subject->name have been saved.")->success();
+        return redirect('/examinations');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\School  $school
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(School $school)
+    public function destroy($id)
     {
         $examination = Examination::findOrFail($id);
 

@@ -44,4 +44,9 @@ class School extends Model
     {
         return $this->hasMany(ClassGroup::class);
     }
+
+    public function subjects()
+    {
+        return $this->hasMany(Subject::class);
+    }
 }
