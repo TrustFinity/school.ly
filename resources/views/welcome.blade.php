@@ -12,14 +12,18 @@
     </head>
 
     <body>
-        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-            <h5 class="my-0 mr-md-auto font-weight-bold">{{ config('app.name') }}</h5>
-            <nav class="my-2 my-md-0 mr-md-3">
-                <a class="p-2 text-dark" href="#footer">Features</a>
-                <a class="p-2 text-dark" href="#pricing">Pricing</a>
-            </nav>
-            <a class="btn btn-outline-primary" href="/login">Login to {{ config('app.name') }}</a>
+
+        <div class="navbar d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+            <div class="container">
+                <h5 class="my-0 mr-md-auto font-weight-bold">{{ config('app.name') }}</h5>
+                <nav class="my-2 my-md-0 mr-md-3">
+                    <a class="p-2 text-dark" href="#footer">Features</a>
+                    <a class="p-2 text-dark" href="#pricing">Pricing</a>
+                </nav>
+                <a class="btn btn-outline-primary" href="/login">Login to {{ config('app.name') }}</a>
+            </div>
         </div>
+
         <div class="container">
             <div class="row">
                 <div class="col-xs-6 col-xs-offset-3">
@@ -59,7 +63,7 @@
                                 <li>Help center access</li>
                             </ul>
                             <a href="https://m.me/TrustFinity.ug"" class="btn btn-lg btn-block btn-outline-primary">
-                                <i style="margin-right: 8px;"> 
+                                <i style="margin-right: 8px;">
                                     <img src="/img/messenger-blue.png"
                                     width="25" height="25"></i>
                                 Contact us
@@ -79,7 +83,7 @@
                                 <li>Help center access</li>
                             </ul>
                             <a href="https://m.me/TrustFinity.ug"" class="btn btn-lg btn-block btn-outline-primary">
-                                <i style="margin-right: 8px;"> 
+                                <i style="margin-right: 8px;">
                                     <img src="/img/messenger-blue.png"
                                     width="25" height="25"></i>
                                 Contact us
