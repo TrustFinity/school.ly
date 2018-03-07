@@ -46,7 +46,8 @@ class Teacher extends Model
         'phone_number',
         'next_of_kin_names',
         'next_of_kin_phone_number',
-        'joining_year'
+        'joining_year',
+        'address',
     ];
     
     public function rules()

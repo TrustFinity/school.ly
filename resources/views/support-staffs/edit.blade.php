@@ -45,7 +45,7 @@
                         <div class="form-group">
                             <label for="">Support staff's date of birth?</label>
                             <input name="dob" type="date" class="form-control" 
-                                value="{{ old('dob', $support_staff->dob) }}">
+                                value="{{ old('dob', $support_staff->dob->toDateString() ) }}">
                         </div>
                         <div class="form-group">
                             <label for="">What is the support staff's role?</label>

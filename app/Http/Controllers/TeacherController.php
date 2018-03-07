@@ -76,8 +76,9 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        $streams = Stream::all();
-        return view('teachers.edit', compact('teacher', 'streams'));
+        $levels = Level::all();
+        $class_groups = ClassGroup::all();
+        return view('teachers.edit', compact('teacher', 'class_groups', 'levels'));
     }
 
     /**
@@ -87,10 +88,9 @@ class TeacherController extends Controller
      * @return \Illuminate\Http\Response
      * @internal param Request $request
      */
-    public function update(Teacher $teacher)
+    public function update(StoreTeacher $request, Teacher $teacher)
     {
-        $input = request(['name','experience', 'stream_id']);
-        $teacher->fill($input)->save();
+        $teacher->fill($request->all())->save();
         return redirect('/teachers');
     }
 

@@ -44,14 +44,14 @@
                             <p class="small">This is required</p>
                             <select name="gender" id="input" class="form-control" required="required">
                                 @foreach(['Male', 'Female'] as $gender)
-                                    <option value="{{ $gender }}" {{ $student->$gender === $gender ? 'checked' :'' }}>{{ $gender }}</option>
+                                    <option value="{{ $gender }}" {{ $student->gender == $gender ? 'selected' :'' }}>{{ $gender }}</option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="">What is the date of birth of the {{ getPreference()->attendants_type }}?</label>
                             <p class="small">This is required</p>
-                            <input name="dob" type="date" class="form-control" value="{{ old('dob', $student->dob) }}">
+                            <input name="dob" type="date" class="form-control" value="{{ old('dob', $student->dob->toDateString() ) }}">
                         </div>
 
                     </div>
@@ -101,7 +101,7 @@
                             <p class="small">This is required, it can be a current class or the next class they are starting.</p>
                             <select name="stream_id" id="inputstream_id" class="form-control" required="required">
                                 @foreach ($streams as $stream)
-                                    <option value="{{ $stream->id }}" {{ $stream->id === $student->stream_id ? 'checked' : '' }}>
+                                    <option value="{{ $stream->id }}" {{ $stream->id == $student->stream_id ? 'selected' : '' }}>
                                         {{ $stream->name }}</option>
                                 @endforeach
                             </select>
@@ -112,7 +112,10 @@
                             <p class="small">This is optional, it's only applicable to secondary school students.</p>
                             <select name="level_id" id="inputLevel_id" class="form-control" required="required">
                                 @foreach ($levels as $level)
-                                    <option value="{{ $level->id }}">{{ $level->name }}</option>
+                                    <option value="{{ $level->id }}"
+                                        {{ $level->id == $student->level_id ? 'selected' : '' }}>
+                                        {{ $level->name }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
@@ -120,7 +123,7 @@
                             <label for="joining_year">When did the {{ getPreference()->attendants_type }} join the school?</label>
                             <p class="small text-danger">This is required</p>
                             <input name="joining_year" type="date"
-                                   class="form-control" value="{{ old('joining_year', $student->joining_year) }}">
+                                   class="form-control" value="{{ old('joining_year', $student->joining_year->toDateString() ) }}">
                         </div>
                     </div>
                 </div>
