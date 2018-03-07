@@ -30,7 +30,7 @@ class Student extends Model
         'dob',
         'address',
         'parents_names',
-        'parents_phone_numbers',
+        'parents_phone_number',
         'stream_id',
         'level_id',
         'joining_year',
