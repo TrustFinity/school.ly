@@ -151,5 +151,11 @@ Route::group([
     Route::resource('/examinations', 'ExaminationsController');
     Route::post('/examinations/{examination}/save-results', 'ExaminationsController@saveResults');
 
-    Route::resource('/imports', 'ImportController');
+    /**
+     * Data Imports
+     */
+    Route::resource('/imports', 'DataImportController');
+
+    Route::get('downloadExcel/{type}', 'DataImportController@downloadExcel');
+    Route::post('importExcel', 'DataImportController@importExcel');
 });
