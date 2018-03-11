@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ResultsController extends Controller
+class ImportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class ResultsController extends Controller
      */
     public function index()
     {
-        //
+        return view('imports.index');
     }
 
     /**
