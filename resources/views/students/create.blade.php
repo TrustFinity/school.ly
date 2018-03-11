@@ -156,7 +156,7 @@
             <div class="panel-footer">
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-                        <button type="submit" class="btn btn-success">Create {{ getPreference()->attendants_type }}</button>
+                        <button type="submit" class="btn btn-success">Submit Data</button>
                     </div>
                 </div>
             </div>

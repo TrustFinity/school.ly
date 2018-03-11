@@ -46,7 +46,7 @@ class Student extends Model
             'last_name'     => 'required|string',
             'gender'        => 'required',
             'dob'           => 'required|date',
-            'joining_year'  => 'nullable|date',
+            'joining_year'  => 'required|date',
             'leaving_year'  => 'nullable|date',
             'address'       => 'nullable|string',
             'stream_id'     => 'required|integer',
