@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Student;
 use Illuminate\Http\Request;
@@ -49,6 +50,10 @@ class StudentController extends Controller
         $student = new Student($request->all());
         $student->school_id = Auth::user()->school_id;
         $student->search_term = $student->constructSearchTerm();
+        
+        if (!$request->joining_year) {
+            $student->joining_year = Carbon::now();
+        }
 
         if($request->hasFile('photo_url')){
             $image_name = str_slug($student->name).time().".jpg";
