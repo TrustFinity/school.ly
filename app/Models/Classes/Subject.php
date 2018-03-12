@@ -9,7 +9,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'code',
+        'name',
+        'level_id',
+        'teacher_id',
+    ];
+
+    protected $with = ['teacher', 'level'];
 
     /**
      * The "booting" method of the model.
@@ -24,12 +31,12 @@ class Subject extends Model
 
     public function level()
     {
-        return $this->belongsTo(Level::class, 'level_id');
+        return $this->belongsTo(Level::class);
     }
 
     public function teacher()
     {
-        return $this->belongsTo(Teacher::class, 'teacher_id');
+        return $this->belongsTo(Teacher::class);
     }
 
     public function students()
