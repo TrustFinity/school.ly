@@ -154,8 +154,11 @@ Route::group([
     /**
      * Data Imports
      */
-    Route::resource('/imports', 'DataImportController');
+    Route::get('/imports', 'DataImportController@index');
 
-    Route::get('downloadExcel/{type}', 'DataImportController@downloadExcel');
-    Route::post('importExcel', 'DataImportController@importExcel');
+    Route::get('/imports/students', 'DataImportController@students');
+    Route::post('/imports/students/store', 'DataImportController@studentsSave');
+
+    Route::get('/studentTemplate', 'DataImportController@studentTemplate');
+    Route::post('/students/import', 'DataImportController@importStudents');
 });

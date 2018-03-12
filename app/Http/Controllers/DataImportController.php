@@ -2,12 +2,33 @@
 
 namespace App\Http\Controllers;
 
+use Excel;
+use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Models\Classes\Level;
+use App\Models\Classes\Stream;
 
 class DataImportController extends Controller
 {
+    const STUDENT_FIELDS = [
+        // 'school_id', gotten from the auth user
+        'stream_id',
+        'level_id',
+
+        'first_name',
+        'middle_name',
+        'last_name',
+        'gender',
+        'dob',
+        'address',
+        'parents_names',
+        'parents_phone_number',
+        'joining_year',
+        'leaving_year',
+    ];
+
     /**
-     * Display a listing of the resource.
+     * Display a listing of available import options.
      *
      * @return \Illuminate\Http\Response
      */
@@ -16,20 +37,49 @@ class DataImportController extends Controller
         return view('imports.index');
     }
 
-    /**
-     * File Export Code
-     *
-     * @var array
-     */
-    public function downloadExcel(Request $request, $type)
+    public function students()
     {
-        $data = Item::get()->toArray();
+        $streams = Stream::all();
+        $levels = Level::all();
+        return view('imports.students.import-students', compact('streams', 'levels'));
+    }
 
-        return Excel::create('itsolutionstuff_example', function ($excel) use ($data) {
-            $excel->sheet('mySheet', function ($sheet) use ($data) {
-                $sheet->fromArray($data);
+    /**
+     * Download Student template for import
+     */
+    public function studentTemplate(Request $request)
+    {
+        return Excel::create('students_template', function ($excel) {
+            $excel->sheet('sampleSheet', function ($sheet) {
+                $sheet->fromArray(self::STUDENT_FIELDS);
             });
-        })->download($type);
+        })->download('xls');
+    }
+
+    public function importStudents(Request $request)
+    {
+        if ($request->hasFile('import_file')) {
+            $path = $request->file('import_file')->getRealPath();
+            $data = Excel::load($path, function ($reader) {
+            })->get();
+
+            if (!empty($data) && $data->count()) {
+                foreach ($data->toArray() as $key => $value) {
+                    if (!empty($value)) {
+                        foreach ($value as $v) {
+                            $insert[] = ['title' => $v['title'], 'description' => $v['description']];
+                        }
+                    }
+                }
+
+                if (!empty($insert)) {
+                    Item::insert($insert);
+                    return back()->with('success', 'Insert Record successfully.');
+                }
+            }
+        }
+
+        return back()->with('error', 'Please Check your file, Something is wrong there.');
     }
 
 
@@ -62,61 +112,5 @@ class DataImportController extends Controller
         }
 
         return back()->with('error', 'Please Check your file, Something is wrong there.');
-    }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 }
