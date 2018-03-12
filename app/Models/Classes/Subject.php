@@ -9,7 +9,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subject extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'code',
+        'name',
+        'level_id',
+        'teacher_id',
+    ];
 
     /**
      * The "booting" method of the model.

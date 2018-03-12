@@ -84,12 +84,13 @@ class SubjectController extends Controller
      * @return \Illuminate\Http\Response
      * @internal param Request $request
      */
-    public function update(Subject $subject)
+    public function update(Request $request, Subject $subject)
     {
-        $input = request(['name','level_id','teacher_id']);
-        $subject->fill($input);
-        $subject->school_id = Auth::user()->school_id;
-        $subject->save();
+        if (!$subject->update($request->all())) {
+            flash("Failed to update ".$subject->name)->error();
+            return back();
+        }
+        flash("Updated subject successfully.")->success();
         return redirect('/subjects');
     }
 

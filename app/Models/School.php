@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Classes\Level;
 use App\Models\Classes\Stream;
 use App\Models\Settings\Setting;
 use App\Models\Classes\ClassGroup;
@@ -48,5 +49,10 @@ class School extends Model
     public function subjects()
     {
         return $this->hasMany(Subject::class);
+    }
+
+    public function levels()
+    {
+        return $this->hasMany(Level::class);
     }
 }
