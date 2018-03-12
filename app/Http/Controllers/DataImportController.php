@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Excel;
+use Auth;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Classes\Level;
@@ -11,10 +12,8 @@ use App\Models\Classes\Stream;
 class DataImportController extends Controller
 {
     const STUDENT_FIELDS = [
-        // 'school_id', gotten from the auth user
         'stream_id',
         'level_id',
-
         'first_name',
         'middle_name',
         'last_name',
@@ -50,12 +49,15 @@ class DataImportController extends Controller
     public function studentTemplate(Request $request)
     {
         return Excel::create('students_template', function ($excel) {
-            $excel->sheet('sampleSheet', function ($sheet) {
+            $excel->sheet('dataSheet', function ($sheet) {
                 $sheet->fromArray(self::STUDENT_FIELDS);
             });
         })->download('xls');
     }
 
+    /**
+     * Process student data from excel file
+     */
     public function importStudents(Request $request)
     {
         if ($request->hasFile('import_file')) {
@@ -66,51 +68,23 @@ class DataImportController extends Controller
             if (!empty($data) && $data->count()) {
                 foreach ($data->toArray() as $key => $value) {
                     if (!empty($value)) {
-                        foreach ($value as $v) {
-                            $insert[] = ['title' => $v['title'], 'description' => $v['description']];
+                        $fields = [];
+                        foreach ($value as $k => $v) {
+                            $fields[$k] = $v;
                         }
                     }
                 }
 
-                if (!empty($insert)) {
-                    Item::insert($insert);
-                    return back()->with('success', 'Insert Record successfully.');
+                if (!empty($fields)) {
+                    $student            =  new Student($fields);
+                    $student->school_id = Auth::user()->school_id;
+                    $student->save();
+
+                    return back()->with('success', 'Students Imported successfully.');
                 }
             }
         }
 
-        return back()->with('error', 'Please Check your file, Something is wrong there.');
-    }
-
-
-    /**
-     * Import file into database Code
-     *
-     * @var array
-     */
-    public function importExcel(Request $request)
-    {
-        if ($request->hasFile('import_file')) {
-            $path = $request->file('import_file')->getRealPath();
-            $data = Excel::load($path, function ($reader) {
-            })->get();
-
-            if (!empty($data) && $data->count()) {
-                foreach ($data->toArray() as $key => $value) {
-                    if (!empty($value)) {
-                        foreach ($value as $v) {
-                            $insert[] = ['title' => $v['title'], 'description' => $v['description']];
-                        }
-                    }
-                }
-
-                if (!empty($insert)) {
-                    Item::insert($insert);
-                    return back()->with('success', 'Insert Record successfully.');
-                }
-            }
-        }
-
-        return back()->with('error', 'Please Check your file, Something is wrong there.');
+        return back()->with('error', 'Please Check your file for errors and resubmit after fixing errors.');
     }
 }
