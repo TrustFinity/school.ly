@@ -50,7 +50,7 @@
                                     <label for="">Gender <span class="red">(Required)</span></label>
                                     <select name="gender" id="input" class="form-control" required="required">
                                         @foreach(['Male', 'Female'] as $gender)
-                                            <option value="{{ $gender }}" {{ $student->$gender === $gender ? 'checked' :'' }}>{{ $gender }}</option>
+                                            <option value="{{ $gender }}" {{ $student->gender === $gender ? 'selected' :'' }}>{{ $gender }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -136,7 +136,7 @@
                                     <p class="small">It can be a current class or the next class they are starting.</p>
                                     <select name="stream_id" id="stream_id" class="form-control" required="required">
                                         @foreach ($streams as $stream)
-                                        <option value="{{ $stream->id }}" {{ $stream->id === $student->stream_id ? 'checked' : '' }}>
+                                        <option value="{{ $stream->id }}" {{ $stream->id === $student->stream_id ? 'selected' : '' }}>
                                             {{ $stream->name }}</option>
                                         @endforeach
                                     </select>
