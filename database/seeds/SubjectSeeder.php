@@ -15,12 +15,12 @@ class SubjectSeeder extends Seeder
     {
         $school = School::first();
 
-        foreach ($school->classGroups as $class_group) {
+        foreach ($school->levels as $level) {
             foreach (PRIMARY_SUBJECTS as $key => $value) {
                 Subject::create([
                     'school_id' => $school->id,
                     'name'      => $value,
-                    'class_group_id' => $class_group->id
+                    'level_id'  => $level->id,
                 ]);
             }
         }

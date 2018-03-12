@@ -35,6 +35,7 @@ class Student extends Model
         'level_id',
         'joining_year',
         'leaving_year',
+        'uneb_number',
     ];
 
     public function rules () {
@@ -49,11 +50,11 @@ class Student extends Model
             'leaving_year'  => 'nullable|date',
             'address'       => 'nullable|string',
             'stream_id'     => 'required|integer',
-            'parents_names' => 'required|string',
             'level_id'      => 'required|integer',
             'photo_url'     => 'nullable|image',
             'parents_names' => 'nullable|string',
             'parents_phone_number' => 'nullable|numeric|min:10',
+            'uneb_number'   => 'nullable|string',
         ];
     }
 
