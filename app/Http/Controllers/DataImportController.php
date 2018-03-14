@@ -49,7 +49,7 @@ class DataImportController extends Controller
     public function studentTemplate(Request $request)
     {
         return Excel::create('students_template', function ($excel) {
-            $excel->sheet('dataSheet', function ($sheet) {
+            $excel->sheet('students', function ($sheet) {
                 $sheet->fromArray(self::STUDENT_FIELDS);
             });
         })->download('xls');
@@ -65,23 +65,21 @@ class DataImportController extends Controller
             $data = Excel::load($path, function ($reader) {
             })->get();
 
+            //todo pius
+            // 1. check for duplicates
+            // 2. add checks for level_id and and stream_id
+
             if (!empty($data) && $data->count()) {
-                foreach ($data->toArray() as $key => $value) {
-                    if (!empty($value)) {
-                        $fields = [];
-                        foreach ($value as $k => $v) {
-                            $fields[$k] = $v;
-                        }
+                foreach ($data->toArray() as $student) {
+                    if (!empty($student)) {
+                        $student            =  new Student($student);
+                        $student->school_id = Auth::user()->school_id;
+                        $student->save();
                     }
                 }
-
-                if (!empty($fields)) {
-                    $student            =  new Student($fields);
-                    $student->school_id = Auth::user()->school_id;
-                    $student->save();
-
-                    return back()->with('success', 'Students Imported successfully.');
-                }
+                return back()->with('success', $data->count().' students Imported successfully.');
+            } else {
+                return back()->with('danger', 'Imported file is empty. No students imported.');
             }
         }
 

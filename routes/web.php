@@ -156,9 +156,8 @@ Route::group([
      */
     Route::get('/imports', 'DataImportController@index');
 
+    //students import
     Route::get('/imports/students', 'DataImportController@students');
-    Route::post('/imports/students/store', 'DataImportController@studentsSave');
-
     Route::get('/studentTemplate', 'DataImportController@studentTemplate');
     Route::post('/students/import', 'DataImportController@importStudents');
 });
