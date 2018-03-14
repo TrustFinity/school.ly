@@ -20,7 +20,11 @@
                     <a class="p-2 text-dark" href="#footer">Features</a>
                     <a class="p-2 text-dark" href="#pricing">Pricing</a>
                 </nav>
-                <a class="btn btn-outline-primary" href="/login">Login to {{ config('app.name') }}</a>
+                @if(Auth::check())
+                    <a class="btn btn-outline-primary" href="/dashboard">Dashboard</a>
+                @else
+                    <a class="btn btn-outline-primary" href="/login">Login to {{ config('app.name') }}</a>
+                @endif
             </div>
         </div>
 

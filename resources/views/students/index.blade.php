@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-sm-1">
                         <a href="/students/{{ $student->id }}">
-                            <img src="{{ $student->photo_url ?: '/img/person.png' }}" alt="Photo" 
+                            <img src="{{ $student->photo_url ?: '/img/person.png' }}" alt="Photo"
                                 class="img-thumbnail img-responsive profile-img">
                         </a>
                     </div>
@@ -37,6 +37,7 @@
                             <h4>{{ $student->name }}, {{ $student->age }}</h4>
                         </a>
                         <p>{{ $student->level->name ?? '' }} {{ $student->stream->name }}</p>
+
                     </div>
                     <div class="col-sm-7">
                         {{ $student->address }}

@@ -13,7 +13,6 @@ class StudentsSeeder extends Seeder
     {
         for ($i = 0; $i < 1000; $i++) {
             $student = factory(\App\Models\Student::class)->make();
-            $student->search_term = $student->constructSearchTerm();
             $student->save();
         }
     }

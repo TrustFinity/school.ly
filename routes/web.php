@@ -85,7 +85,7 @@ Route::group([
      */
     Route::resource('subjects', 'SubjectController');
     Route::get('/subjects/delete/{subject}', 'SubjectController@destroy');
-
+  
     /**
      * Attendance
      */
@@ -138,5 +138,13 @@ Route::group([
     Route::resource('/examinations', 'ExaminationsController');
     Route::post('/examinations/{examination}/save-results', 'ExaminationsController@saveResults');
 
-    // Route::resource('/results', 'ResultsController');
+    /**
+     * Data Imports
+     */
+    Route::get('/imports', 'DataImportController@index');
+
+    //students import
+    Route::get('/imports/students', 'DataImportController@students');
+    Route::get('/studentTemplate', 'DataImportController@studentTemplate');
+    Route::post('/students/import', 'DataImportController@importStudents');
 });
