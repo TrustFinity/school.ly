@@ -54,6 +54,7 @@
                                     <li><a href="/class-groups">Class Groups</a></li>
                                     <li><a href="/streams">Class Streams</a></li>
                                     <li><a href="/support-staff">Support Staff</a></li>
+                                    <li><a href="/imports">Import Data</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -158,7 +159,7 @@
                 @yield('content-full-screen')
             {{-- </div> --}}
         </div>
-        
+
     </div>
     <!-- Scripts -->
     <script src="{{ mix('/js/app.js') }}"></script>

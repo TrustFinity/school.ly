@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Models\School;
+use App\Models\Student;
 use App\Observers\SchoolObserver;
+use App\Observers\StudentObserver;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -27,5 +29,6 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         School::observe(SchoolObserver::class);
+        Student::observe(StudentObserver::class);
     }
 }

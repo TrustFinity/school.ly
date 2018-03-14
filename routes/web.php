@@ -91,7 +91,7 @@ Route::group([
      */
     Route::resource('subjects', 'SubjectController');
     Route::get('/subjects/delete/{subject}', 'SubjectController@destroy');
-    
+
     // Route::get('/subjects/create', 'SubjectController@create');
     // Route::get('/subjects', 'SubjectController@index');
     // Route::post('/subjects', 'SubjectController@store');
@@ -151,5 +151,13 @@ Route::group([
     Route::resource('/examinations', 'ExaminationsController');
     Route::post('/examinations/{examination}/save-results', 'ExaminationsController@saveResults');
 
-    // Route::resource('/results', 'ResultsController');
+    /**
+     * Data Imports
+     */
+    Route::get('/imports', 'DataImportController@index');
+
+    //students import
+    Route::get('/imports/students', 'DataImportController@students');
+    Route::get('/studentTemplate', 'DataImportController@studentTemplate');
+    Route::post('/students/import', 'DataImportController@importStudents');
 });

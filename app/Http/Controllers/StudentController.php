@@ -49,13 +49,12 @@ class StudentController extends Controller
     {
         $student = new Student($request->all());
         $student->school_id = Auth::user()->school_id;
-        $student->search_term = $student->constructSearchTerm();
         
         if (!$request->joining_year) {
             $student->joining_year = Carbon::now();
         }
 
-        if($request->hasFile('photo_url')){
+        if ($request->hasFile('photo_url')) {
             $image_name = str_slug($student->name).time().".jpg";
             $image = $request->file('photo_url');
             $destination_path = public_path('/storage/photos');
@@ -144,7 +143,8 @@ class StudentController extends Controller
         $payment_methods = SchoolFee::PAYMENT_METHODS;
         $assets = GeneralLedgerAccounts::assets();
         $equity = GeneralLedgerAccounts::equity();
-        return view('students.payments.fees-tuition', compact('student', 
+        return view('students.payments.fees-tuition', compact(
+            'student',
             'payment_methods',
             'assets',
             'equity'
@@ -164,7 +164,7 @@ class StudentController extends Controller
         $school_fee->student_id = $student->id;
         $school_fee->stream = $student->stream->name;
 
-        if (!$school_fee->saveTransaction()){
+        if (!$school_fee->saveTransaction()) {
             flash("Failed to save the school fees record")->error()->important();
             return back();
         }
