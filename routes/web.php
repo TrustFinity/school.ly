@@ -41,7 +41,10 @@ Route::group([
     Route::resource('teachers', 'TeacherController');
     Route::get('/teachers/{teacher}/edit-photos', 'TeacherController@showPhotoEditForm');
     Route::post('/teachers/{teacher}/edit-photos', 'TeacherController@editPhoto');
-    // Salary
+
+    /**
+     * Salary
+     */
     Route::get('/teachers/{teacher}/pay-salary', 'TeacherController@paySalaryForm');
     Route::post('/teachers/{teacher}/pay-salary', 'TeacherController@paySalary');
 
@@ -51,7 +54,12 @@ Route::group([
     Route::resource('students', 'StudentController');
     Route::get('/students/{student}/edit-photos', 'StudentController@showPhotoEditForm');
     Route::post('/students/{student}/edit-photos', 'StudentController@editPhoto');
-    // Fees
+    Route::post('/students/{student}/subjects', 'StudentController@addSubject');
+    Route::post('/students/{student}/promote', 'StudentController@promote');
+
+    /**
+     * School Fees
+     */
     Route::get('/students/{student}/pay-fees', 'StudentController@payFeesForm');
     Route::post('/students/{student}/pay-fees', 'StudentController@payFees');
 
@@ -61,25 +69,11 @@ Route::group([
     Route::resource('class-groups', 'ClassGroupController');
     Route::get('/class-groups/delete/{class_group}', 'ClassGroupController@destroy');
 
-    // Route::get('/class-groups/create', 'ClassGroupController@create');
-    // Route::get('/class-groups', 'ClassGroupController@index');
-    // Route::post('/class-groups', 'ClassGroupController@store');
-    // Route::get('/class-groups/{class_group}', 'ClassGroupController@show');
-    // Route::get('/class-groups/edit/{class_group}', 'ClassGroupController@edit');
-    // Route::post('/class-groups/{class_group}', 'ClassGroupController@update');
-
     /**
      * The Stream routes
      */
     Route::resource('streams', 'StreamController');
     Route::get('/streams/delete/{stream}', 'StreamController@destroy');
-
-    // Route::get('/streams/create', 'StreamController@create');
-    // Route::get('/streams', 'StreamController@index');
-    // Route::post('/streams', 'StreamController@store');
-    // Route::get('/streams/{stream}', 'StreamController@show');
-    // Route::get('/streams/edit/{stream}', 'StreamController@edit');
-    // Route::post('/streams/{stream}', 'StreamController@update');
 
     /**
      * The Level route
@@ -91,14 +85,7 @@ Route::group([
      */
     Route::resource('subjects', 'SubjectController');
     Route::get('/subjects/delete/{subject}', 'SubjectController@destroy');
-
-    // Route::get('/subjects/create', 'SubjectController@create');
-    // Route::get('/subjects', 'SubjectController@index');
-    // Route::post('/subjects', 'SubjectController@store');
-    // Route::get('/subjects/{subject}', 'SubjectController@show');
-    // Route::get('/subjects/edit/{subject}', 'SubjectController@edit');
-    // Route::post('/subjects/{subject}', 'SubjectController@update');
-
+  
     /**
      * Attendance
      */

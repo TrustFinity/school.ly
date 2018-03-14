@@ -120,7 +120,7 @@ html, body{
 
 	.title {
 		font-weight: 800;
-		text-transform: uppercase;
+		// text-transform: uppercase;
 	}
 
 	// Layout
@@ -159,6 +159,14 @@ html, body{
 	}
 	.mr-5 {
 		margin-right: 50px;
+	}
+	.mt-1 {
+		margin-top: 10px;
+	}
+
+	// Border
+	.border-r {
+		border-right: 1px solid #ccc;
 	}
 
 	// Money
