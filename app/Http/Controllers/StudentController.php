@@ -78,7 +78,10 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return view('students.show', compact('student'));
+        $student->load('subjects');
+        $all_subjects = $student->level->subjects;
+        $all_streams  = Stream::whereNotIn('id', [$student->stream->id])->get();
+        return view('students.show', compact('student', 'all_subjects', 'all_streams'));
     }
 
     /**
@@ -175,5 +178,24 @@ class StudentController extends Controller
         flash("Payment for {$school_fee->year->year} term {$school_fee->term} was saved successfully")->success();
 
         return redirect('/students/'.$student->id);
+    }
+
+    public function addSubject(Request $request, Student $student)
+    {
+        $student->subjects()->syncWithOutDetaching($request->subject_id);
+        flash('Subject added successfully')->success();
+        return back();
+    }
+
+    public function promote(Request $request, Student $student)
+    {
+        $stream = $student->stream;
+        $student->stream_id = $request->stream_id;
+        if (!$student->save()) {
+            flash("Failed to promote ".$student->first_name.". Try again later.")->error();
+            return back();
+        }
+        flash("Promoted ".$student->first_name." successfully.")->success();
+        return back();
     }
 }

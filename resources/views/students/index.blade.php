@@ -37,11 +37,6 @@
                             <h4>{{ $student->name }}, {{ $student->age }}</h4>
                         </a>
                         <p>{{ $student->level->name ?? '' }} {{ $student->stream->name }}</p>
-                        @foreach ($student->subjects as $subject)
-                            <li>
-                                {{ $subject->name }}
-                            </li>
-                        @endforeach
                     </div>
                     <div class="col-sm-7">
                         {{ $student->address }}
