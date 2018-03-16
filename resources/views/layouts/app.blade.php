@@ -154,12 +154,9 @@
             @yield('content')
         </div>
         <div id="app" class="container">
-            {{-- <div class="col-md-10 col-md-offset-1"> --}}
-                @include('flash::message')
-                @yield('content-full-screen')
-            {{-- </div> --}}
+            @include('flash::message')
+            @yield('content-full-screen')
         </div>
-
     </div>
     <!-- Scripts -->
     <script src="{{ mix('/js/app.js') }}"></script>

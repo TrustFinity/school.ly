@@ -8,6 +8,7 @@ use App\Models\Classes\Level;
 use App\Models\Classes\Stream;
 use App\Models\Classes\Subject;
 use App\Scopes\ActiveStudentScope;
+use App\Models\Examinations\Result;
 use App\Helpers\Search\Searcheable;
 use App\Models\Transactions\SchoolFee;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
 class Student extends Model
 {
     use Searcheable;
+
+    protected $with = ['subjects'];
 
     protected $dates = [
         'joining_year',

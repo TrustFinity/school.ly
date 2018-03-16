@@ -27,8 +27,9 @@ function getClass(string $alias)
        'sb'   => App\Models\Classes\Subject::class,
        'sa'   => App\Models\Attendances\Attendance::class,
 
-       'e'   => App\Models\Examination::class,
-       'er'  => App\Models\Result::class,
+       'e'   => App\Models\Examinations\Examination::class,
+       't'   => App\Models\Examinations\Term::class,
+       'r'   => App\Models\Examinations\Result::class,
 
     ][$alias];
 }

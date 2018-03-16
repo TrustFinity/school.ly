@@ -2,7 +2,7 @@
 
 use Carbon\Carbon;
 use App\Models\School;
-use App\Models\Examination;
+use App\Models\Examinations\Examination;
 use Illuminate\Database\Seeder;
 
 class ExaminationsSeeder extends Seeder
@@ -19,7 +19,8 @@ class ExaminationsSeeder extends Seeder
                 'school_id' => $school->id,
                 'name'      => 'Beginning Of Term',
                 'start_date' => Carbon::parse('2018-02-10'),
-                'end_date'  => Carbon::parse('2018-02-24')
+                'end_date'  => Carbon::parse('2018-02-24'),
+                'term_id'   => $school->terms()->first()->id,
             ]);
         }
     }

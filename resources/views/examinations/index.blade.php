@@ -19,32 +19,34 @@
                 <table class="table table-hover table-striped">
                     <tr>
                         <th>Name</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th colspan="3">Actions</th>
+                        <th>Starts</th>
+                        <th>Ends</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     @foreach($examinations as $exam)
                         <tr>
                             <td>
-                                {{ $exam->name }}
+                                <strong>
+                                    {{ $exam->name }}, 
+                                </strong>
+                                <span class="pink">
+                                    Term {{ $exam->term->name }}
+                                </span>
                             </td>
                             <td>
-                                {{ isset($exam->start_date) ? shortDate($exam->start_date) : '--' }}
+                                <p>{{ $exam->start_date->toFormattedDateString() }}</p>
                             </td>
                             <td>
-                                {{ isset($exam->end_date) ? shortDate($exam->end_date) : '--' }}
+                                <p>{{ $exam->end_date->toFormattedDateString() }}</p>
                             </td>
                             <td>
-                                <a href="/examinations/{{$exam->id}}">View Results</a>
+                                <a href="/examinations/{{$exam->id}}/edit" class="btn btn-default"> Edit</a>
                             </td>
                             <td>
-                                <a href="/examinations/{{$exam->id}}/edit">Enter Results</a>
-                            </td>
-                            <td>
-                                <form action="/examinations/{{ $exam->id }}" method="post">
+                                <form action="/examinations/{{ $exam->id }}" method="POST">
                                     {{ csrf_field() }}
-                                    <input type="hidden" name="_method" value="DELETE">
-
+                                    {{ method_field('DELETE') }}
                                     <button class="btn btn-danger">Delete</button>
                                 </form>
                             </td>
