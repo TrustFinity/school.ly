@@ -41,7 +41,7 @@ class Examination extends Model
 
     public function results()
     {
-        return $this->belongsTo(Result::class);
+        return $this->hasMany(Result::class);
     }
 
     public function term()

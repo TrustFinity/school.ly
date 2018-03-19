@@ -129,3 +129,19 @@ function todaysDate()
 {
     return \Carbon\Carbon::now()->toFormattedDateString();
 }
+
+function grade($value)
+{
+    switch ($value) {
+        case $value < getPreference()->lower_grade_level:
+            $grade = 'F9';
+            break;
+        case $value > getPreference()->upper_grade_level || $value == getPreference()->upper_grade_level:
+            $grade = 'D1';
+            break;
+        default:
+            $grade = 'C3';
+            break;
+    }
+    return $grade;
+}

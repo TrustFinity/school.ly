@@ -130,12 +130,15 @@ class ExaminationsController extends Controller
     {
         $isSuccessful = true;
         
-        // Check if the subject was already entered for that examination and school
-        // then just update the marks.
-
         foreach ($student->subjects as $subject) {
+            $result = Result::where('examination_id', $examination->id)
+                         ->where('subject_id', $subject->id)
+                         ->where('student_id', $student->id)
+                         ->first();
             if (isset($request->{$subject->name}['marks'])) {
-                $result = new Result;
+                if (!$result) {
+                    $result = new Result;
+                }
                 $result->school_id      = Auth::user()->school_id;
                 $result->examination_id = $examination->id;
                 $result->subject_id     = $subject->id;
