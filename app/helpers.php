@@ -27,8 +27,9 @@ function getClass(string $alias)
        'sb'   => App\Models\Classes\Subject::class,
        'sa'   => App\Models\Attendances\Attendance::class,
 
-       'e'   => App\Models\Examination::class,
-       'er'  => App\Models\Result::class,
+       'e'   => App\Models\Examinations\Examination::class,
+       't'   => App\Models\Examinations\Term::class,
+       'r'   => App\Models\Examinations\Result::class,
 
     ][$alias];
 }
@@ -127,4 +128,20 @@ function buildTree(array &$elements, $parentId = 0)
 function todaysDate()
 {
     return \Carbon\Carbon::now()->toFormattedDateString();
+}
+
+function grade($value)
+{
+    switch ($value) {
+        case $value < getPreference()->lower_grade_level:
+            $grade = 'F9';
+            break;
+        case $value > getPreference()->upper_grade_level || $value == getPreference()->upper_grade_level:
+            $grade = 'D1';
+            break;
+        default:
+            $grade = 'C3';
+            break;
+    }
+    return $grade;
 }

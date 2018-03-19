@@ -11,6 +11,7 @@ use App\Models\Classes\Level;
 use App\Models\Classes\Stream;
 use App\Http\Requests\StoreStudent;
 use App\Models\Transactions\SchoolFee;
+use App\Models\Examinations\Examination;
 use App\Http\Requests\StoreProfilePhoto;
 use App\Models\Settings\Accounts\GeneralLedgerAccounts;
 
@@ -80,7 +81,12 @@ class StudentController extends Controller
         $student->load('subjects');
         $all_subjects = $student->level->subjects;
         $all_streams  = Stream::whereNotIn('id', [$student->stream->id])->get();
-        return view('students.show', compact('student', 'all_subjects', 'all_streams'));
+        $examinations = Examination::all();
+        return view('students.show', compact('student', 
+            'all_subjects', 
+            'all_streams',
+            'examinations'
+        ));
     }
 
     /**

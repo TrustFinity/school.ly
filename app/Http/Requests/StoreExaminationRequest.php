@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Examination;
+use App\Models\Examinations\Examination;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreExaminationRequest extends FormRequest
@@ -24,7 +24,6 @@ class StoreExaminationRequest extends FormRequest
      */
     public function rules()
     {
-        // return (new Examination)->rules();
-        return [];
+        return (new Examination)->rules();
     }
 }

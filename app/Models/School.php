@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Classes\Level;
 use App\Models\Classes\Stream;
 use App\Models\Settings\Setting;
+use App\Models\Examinations\Term;
 use App\Models\Classes\ClassGroup;
 use Illuminate\Database\Eloquent\Model;
 
@@ -54,5 +55,10 @@ class School extends Model
     public function levels()
     {
         return $this->hasMany(Level::class);
+    }
+
+    public function terms()
+    {
+        return $this->hasMany(Term::class);
     }
 }

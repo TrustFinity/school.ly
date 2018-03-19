@@ -3,14 +3,14 @@
 @section('content')
     <div class="row">
         <div class="col-sm-12">
-            <h3 class="text-info">New Examination</h3>
-            <p>Add new examination set.</p>
+            <h3 class="text-info">Edit {{ $examination->name }}</h3>
         </div>
     </div>
     <hr>
     <div class="panel panel-default">
-        <form action="/examinations" method="POST">
+        <form action="/examinations/{{ $examination->id }}" method="POST">
             {{ csrf_field() }}
+            {{ method_field('PUT') }}
             <div class="panel-body">
                 <div class="form-group col-sm-8 col-sm-offset-2">
                     <label for="name">Name <span class="red"> (Required)</span></label>
@@ -30,13 +30,11 @@
                 </div>
                 <div class="form-group col-sm-8 col-sm-offset-2">
                     <label for="name">Start Date <span class="red"> (Required)</span></label>
-                    <input type="date" name="start_date" class="form-control" 
-                        value="{{ old('name', $examination->start_date ? $examination->start_date->toDateString() :'') }}">
+                    <input type="date" name="start_date" class="form-control" value="{{ old('name', $examination->start_date->toDateString()) }}">
                 </div>
                 <div class="form-group col-sm-8 col-sm-offset-2">
                     <label for="name">End Date <span class="red"> (Required)</span></label>
-                    <input type="date" name="end_date" class="form-control" 
-                        value="{{ old('name', $examination->end_date ? $examination->end_date->toDateString() : '') }}">
+                    <input type="date" name="end_date" class="form-control" value="{{ old('name', $examination->end_date->toDateString()) }}">
                 </div>
             </div>
             <div class="panel-footer">

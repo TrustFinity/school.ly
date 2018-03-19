@@ -163,6 +163,9 @@ html, body{
 	.mt-1 {
 		margin-top: 10px;
 	}
+	.mt-r-1 {
+		margin-top: -10px;
+	}
 
 	// Border
 	.border-r {
@@ -173,5 +176,11 @@ html, body{
 	.money {
 		color: $green;
 		font-size: 1.3em;
+	}
+
+
+	// Printing 
+	.no_print {
+
 	}
 }

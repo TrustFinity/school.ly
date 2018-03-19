@@ -11,7 +11,7 @@ $factory->define(App\Models\Student::class, function ($faker) {
     return [
         'school_id' => $school->id,
         'stream_id' => $stream->id,
-        'level_id' => $faker->randomElement([null, $level->id]),
+        'level_id' => $level->id,
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName(),
         'gender' => $faker->randomElement(['Male', 'Female']),

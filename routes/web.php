@@ -136,14 +136,22 @@ Route::group([
     * Examinations
     */
     Route::resource('/examinations', 'ExaminationsController');
-    Route::post('/examinations/{examination}/save-results', 'ExaminationsController@saveResults');
+
+    /**
+     * Results
+     */
+    Route::get('/students/{student}/examination/{examination}/view-result', 'ExaminationsController@viewResults');
+    Route::get('/students/{student}/examination/{examination}/enter-result', 'ExaminationsController@enterResults');
+    Route::post('/students/{student}/examination/{examination}/save-result', 'ExaminationsController@saveResults');
 
     /**
      * Data Imports
      */
     Route::get('/imports', 'DataImportController@index');
 
-    //students import
+    /**
+     * Students import
+     */
     Route::get('/imports/students', 'DataImportController@students');
     Route::get('/studentTemplate', 'DataImportController@studentTemplate');
     Route::post('/students/import', 'DataImportController@importStudents');

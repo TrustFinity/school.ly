@@ -11,11 +11,11 @@ class SchoolPreferenceSeeder extends Seeder
      */
     public function run()
     {
-        // Create a faker factory for this.
-        // Seed different school types.w
         foreach (\App\Models\School::all() as $school) {
             $settings = new App\Models\Settings\Setting();
             $settings->school_id = $school->id;
+            $settings->lower_grade_level = 40;
+            $settings->upper_grade_level = 75;
             $settings->save();
         }
     }

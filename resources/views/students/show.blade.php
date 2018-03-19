@@ -98,6 +98,35 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h5 class="title">
+                    <i class="fa fa-calendar"></i>
+                    <span class="mr-1"></span>
+                    Examination Results 
+                </h5>
+                <hr class="row">
+                @foreach($examinations as $examination)
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h4>
+                                {{ $examination->name }}, 
+                                {{ $examination->term->name }},
+                                <span class="yellow">{{ $examination->start_date->toFormattedDateString() }}</span>
+                            </h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <span class="pull-right mt-1">
+                                <a href="/students/{{$student->id}}/examination/{{$examination->id}}/enter-result" class="blue">Enter Results</a>
+                                 | 
+                                <a href="/students/{{$student->id}}/examination/{{$examination->id}}/view-result" class="blue">View Results</a>
+                            </span>
+                        </div>
+                    </div>
+                    <hr>
+                @endforeach
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h5 class="title">
                     <i class="fa fa-graduation-cap"></i>
                     <span class="mr-1"></span>
                     Promotion
