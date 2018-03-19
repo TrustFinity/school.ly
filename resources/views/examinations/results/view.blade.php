@@ -8,6 +8,7 @@
                 results for 
                 <strong>{{ $examination->name }}</strong>
             </h3>
+            <p>Press CTRL+P to print.</p>
         </div>
         <div class="col-sm-6">
         	<a href="/students/{{ $student->id }}" class="btn btn-default pull-right">
@@ -75,7 +76,7 @@
             </table>
         </div>
         <div class="panel-footer">
-            <button class="btn btn-primary no-print">Print Result</button>
+            {{-- <button class="btn btn-primary no-print js-print">Print Result</button> --}}
             {{-- <strong>Aggregate..............................................................................................................................................</strong>
             <strong>Division........................................................................................................................................</strong>
             <br>
