@@ -21,7 +21,7 @@
                     <a class="p-2 text-dark" href="#pricing">Pricing</a>
                 </nav>
                 @if(Auth::check())
-                    <a class="btn btn-outline-primary" href="/dashboard">Dashboard</a>
+                    <a class="btn btn-primary" href="/dashboard">Dashboard</a>
                 @else
                     <a class="btn btn-outline-primary" href="/login">Login to {{ config('app.name') }}</a>
                 @endif
@@ -30,18 +30,25 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-xs-6 col-xs-offset-3">
-                    <br><br><br>
-                    <h1 class="text-center splash-word display-4">Productivity at Scale</h1>
+                <div class="col-xs-12 col-md-7">
                     <br>
-                    <h3 class="text-center lead">
-                        A management platform for schools that aim to simplify creating, distributing and grading assignments in a paperless way
+                    <h1 class="splash-word display-5 mt-5">Give your school 
+                        <strong class="text-primary">super powers</strong></h1>
+                    <h3 class="lead mt-5">
+                        We simplify creating, distributing and grading assignments in a paperless way.
+                        We help you manage your school the right way.
                     </h3>
-                    <br>
+                </div>
+                <div class="col-xs-12 col-md-5">
+                    <img src="/img/new-landing-hero.gif" class="img-fluid">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8 col-xs-offset-2">
+                    <img src="/img/splash.png" class="img-fluid">
                 </div>
             </div>
 
-            <img src="/img/splash.png" class="img-fluid">
 
             <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
                 <h1 class="display-4">Pricing</h1>
