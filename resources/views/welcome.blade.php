@@ -58,24 +58,26 @@
 
                 <div class="container">
                     <div class="card-deck mb-3 text-center">
-                        <div class="col">
-                            <div class="card mb-4 box-shadow">
-                                <div class="card-body">
-                                    <p>With our accounting module, manage expenses, staff salaries and  school fees with ease</p>
+                        <div class="row">
+                            <div class="col">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-body">
+                                        <p>With our accounting module, manage expenses, staff salaries and  school fees with ease</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mb-4 box-shadow">
-                                <div class="card-body">
-                                    <p>Create examinations, record results and auto grade them with our robust examination module</p>
+                            <div class="col">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-body">
+                                        <p>Create examinations, record results and auto grade them with our robust examination module</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mb-4 box-shadow">
-                                <div class="card-body">
-                                    <p>Manage attendance of classes and use them for reporting. Get insights into what drives success</p>
+                            <div class="col">
+                                <div class="card mb-4 box-shadow">
+                                    <div class="card-body">
+                                        <p>Manage attendance of classes and use them for reporting. Get insights into what drives success</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -85,13 +87,15 @@
 
             <div class="container" id="features">
                 <div class="card-deck mb-3 text-center">
-                    <div class="col">
-                        <img src="/img/cloud.png" class="img-fluid cloud">
-                    </div>
-                    <div class="col">
-                        <div class="card mb-4 box-shadow">
-                            <div class="card-body">
-                                <p>Our dashboard stands out with metrics that matters to you. Know where your school is at on a single glance. Because <a href="http://darasini.com">{{ config('app.name') }}</a> is cloud based, it brings all the advantages of cloud computing with it. Get access to <a href="http://darasini.com">{{ config('app.name') }}</a> at your own convenience.</p>
+                    <div class="row">
+                        <div class="col">
+                            <img src="/img/cloud.png" class="img-fluid cloud">
+                        </div>
+                        <div class="col">
+                            <div class="card mb-4 box-shadow">
+                                <div class="card-body">
+                                    <p>Our dashboard stands out with metrics that matters to you. Know where your school is at on a single glance. Because <a href="http://darasini.com">{{ config('app.name') }}</a> is cloud based, it brings all the advantages of cloud computing with it. Get access to <a href="http://darasini.com">{{ config('app.name') }}</a> at your own convenience.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
