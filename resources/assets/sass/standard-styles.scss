@@ -118,6 +118,10 @@ html, body{
 	    background-color: $blue !important;
 	}
 
+	.btn-success, .btn-success:hover, .btn-success:active, .btn-success:visited {
+	    background-color: $green !important;
+	}
+
 	.title {
 		font-weight: 800;
 		// text-transform: uppercase;
