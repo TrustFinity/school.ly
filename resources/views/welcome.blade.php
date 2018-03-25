@@ -105,13 +105,13 @@
             <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
                 <h1 class="display-5">The support is great</h1>
                 <p class="lead">
-                    Reach us on any of the support channels and will be right there with you always.
+                    Reach us on any of the support channels and will be right there with you always
                 </p>
                 <img src="/img/contact.png" class="img-fluid">
             </div>
 
             <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-                <h1 class="display-5">Oh and you can afford it too</h1>
+                <h1 class="display-5">You can afford it too</h1>
                 <p class="lead">
                     Always know what you'll pay with our yearly flat
                     pricing offers. Get <a href="http://darasini.com">{{ config('app.name') }}</a> set up for your school today
@@ -178,7 +178,7 @@
                 </div>
             </div>
 
-            <p class="text-center">Ready to teacher more and worry less about management? Call us and request for a demo.</p>
+            <p class="text-center">Ready to teacher more and worry less about management? Give us a call for a demo</p>
             <h3 class="text-center text-muted">+256 779 512013</h3>
 
             <div class="container" id="footer">
