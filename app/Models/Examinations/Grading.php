@@ -25,6 +25,15 @@ class Grading extends Model
         static::addGlobalScope(new SchoolScope());
     }
 
+    public function rules()
+    {
+        return [
+            'minimum_range' => 'required|numeric',
+            'maximum_range' => 'required|numeric',
+            'grade'         => 'required|string',
+        ];
+    }
+
     public function school()
     {
     	return $this->belongsTo(School::class);

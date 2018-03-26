@@ -132,10 +132,11 @@ Route::group([
         Route::get('support-staff', 'SupportStaffReportController@index');
     });
 
-    /*
-    * Examinations
-    */
+    /**
+     * Examinations
+     */
     Route::resource('/gradings', 'GradingController');
+    Route::get('/gradings/delete/{grading}', 'GradingController@destroy');
     Route::resource('/examinations', 'ExaminationsController');
 
     /**

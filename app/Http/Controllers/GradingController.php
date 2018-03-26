@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Auth;
+use App\Http\Requests\StoreGrading;
 use App\Models\Examinations\Grading;
 
 class GradingController extends Controller
@@ -24,9 +25,7 @@ class GradingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
-    }
+    {}
 
     /**
      * Store a newly created resource in storage.
@@ -34,9 +33,16 @@ class GradingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreGrading $request)
     {
-        //
+        $grading = new Grading($request->all());
+        $grading->school_id = Auth::user()->school_id;
+        if (!$grading->save()) {
+            flash('Failed to create the grade.')->error();
+            return back();
+        }
+        flash('Grade added Successfully.')->success();
+        return back();
     }
 
     /**
@@ -46,9 +52,7 @@ class GradingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Grading $grading)
-    {
-        //
-    }
+    {}
 
     /**
      * Show the form for editing the specified resource.
@@ -58,7 +62,7 @@ class GradingController extends Controller
      */
     public function edit(Grading $grading)
     {
-        //
+        return view('examinations.grading.edit', compact('grading'));
     }
 
     /**
@@ -68,9 +72,13 @@ class GradingController extends Controller
      * @param  \App\Grading  $grading
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Grading $grading)
+    public function update(StoreGrading $request, Grading $grading)
     {
-        //
+        if (!$grading->update($request->all())) {
+            flash('Failed to update the grade.')->error();
+        }
+        flash('Successfully updated the grade.')->success();
+        return redirect('/gradings');
     }
 
     /**
@@ -81,6 +89,11 @@ class GradingController extends Controller
      */
     public function destroy(Grading $grading)
     {
-        //
+        if (!$grading->delete()) {
+            flash('Failed to delete the grade.')->error();
+            return back();
+        }
+        flash('Successfully deleted the grade.')->success();
+        return back();
     }
 }
