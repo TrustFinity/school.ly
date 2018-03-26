@@ -31,7 +31,8 @@ function getClass(string $alias)
        't'   => App\Models\Examinations\Term::class,
        'r'   => App\Models\Examinations\Result::class,
        'gr'  => App\Models\Examinations\Grading::class,
-
+       'sys'   => App\Models\Entrust\SystemResource::class,
+       'role'  => App\Models\Entrust\Role::class,
     ][$alias];
 }
 
