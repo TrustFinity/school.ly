@@ -73,6 +73,7 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">DOS</a>
                                 <ul class="dropdown-menu" role="menu">
                                     {{-- <li><a href="/settings">Results</a></li> --}}
+                                    <li><a href="/gradings">Grading</a></li>
                                     <li><a href="/examinations">Examinations</a></li>
                                 </ul>
                             </li>

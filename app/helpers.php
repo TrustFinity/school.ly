@@ -30,6 +30,7 @@ function getClass(string $alias)
        'e'   => App\Models\Examinations\Examination::class,
        't'   => App\Models\Examinations\Term::class,
        'r'   => App\Models\Examinations\Result::class,
+       'gr'  => App\Models\Examinations\Grading::class,
 
     ][$alias];
 }
@@ -132,16 +133,9 @@ function todaysDate()
 
 function grade($value)
 {
-    switch ($value) {
-        case $value < getPreference()->lower_grade_level:
-            $grade = 'F9';
-            break;
-        case $value > getPreference()->upper_grade_level || $value == getPreference()->upper_grade_level:
-            $grade = 'D1';
-            break;
-        default:
-            $grade = 'C3';
-            break;
+    foreach (App\Models\Examinations\Grading::all() as $grade) {
+        if ($value >= $grade->minimum_range && $value <= $grade->maximum_range) {
+            return $grade->grade;
+        }
     }
-    return $grade;
 }

@@ -135,6 +135,7 @@ Route::group([
     /*
     * Examinations
     */
+    Route::resource('/gradings', 'GradingController');
     Route::resource('/examinations', 'ExaminationsController');
 
     /**
