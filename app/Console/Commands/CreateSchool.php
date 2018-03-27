@@ -10,6 +10,7 @@ use App\Models\Classes\Subject;
 use Illuminate\Console\Command;
 use App\Models\Settings\Setting;
 use App\Models\Classes\ClassGroup;
+use App\DarasiniFactories\DefualtGrading;
 use App\SharedSeeders\GLA\GLASharedSeeder;
 
 class CreateSchool extends Command
@@ -69,7 +70,7 @@ class CreateSchool extends Command
             // Level
             $not_applicable = Level::create([
                 'school_id' => $new_school->id,
-                'name' => "Not Applicable",
+                'name' => "Primary",
             ]);
             foreach (LEVELS['Primary'] as $class) {
                 // Class Groups
@@ -175,6 +176,9 @@ class CreateSchool extends Command
 
         // Seed the GLAs
         (new GLASharedSeeder)->seedFor($new_school);
+
+        // Seed the grading
+        DefualtGrading::seed($new_school->id);
 
         $this->info('New School has been created Boostrapped in the process: ');
         $this->info("School Name: \t\t $school_name");

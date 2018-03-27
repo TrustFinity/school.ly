@@ -82,7 +82,7 @@
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success">Create User</button>
+                                <button type="submit" class="btn btn-success">Update User</button>
                             </div>
                         </div>
                     </div>

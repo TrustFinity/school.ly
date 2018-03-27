@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SubjectSeeder::class);
         $this->call(TermSeeder::class);
         $this->call(ExaminationsSeeder::class);
+        $this->call(GradingSeeder::class);
 
         $this->call(SchoolPreferenceSeeder::class);
 
@@ -39,5 +40,11 @@ class DatabaseSeeder extends Seeder
 
         // Chart of accounts
         $this->call(GLASeeder::class);
+
+        /**
+         * Production Seeds
+         */
+        // System Resources.
+        // $this->call(GradingResourcesSeeder::class);
     }
 }

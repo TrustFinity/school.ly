@@ -15,5 +15,8 @@ class PostLaunchSeeder extends Seeder
     	//several times. Perform checks in yours if 
     	//it only needs to be run once
         $this->call(TermSeeder::class);
+
+        // System Resources.
+        $this->call(GradingResourcesSeeder::class);
     }
 }
